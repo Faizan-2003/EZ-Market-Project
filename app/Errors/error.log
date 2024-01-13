@@ -56,3 +56,5 @@ Database connection failed: [January 13, 2024, 8:45 pm UTC +0000]SQLSTATE[42S02]
 Database connection failed: [January 13, 2024, 8:45 pm UTC +0000]SQLSTATE[42S02]: Base table or view not found: 1146 Table 'developmentdb.Users' doesn't exist42S02/app/repositories/UserRepository.php Line 53
 Database connection failed: [January 13, 2024, 8:45 pm UTC +0000]SQLSTATE[42S02]: Base table or view not found: 1146 Table 'developmentdb.Users' doesn't exist42S02/app/repositories/UserRepository.php Line 53
 Database connection failed: [January 13, 2024, 8:45 pm UTC +0000]SQLSTATE[42S02]: Base table or view not found: 1146 Table 'developmentdb.Users' doesn't exist42S02/app/repositories/UserRepository.php Line 53
+Database connection failed: [January 13, 2024, 8:47 pm UTC +0000]SQLSTATE[42S02]: Base table or view not found: 1146 Table 'developmentdb.Users' doesn't exist42S02/app/repositories/UserRepository.php Line 53
+Database connection failed: [January 13, 2024, 8:47 pm UTC +0000]SQLSTATE[42S02]: Base table or view not found: 1146 Table 'developmentdb.Users' doesn't exist42S02/app/repositories/UserRepository.php Line 53

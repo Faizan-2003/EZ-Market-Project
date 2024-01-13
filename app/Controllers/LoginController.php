@@ -2,7 +2,7 @@
 
 require __DIR__ . '/../Services/UserService.php';
 require __DIR__ . '/../Logic/LoggingInAndOut.php';
-require __DIR__ . "/../Views/LoginPage/LoginError.php";
+
 
 class LoginController
 {
@@ -17,11 +17,11 @@ class LoginController
     {
         if(is_null(getLoggedUser())){
             require __DIR__ . '/../Views/LoginPage/Login.php';
-            require __DIR__ . '/../Views/LoginPage/LoginError.php';
+           #require __DIR__ . '/../Views/LoginPage/LoginError.php';
             $this->loginToApp();
         } else {
             echo "<Script>alert('You are already logged in.')</Script>";
-            echo "<script>location.href = '/home/myAds'</script>";
+            echo "<script>location.href = '/homepage'</script>";
             exit();
         }
     }
@@ -33,10 +33,13 @@ class LoginController
             $password = htmlspecialchars($_POST["password"]);
             $loggingUser = $this->userService->verifyAndGetUser($email, $password);
             if (is_null($loggingUser)) {
+               # require __DIR__ . '/../Views/LoginPage/LoginError.php';
+
                 echo ' <Script> showLoginFailed()</Script>';
+
             } else {
                 assignLoggedUserToSession($loggingUser);
-                echo "<script>location.href = '/homepage/myAds'</script>";
+                echo "<script>location.href = '/homepage'</script>";
                 exit();
             }
         }

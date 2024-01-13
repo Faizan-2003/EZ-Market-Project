@@ -102,3 +102,5 @@ F
 app/Router/Router.java,6\a\6a23a61c756baa5370d7d7a8389b5884ff476cab
 M
 app/Public/images/favicon.svg,3\d\3d2e45ef8a6f8d5543bd291153136c5dcd3c19ca
+L
+app/Public/Javascripts/Ad.js,a\b\ab8614431a5193360d6174dca16285b4f11bb1f8

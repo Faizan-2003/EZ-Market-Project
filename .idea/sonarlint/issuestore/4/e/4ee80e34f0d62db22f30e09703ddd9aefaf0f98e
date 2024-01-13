@@ -1,12 +1,10 @@
 
-:php:S113"'Add a new line at the end of this file.8 ïê£Ğ1
-G	php:S2003"&Replace "require" with "require_once".(òß‰İÿÿÿÿÿ8œñÃ¡Ğ1
-G	php:S2003"&Replace "require" with "require_once".(Ùƒššüÿÿÿÿ8œñÃ¡Ğ1
-G	php:S2003"&Replace "require" with "require_once".(é‘²øúÿÿÿÿ8œñÃ¡Ğ1
-G	php:S2003"&Replace "require" with "require_once".(ÍÌ¸°şÿÿÿÿ8œñÃ¡Ğ1
-G	php:S2003"&Replace "require" with "require_once".(Î¾¨‚ùÿÿÿÿ8œñÃ¡Ğ1
-m	php:S4833"LReplace "require" with namespace import mechanism through the "use" keyword.(òß‰İÿÿÿÿÿ8œñÃ¡Ğ1
-m	php:S4833"LReplace "require" with namespace import mechanism through the "use" keyword.(Ùƒššüÿÿÿÿ8œñÃ¡Ğ1
-m	php:S4833"LReplace "require" with namespace import mechanism through the "use" keyword.(é‘²øúÿÿÿÿ8œñÃ¡Ğ1
-m	php:S4833"LReplace "require" with namespace import mechanism through the "use" keyword.(ÍÌ¸°şÿÿÿÿ8œñÃ¡Ğ1
-m	php:S4833"LReplace "require" with namespace import mechanism through the "use" keyword.(Î¾¨‚ùÿÿÿÿ8ñÃ¡Ğ1
+:php:S113"'Add a new line at the end of this file.8Ş¹¬¥Ğ1
+G	php:S2003"&Replace "require" with "require_once".(òß‰İÿÿÿÿÿ8ºÎä¥Ğ1
+G	php:S2003"&Replace "require" with "require_once".(Ùƒššüÿÿÿÿ8ºÎä¥Ğ1
+G	php:S2003"&Replace "require" with "require_once".(ÍÌ¸°şÿÿÿÿ8°½ë¦Ğ1
+?php:S125"Remove this commented out code.(ìá·èùÿÿÿÿ8–šë¦Ğ1
+?php:S125$"Remove this commented out code.(ìá·èùÿÿÿÿ8°½ë¦Ğ1
+m	php:S4833"LReplace "require" with namespace import mechanism through the "use" keyword.(òß‰İÿÿÿÿÿ8ºÎä¥Ğ1
+m	php:S4833"LReplace "require" with namespace import mechanism through the "use" keyword.(Ùƒššüÿÿÿÿ8ºÎä¥Ğ1
+m	php:S4833"LReplace "require" with namespace import mechanism through the "use" keyword.(ÍÌ¸°şÿÿÿÿ8°½ë¦Ğ1

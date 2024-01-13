@@ -6,15 +6,15 @@ class UserRepository extends Repository
 {
     function verifyAndGetUser($email, $enteredPassword)
     {
-        $stmt = $this->connection->prepare("SELECT * FROM users WHERE email = :email AND password = :password");
+        $stmt = $this->connection->prepare("SELECT * FROM User WHERE email = :email AND password = :password");
 
         try {
             $user = null;
-            $stmt = $this->connection->prepare("SELECT id,firstName, lastName, email,HashPassword,Salt FROM Users WHERE email= :email");
+            $stmt = $this->connection->prepare("SELECT userID, firstName, lastName, email, password FROM User WHERE email = :email");
             $stmt->bindParam(":email", $email);
             if ($this->checkUserExistence($stmt)) {
-                $storedPassword = $this->getSaltAndHashedPassword($stmt);
-                if ($this->verifyPassword($enteredPassword, $storedPassword[0], $storedPassword[1])) {
+                $storedPassword = $this->getHashedPassword($stmt);
+                if ($this->verifyPassword($enteredPassword, $storedPassword[0])) {
                     $stmt->execute();
                     $stmt->setFetchMode(PDO::FETCH_CLASS, 'User');
                     $user = $stmt->fetch();
@@ -29,16 +29,15 @@ class UserRepository extends Repository
         }
     }
 
-    private function getSaltAndHashedPassword($stmt)
+    private function getHashedPassword($stmt)
     {
         try {
             $stmt->execute();
 
             while ($result = $stmt->fetch(PDO::FETCH_BOTH)) {
-                $hashPassword = $result["HashPassword"];
-                $salt = $result["Salt"];
+                $hashPassword = $result["password"];
             }
-            return [$hashPassword, $salt];
+            return [$hashPassword];
         } catch (PDOException $e) {
             $message = '[' . date("F j, Y, g:i a e O") . ']' . $e->getMessage() . $e->getCode() . $e->getFile() . ' Line ' . $e->getLine() . PHP_EOL;
             $errorLogPath = __DIR__ . '/../Errors/error.log';
@@ -63,16 +62,16 @@ class UserRepository extends Repository
         }
     }
 
-    private function verifyPassword($enteredPassword, $hashedPassword, $salt): bool
+    private function verifyPassword($enteredPassword, $hashedPassword): bool
     {
-        return password_verify($enteredPassword . $salt, $hashedPassword);
+        return password_verify($enteredPassword, $hashedPassword);
     }
 
     public function getUserById($id)
     {
         try {
-            $stmt = $this->connection->prepare("SELECT id,firstName, lastName, email FROM Users WHERE id= :id");
-            $stmt->bindParam(":id", $id);
+            $stmt = $this->connection->prepare("SELECT userID, firstName, lastName, email FROM User WHERE userID = :id");
+            $stmt->bindParam(":userID", $id);
             if ($this->checkUserExistence($stmt)) {
                 $stmt->execute();
                 $stmt->setFetchMode(PDO::FETCH_CLASS, 'User');
@@ -85,18 +84,16 @@ class UserRepository extends Repository
             error_log("Database connection failed: " . $message, 3, $errorLogPath);
             exit();
         }
-
     }
 
     public function insertUserInDatabase($userDetails): bool
     {
         try {
-            $stmt = $this->connection->prepare("INSERT INTO Users( firstName, lastName, email, HashPassword, Salt) VALUES (:firstName,:lastName,:email,:hashPassword,:salt)");
+            $stmt = $this->connection->prepare("INSERT INTO User(firstName, lastName, email, password) VALUES (:firstName, :lastName, :email, :password)");
             $stmt->bindValue(":firstName", $userDetails["firstName"]);
             $stmt->bindValue(":lastName", $userDetails["lastName"]);
             $stmt->bindValue(":email", $userDetails["email"]);
-            $stmt->bindValue(":hashPassword", $userDetails["hashPassword"]);
-            $stmt->bindValue(":salt", $userDetails["salt"]);
+            $stmt->bindValue(":password", $userDetails["password"]);
             $stmt->execute();
             if ($stmt->rowCount() == 0) {
                 return false;
@@ -108,21 +105,19 @@ class UserRepository extends Repository
             error_log("Database connection failed: " . $message, 3, $errorLogPath);
             exit();
         }
-
     }
-    public function CheckUserEmailExistence($email) :bool{
-        try{
-            $stmt=$this->connection->prepare("SELECT email From Users WHERE email= :email");
-            $stmt->bindValue(":email",$email);
+
+    public function CheckUserEmailExistence($email): bool
+    {
+        try {
+            $stmt = $this->connection->prepare("SELECT email FROM User WHERE email = :email");
+            $stmt->bindValue(":email", $email);
             return $this->checkUserExistence($stmt);
-        }
-        catch (PDOException $e) {
+        } catch (PDOException $e) {
             $message = '[' . date("F j, Y, g:i a e O") . ']' . $e->getMessage() . $e->getCode() . $e->getFile() . ' Line ' . $e->getLine() . PHP_EOL;
             $errorLogPath = __DIR__ . '/../Errors/error.log';
             error_log("Database connection failed: " . $message, 3, $errorLogPath);
             exit();
         }
     }
-
-
 }
