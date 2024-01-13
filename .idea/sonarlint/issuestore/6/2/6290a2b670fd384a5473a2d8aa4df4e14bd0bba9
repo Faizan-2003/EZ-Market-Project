@@ -1,0 +1,5 @@
+
+ephp:S103"KSplit this 149 characters long line (which is greater than 120 authorized).(ΣΎΘA8άΜ΅Π1
+e	php:S1784"DExplicitly mention the visibility of this constructor "__construct".(‡ΈΪωÿÿÿÿ8λτÒ΅Π1
+B	php:S2003	"&Replace "require" with "require_once".(—ώ—”8λτÒ΅Π1
+h	php:S4833	"LReplace "require" with namespace import mechanism through the "use" keyword.(—ώ—”8λτÒ΅Π1

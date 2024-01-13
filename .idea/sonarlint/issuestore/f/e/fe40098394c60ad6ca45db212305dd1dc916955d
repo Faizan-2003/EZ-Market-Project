@@ -1,0 +1,17 @@
+
+fphp:S103"KSplit this 136 characters long line (which is greater than 120 authorized).(§³×Ä8¨ µšĞ1
+ephp:S103"KSplit this 149 characters long line (which is greater than 120 authorized).(Ó¾ÈA8© µšĞ1
+ephp:S103+"KSplit this 149 characters long line (which is greater than 120 authorized).(Ó¾ÈA8© µšĞ1
+ephp:S103;"KSplit this 149 characters long line (which is greater than 120 authorized).(Ó¾ÈA8© µšĞ1
+ephp:S103S"KSplit this 149 characters long line (which is greater than 120 authorized).(Ó¾ÈA8© µšĞ1
+fphp:S103^"KSplit this 174 characters long line (which is greater than 120 authorized).(›Å¿Ğ8© µšĞ1
+ephp:S103j"KSplit this 149 characters long line (which is greater than 120 authorized).(Ó¾ÈA8© µšĞ1
+ephp:S103x"KSplit this 149 characters long line (which is greater than 120 authorized).(Ó¾ÈA8© µšĞ1
+e	php:S1784"DExplicitly mention the visibility of this method "verifyAndGetUser".(…·‘‰ÿÿÿÿÿ8© µšĞ1
+q	php:S1192"UDefine a constant instead of duplicating this literal "/../Errors/error.log" 6 times.(å½òü8ÈôÖ¡Ğ1
+m	php:S1192"RDefine a constant instead of duplicating this literal "F j, Y, g:i a e O" 6 times.(Ó¾ÈA8ª µšĞ1
+b	php:S1192"GDefine a constant instead of duplicating this literal " Line " 6 times.(Ó¾ÈA8ª µšĞ1
+~	php:S1192"]Define a constant instead of duplicating this literal "Database connection failed: " 6 times.(¯‘äúÿÿÿÿ8ÊôÖ¡Ğ1
+h	php:S1192"GDefine a constant instead of duplicating this literal ":email" 3 times.(íÆÔÅøÿÿÿÿ8ª µšĞ1
+r	php:S4833"QReplace "require_once" with namespace import mechanism through the "use" keyword.(ìƒÀúÿÿÿÿ8ª µšĞ1
+r	php:S4833"QReplace "include_once" with namespace import mechanism through the "use" keyword.(ê‚‹€øÿÿÿÿ8ª µšĞ1

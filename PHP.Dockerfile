@@ -1,4 +1,3 @@
-FROM ubuntu:latest
-LABEL authors="mf384"
+FROM php:fpm
 
-ENTRYPOINT ["top", "-b"]
+RUN docker-php-ext-install pdo pdo_mysql

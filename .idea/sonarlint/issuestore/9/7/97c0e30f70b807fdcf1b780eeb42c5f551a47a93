@@ -1,0 +1,10 @@
+
+J	php:S1781")Write this "Class" keyword in lower case.(…œùÿÿÿÿ8š‰šĞ1
+:php:S113"'Add a new line at the end of this file.8š‰šĞ1
+W	php:S1185"6Remove this method "__construct" to simply inherit it.(éúÜÅûÿÿÿÿ8š‰šĞ1
+G	php:S2003
+"&Replace "require" with "require_once".(¼¥ÿ³øÿÿÿÿ8š‰šĞ1
+B	php:S2003"&Replace "require" with "require_once".(Şş”¾8š‰šĞ1
+m	php:S4833
+"LReplace "require" with namespace import mechanism through the "use" keyword.(¼¥ÿ³øÿÿÿÿ8š‰šĞ1
+h	php:S4833"LReplace "require" with namespace import mechanism through the "use" keyword.(Şş”¾8š‰šĞ1

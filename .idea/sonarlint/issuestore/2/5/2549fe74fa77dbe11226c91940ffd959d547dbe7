@@ -1,0 +1,7 @@
+
+:php:S113"'Add a new line at the end of this file.8îæššÐ1
+m	php:S1192"QDefine a constant instead of duplicating this literal "Location: /myads" 3 times.(ëöºÂ8ÿøªšÐ1
+}	php:S1488"\Immediately return this expression instead of assigning it to the temporary variable "$ads".(àÂ‚•øÿÿÿÿ8ïæššÐ1
+E	php:S1481")Remove this unused "$ads" local variable.(Î©Á…8ïæššÐ1
+G	php:S2003"&Replace "require" with "require_once".(²ÿ³¦ÿÿÿÿÿ8ïæššÐ1
+m	php:S4833"LReplace "require" with namespace import mechanism through the "use" keyword.(²ÿ³¦ÿÿÿÿÿ8ïæššÐ1

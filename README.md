@@ -1,5 +1,7 @@
-Muhammad Faizan
-701765
+**Muhammad Faizan**
+
+**701765**
 
 Web Developement 1
-Project: EZ Market - Online MarketPlace 
+
+Project: **EZ Market - Online MarketPlace** 
