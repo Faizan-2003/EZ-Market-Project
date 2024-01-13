@@ -15,7 +15,7 @@
 
 <main class="form-signin w-100 m-auto" id="loginForm">
     <form method="POST">
-        <a href="/homepage"><img class="mb-4" src="/images/Logo.png" alt="Website Logo" width="350" height="100"></a>
+        <a href="/homepage"><img class="mb-4" src="/images/Logo.png" alt="Website Logo" width="350" height="150"></a>
         <h1 class="h3 mb-3 fw-bold">Log In</h1>
         <div class="form-floating">
             <input type="email" class="form-control" id="floatingInput" placeholder="name@example.com" name="email" autocomplete="email" required>
