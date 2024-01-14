@@ -6,28 +6,32 @@ class UserRepository extends Repository
 {
     function verifyAndGetUser($email, $enteredPassword)
     {
-        $stmt = $this->connection->prepare("SELECT * FROM User WHERE email = :email AND password = :password");
+        $stmt = $this->connection->prepare("SELECT userID, firstName, lastName, email, password FROM User WHERE email = :email");
 
         try {
             $user = null;
-            $stmt = $this->connection->prepare("SELECT userID, firstName, lastName, email, password FROM User WHERE email = :email");
             $stmt->bindParam(":email", $email);
+            $stmt->execute();
+
             if ($this->checkUserExistence($stmt)) {
                 $storedPassword = $this->getHashedPassword($stmt);
+
                 if ($this->verifyPassword($enteredPassword, $storedPassword[0])) {
-                    $stmt->execute();
                     $stmt->setFetchMode(PDO::FETCH_CLASS, 'User');
                     $user = $stmt->fetch();
                 }
             }
+
             return $user;
         } catch (PDOException $e) {
+            // Handle the exception according to your application's needs.
             $message = '[' . date("F j, Y, g:i a e O") . ']' . $e->getMessage() . $e->getCode() . $e->getFile() . ' Line ' . $e->getLine() . PHP_EOL;
             $errorLogPath = __DIR__ . "/../Errors/error.log";
             error_log("Database connection failed: " . $message, 3, $errorLogPath);
             exit();
         }
     }
+
 
     private function getHashedPassword($stmt)
     {
@@ -67,11 +71,12 @@ class UserRepository extends Repository
         return password_verify($enteredPassword, $hashedPassword);
     }
 
+
     public function getUserById($id)
     {
         try {
             $stmt = $this->connection->prepare("SELECT userID, firstName, lastName, email FROM User WHERE userID = :id");
-            $stmt->bindParam(":userID", $id);
+            $stmt->bindParam(":id", $id); // Corrected parameter name here
             if ($this->checkUserExistence($stmt)) {
                 $stmt->execute();
                 $stmt->setFetchMode(PDO::FETCH_CLASS, 'User');
@@ -79,6 +84,7 @@ class UserRepository extends Repository
             }
             return null;
         } catch (PDOException $e) {
+            // Handle the exception according to your application's needs.
             $message = '[' . date("F j, Y, g:i a e O") . ']' . $e->getMessage() . $e->getCode() . $e->getFile() . ' Line ' . $e->getLine() . PHP_EOL;
             $errorLogPath = __DIR__ . '/../Errors/error.log';
             error_log("Database connection failed: " . $message, 3, $errorLogPath);

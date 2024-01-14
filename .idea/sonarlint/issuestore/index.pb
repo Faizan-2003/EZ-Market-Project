@@ -6,10 +6,6 @@ B
 :
 
 nginx.conf,e\d\ed8b45da44d73de79bd7c1c203a419d6ee7d6fde
-I
-app/Views/LoginScreen.php,4\3\43b2522a05cc7e4a674e2a14280cc759e2002332
-Y
-)app/Controllers/LoginScreenController.php,9\8\98a7e3e1c219c30a63a86f7dbb313125cf07112b
 9
 	README.md,8\e\8ec9a00bfd09b3190ac6b22251dbb1aa95a0579d
 G
@@ -36,8 +32,6 @@ A
 app/Models/Ad.php,8\3\8356892ea7f1fff336ad0c110aa0b83f4c947698
 D
 app/Public/index.php,e\e\ee8720c69f9853998e6480067f03ba5f9fef537f
-S
-#app/Views/LoginPage/LoginScreen.php,d\4\d43658b1102b112522c5187b70e23577148bd5c5
 R
 "app/Views/LoginPage/LoginError.php,3\9\39af2d1752f46626b4a8945a1dbf28f2ed062b2a
 O
@@ -98,8 +92,6 @@ N
 app/Public/CSS/LoginStyles.css,9\b\9b30940e9abd7c3469d1af5551f7031c2f6fe549
 D
 app/Errors/error.log,6\f\6f287a0b9cb57e1a30052f3ff8aebe205f9092af
-F
-app/Router/Router.java,6\a\6a23a61c756baa5370d7d7a8389b5884ff476cab
 M
 app/Public/images/favicon.svg,3\d\3d2e45ef8a6f8d5543bd291153136c5dcd3c19ca
 L

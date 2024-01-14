@@ -15,31 +15,33 @@ class LoginController
 
     public function displayLoginPage(): void
     {
-        if(is_null(getLoggedUser())){
-            require __DIR__ . '/../Views/LoginPage/Login.php';
-           #require __DIR__ . '/../Views/LoginPage/LoginError.php';
+        if (is_null(getLoggedUser())) {
+            require __DIR__ . "/../Views/LoginPage/Login.php";
+            require __DIR__ . '/../Views/LoginPage/LoginError.php';
             $this->loginToApp();
+
         } else {
-            echo "<Script>alert('You are already logged in.')</Script>";
-            echo "<script>location.href = '/homepage'</script>";
+            echo "<script>alert('You are already logged in. You don't have to log in again.')</script>";
+            echo "<script>location.href = '/home/myAds'</script>";
             exit();
         }
     }
 
+
     private function loginToApp(): void
     {
-        if (isset($_POST["btnLogin"])) {
+
+        if (!empty($_POST["btnLogin"]) && !empty($_POST["email"]) && !empty($_POST["password"])) {
             $email = htmlspecialchars($_POST["email"]);
             $password = htmlspecialchars($_POST["password"]);
+            error_log("Email: $email, Password: $password"); // Log to a file
             $loggingUser = $this->userService->verifyAndGetUser($email, $password);
+
             if (is_null($loggingUser)) {
-               # require __DIR__ . '/../Views/LoginPage/LoginError.php';
-
-                echo ' <Script> showLoginFailed()</Script>';
-
+                echo '<script> showLoginFailed() </script>';
             } else {
                 assignLoggedUserToSession($loggingUser);
-                echo "<script>location.href = '/homepage'</script>";
+                echo "<script>location.href = '/homepage/myAds';</script>";
                 exit();
             }
         }

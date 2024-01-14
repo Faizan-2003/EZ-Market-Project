@@ -18,8 +18,7 @@ class AdRepository extends Repository
     public function getAllAdsByStatus(Status $status)
     {
         try {
-
-            $stmt = $this->connection->prepare("SELECT id,productName,productDescription,productPrice,postedDate,productImageURI,productStatus,userID From Ads WHERE status=:status ORDER BY postedDate DESC");
+            $stmt = $this->connection->prepare("SELECT id, productName, productDescription, productPrice, postedDate, productImageURI, productStatus, userID FROM Ads WHERE productStatus = :status ORDER BY postedDate DESC");
             $label = $status->label();
             $stmt->bindParam(":status", $label);
             if ($this->checkAdinDB($stmt)) {
@@ -27,16 +26,14 @@ class AdRepository extends Repository
                 $result = $stmt->fetchAll();
                 $ads = array();
                 foreach ($result as $row) {
-                    $ads[] = $this->MakeAnAD($row);
+                    $ads[] = $this->makeAnAd($row);
                 }
                 return $ads;
             }
             return null;
-        } catch (PDOException  $e) {
-            $message = '[' . date("F j, Y, g:i a e O") . ']' . $e->getMessage() . $e->getCode() . $e->getFile() . ' Line ' . $e->getLine() . PHP_EOL;
-            error_log("Something went wrong getting ads from database " . $message, 3, __DIR__ . "/../Errors/error.log");
-            http_response_code(500);
-            exit();
+        } catch (PDOException $e) {
+            // Handle the exception
+            trigger_error("An error occurred: " . $e->getMessage(), E_USER_ERROR);
         }
     }
 
@@ -84,9 +81,9 @@ class AdRepository extends Repository
     public function updateStatusOfAd($status, $adID)
     {
         try {
-            $stmt = $this->connection->prepare("UPDATE Ads SET status= :status WHERE id= :adId");
-            $stmt->bindValue(":status", $status->label());
-            $stmt->bindValue(":adId", $adID);
+            $stmt = $this->connection->prepare("UPDATE Ads SET productStatus= :productStatus WHERE id= :adId");
+            $stmt->bindValue(":productStatus", $status->label());
+            $stmt->bindValue(":id", $adID);
 
             if ($stmt->execute()) {
                 $rows_updated = $stmt->rowCount();
@@ -135,6 +132,7 @@ class AdRepository extends Repository
         $ad->setUserID($this->userRepo->getUserById($dBRow["userID"]));
         return $ad;
     }
+
 
     private function checkAdinDB($stmt): bool
     {

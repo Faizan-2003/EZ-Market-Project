@@ -58,3 +58,9 @@ Database connection failed: [January 13, 2024, 8:45 pm UTC +0000]SQLSTATE[42S02]
 Database connection failed: [January 13, 2024, 8:45 pm UTC +0000]SQLSTATE[42S02]: Base table or view not found: 1146 Table 'developmentdb.Users' doesn't exist42S02/app/repositories/UserRepository.php Line 53
 Database connection failed: [January 13, 2024, 8:47 pm UTC +0000]SQLSTATE[42S02]: Base table or view not found: 1146 Table 'developmentdb.Users' doesn't exist42S02/app/repositories/UserRepository.php Line 53
 Database connection failed: [January 13, 2024, 8:47 pm UTC +0000]SQLSTATE[42S02]: Base table or view not found: 1146 Table 'developmentdb.Users' doesn't exist42S02/app/repositories/UserRepository.php Line 53
+Something went wrong getting ads from database [January 14, 2024, 2:47 pm UTC +0000]SQLSTATE[42S22]: Column not found: 1054 Unknown column 'status' in 'where clause'42S22/app/repositories/AdRepository.php Line 142
+Something went wrong getting ads from database [January 14, 2024, 2:48 pm UTC +0000]SQLSTATE[42S22]: Column not found: 1054 Unknown column 'status' in 'where clause'42S22/app/repositories/AdRepository.php Line 142
+Something went wrong getting ads from database [January 14, 2024, 2:48 pm UTC +0000]SQLSTATE[42S22]: Column not found: 1054 Unknown column 'status' in 'where clause'42S22/app/repositories/AdRepository.php Line 142
+Something went wrong getting ads from database [January 14, 2024, 2:49 pm UTC +0000]SQLSTATE[42S22]: Column not found: 1054 Unknown column 'status' in 'where clause'42S22/app/repositories/AdRepository.php Line 142
+Something went wrong getting ads from database [January 14, 2024, 2:49 pm UTC +0000]SQLSTATE[42S22]: Column not found: 1054 Unknown column 'status' in 'where clause'42S22/app/repositories/AdRepository.php Line 142
+Database connection failed: [January 14, 2024, 2:54 pm UTC +0000]SQLSTATE[HY093]: Invalid parameter number: parameter was not definedHY093/app/repositories/UserRepository.php Line 56

@@ -15,7 +15,8 @@
 <body class="d-flex flex-column h-100">
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark bg-info p-3">
     <div class="container-fluid">
-        <a class="navbar-brand"><img src="/img/Logo.png" alt="BusinessLogo" width="200" height="40">
+        <a class="navbar-brand"><img src="/images/Logo.png" alt="WebsiteLogo" width="200" height="40">
+        </a>
         </a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
@@ -24,10 +25,13 @@
         <div class=" collapse navbar-collapse" id="navbarNavDropdown">
             <ul class="navbar-nav ms-auto ">
                 <li class="nav-item">
-                    <a class="nav-link mx-2 active" aria-current="page" href="#">Homepage</a>
+                    <a class="nav-link mx-2 active" aria-current="page" href="#">Home</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link mx-2" href="/homepage/myAds">My Ads</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link mx-2" href="/homepage/myPurchases">My Purchases</a>
                 </li>
             </ul>
             <ul class="navbar-nav ms-auto  d-lg-inline-flex">
@@ -43,7 +47,7 @@
                         </svg>
                     </a>
                     <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                        <li><a id="loginLink" class="dropdown-item" href="/homepage/login">Login</a></li>
+                        <li><a id="loginLink" class="dropdown-item" href="/home/login">Login</a></li>
                         <li>
                             <hr class="dropdown-divider">
                         </li>
@@ -60,14 +64,8 @@
         </div>
     </div>
 </nav>
-<div class="container-fluid" id="searchBar">
+<div class="container-fluid" id="searchBar" style="background-color: aliceblue">
     <div class="container py-3 mx-auto">
         <input class="form-control" type="search" placeholder="Search in Our Market" aria-label="Search" style="border-color: black" oninput="onInputValueChangeForSearch(this)">
     </div>
 </div>
-
-<!-- Your page content goes here -->
-
-</body>
-
-</html>

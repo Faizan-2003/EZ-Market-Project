@@ -1,17 +1,21 @@
 <?php
 class Router
 {
+
     public function route($uri)
     {
+
         $uri = $this->stripParameters($uri);
 
         switch ($uri) {
             case '':
             case 'homepage':
-                require __DIR__ . "/../Controllers/HomepageController.php";
-                $controller = new HomepageController();
-                $controller->displayHomePage();
-                break;
+            require __DIR__ . "/../Controllers/HomepageController.php";
+            $adRepository = new AdRepository();
+            $adService = new AdService($adRepository);
+            $controller = new HomepageController($adService);
+            $controller->displayHomePage();
+            break;
             case 'homepage/login':
                 require __DIR__ . '/../Controllers/LoginController.php';
                 $controller = new LoginController();

@@ -1,9 +1,9 @@
 
-fphp:S103'"KSplit this 128 characters long line (which is greater than 120 authorized).(¶íÆ8‘é–›Ğ1
-lphp:S103‡"KSplit this 131 characters long line (which is greater than 120 authorized).(ƒçØ€üÿÿÿÿ8‘é–›Ğ1
-]	php:S1784¨"@Explicitly mention the visibility of this method "processImage".(ñ ÚÊ8‘é–›Ğ1
+fphp:S103&"KSplit this 128 characters long line (which is greater than 120 authorized).(¶íÆ8‘é–›Ğ1
+lphp:S103†"KSplit this 131 characters long line (which is greater than 120 authorized).(ƒçØ€üÿÿÿÿ8‘é–›Ğ1
+]	php:S1784§"@Explicitly mention the visibility of this method "processImage".(ñ ÚÊ8‘é–›Ğ1
 G	php:S2003"&Replace "require" with "require_once".(×¦èÿÿÿÿÿ8‘é–›Ğ1
-X	php:S1793t"<Replace this "else if" keyword sequence by "elseif" keyword.(Ø‘ É8‘é–›Ğ1
+X	php:S1793s"<Replace this "else if" keyword sequence by "elseif" keyword.(Ø‘ É8‘é–›Ğ1
 m	php:S4833"LReplace "require" with namespace import mechanism through the "use" keyword.(×¦èÿÿÿÿÿ8‘é–›Ğ1
 m	php:S4833"QReplace "require_once" with namespace import mechanism through the "use" keyword.(âßÀğ8‘é–›Ğ1
 r	php:S4833"QReplace "require_once" with namespace import mechanism through the "use" keyword.(ÎşÁ¥ùÿÿÿÿ8‘é–›Ğ1

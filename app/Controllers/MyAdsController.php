@@ -2,40 +2,64 @@
 
 class MyAdsController
 {
-    public function displayMyAdsPage()
+    public function displayMyAdsPage(): void
     {
-        $ads = $this->getAdsByLoggedUser();
-        require __DIR__ . '/../Views/MyAds.php';
+        $displayMessage = $this->displayInfo();
+        require __DIR__ . '/../Views/MyAdsPage/MyAds.php';
+        $this->showAds();
+        require __DIR__ . '/../Views/Footer.php';
+        $this->loginAndSignout();
     }
-
-    private function getAdsByLoggedUser()
+    private function displayInfo(): string
     {
-        $ads = [];
-        $ads = Ads::getAdsByLoggedUser();
-        return $ads;
+        $currentHour = (int)date('G');  // Get the current hour as an integer
+        $greet = "";
+        if ($currentHour < 12) {
+            $greet = "Good Morning";
+        } elseif ($currentHour < 18) {
+            $greet = "Good Afternoon";
+        } else {
+            $greet = "Good Evening";
+        }
+        if (is_null($this->loggedUser)) {
+            $displayMessage = "Please,login in order to view,edit or post an Ad";
+        } else {
+            $displayMessage = $greet . ", " . $this->loggedUser->getFirstName();
+        }
+        return $displayMessage;
     }
-
-    public function deleteAd()
+    private function loginAndSignout(): void
     {
-        $adId = $_POST['adId'];
-        $ad = Ads::getAdById($adId);
-        $ad->deleteAd();
-        header('Location: /myads');
+        if (!is_null($this->loggedUser)) {
+            echo '<script>             
+                disableLoginButton();
+                showPostNewAd();
+                </script>';
+        } else {
+            echo '<script>
+              hidePostNewAd();
+                </script>';
+        }
+        if (isset($_POST["btnSignOut"])) {
+            logOutFromApp();
+            echo '<script>
+              enableLogin();
+              hidePostNewAd();
+              loginMessageForSignOut();
+              clearScreen();
+                </script>';
+        }
     }
-
-    public function editAd()
+    private function showAds()
     {
-        $adId = $_POST['adId'];
-        $ad = Ads::getAdById($adId);
-        $ad->editAd();
-        header('Location: /myads');
+        if (!is_null($this->loggedUser)) {
+            require __DIR__ . '/../Views/MyAdsPage/EditAd.php'; // so that it can accessed by javascript
+            if (!is_null($this->adService->getAdsByLoggedUser($this->loggedUser))) {
+                $loggedUserAds = $this->adService->getAdsByLoggedUser($this->loggedUser);
+                require __DIR__ . '/../Views/MyAdsPage/DivMyAds.php';
+            } else {
+                require __DIR__ . '/../Views/MyAdsPage/NoAdsFound.html';
+            }
+        }
     }
-
-    public function addAd()
-    {
-        $ad = new Ads();
-        $ad->addAd();
-        header('Location: /myads');
-    }
-
 }

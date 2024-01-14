@@ -6,7 +6,6 @@ require_once __DIR__ . '/../../Models/User.php';
 class AdsController
 {
     private $adService;
-
     public function __construct()
     {
         $this->adService = new AdService();

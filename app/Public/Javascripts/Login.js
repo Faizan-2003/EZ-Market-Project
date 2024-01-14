@@ -1,4 +1,5 @@
 function showLoginFailed() {
+    const form = document.querySelector("form");
     const currentDiv = document.getElementById("passwordDiv");
     var newDiv = document.createElement("div");
     newDiv.className = "alert-danger pb-3";

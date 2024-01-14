@@ -1,28 +1,26 @@
 <?php
+require __DIR__ . "/../Models/User.php";
+require __DIR__ . "/../Models/Ad.php";
+require __DIR__ . "/../Services/AdService.php";
+require  __DIR__ . "/../Logic/LoggingInAndOut.php";
 
-class HomepageController extends Controller
+class HomepageController
 {
+    private AdService $adService;
+
     public function __construct(AdService $adService)
     {
-        parent::__construct();
         $this->adService = $adService;
     }
 
     public function displayHomePage()
     {
-        try {
-            $ads = $this->adService->getAllAvailableAds(); // only showing available ads
-            require __DIR__ . "/../Views/HomePage/Homepage.php";
-            $this->showAvailableAds($ads);
-            require __DIR__ . '/../Views/Footer.php';
-        } catch (Exception $e) {
-            // Handle or log the exception
-            echo "An error occurred while retrieving ads.";
-        }
-
+        $ads = $this->adService->getAllAvailableAds(); // only showing available ads
+        require __DIR__ . "/../Views/Homepage/Homepage.php";
+        $this->showAvailableAds($ads);
+        require __DIR__ . '/../Views/Footer.php';
         $this->loginAndSignout();
     }
-
     private function loginAndSignout(): void
     {
         if (!is_null(getLoggedUser())) {
@@ -37,9 +35,9 @@ class HomepageController extends Controller
     private function showAvailableAds($ads): void
     {
         if (is_null($ads)) {
-            require __DIR__ . '/../Views/HomePage/NoAdsAvailableToBeSold.html';
+            require __DIR__ . '/../Views/HomePage/NoAvailableAds.html';
         } else {
-            require __DIR__ . '/../Views/HomePage/ShowAvailableAds.php';
+            require __DIR__ . '/../Views/HomePage/DisplayAvailableAds.php';
         }
     }
 }

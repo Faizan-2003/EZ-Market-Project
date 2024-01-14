@@ -1,5 +1,5 @@
 
-G	php:S2003"&Replace "require" with "require_once".(Ëš¾îûÿÿÿÿ8Ó¡¼šÐ1
-m	php:S4833"LReplace "require" with namespace import mechanism through the "use" keyword.(Ëš¾îûÿÿÿÿ8Ó¡¼šÐ1
-r	php:S4833"QReplace "require_once" with namespace import mechanism through the "use" keyword.(ìƒŽÀúÿÿÿÿ8Ó¡¼šÐ1
-r	php:S4833"QReplace "require_once" with namespace import mechanism through the "use" keyword.(ùé‚Úÿÿÿÿÿ8Ó¡¼šÐ1
+G	php:S2003"&Replace "require" with "require_once".(Ëš¾îûÿÿÿÿ8ÚðºÃÐ1
+m	php:S4833"LReplace "require" with namespace import mechanism through the "use" keyword.(Ëš¾îûÿÿÿÿ8ÚðºÃÐ1
+r	php:S4833"QReplace "require_once" with namespace import mechanism through the "use" keyword.(ìƒŽÀúÿÿÿÿ8ÚðºÃÐ1
+r	php:S4833"QReplace "require_once" with namespace import mechanism through the "use" keyword.(ùé‚Úÿÿÿÿÿ8ÚðºÃÐ1

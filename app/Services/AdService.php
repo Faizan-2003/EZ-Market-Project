@@ -5,10 +5,12 @@ require_once __DIR__ . "/../Models/Ad.php";
 class AdService
 {
     private AdRepository $adRepository;
+
     public function __construct(AdRepository $adRepository)
     {
         $this->adRepository = $adRepository;
     }
+
     public function getAllAdsByStatus(Status $status)
     {
         return $this->adRepository->getAllAdsByStatus($status);
