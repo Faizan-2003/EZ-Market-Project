@@ -6,58 +6,32 @@ require_once __DIR__ . '/../../Models/User.php';
 class AdsController
 {
     private $adService;
+
     public function __construct()
     {
         $this->adService = new AdService();
     }
-
     public function postNewAdRequest(): void
     {
         $this->sendHeaders();
-        $responseData = array();
 
-        // Respond to a POST request to /api/article
         if ($_SERVER["REQUEST_METHOD"] == "POST") {
             $adDetails = json_decode($_POST['adDetails'], true);
-            $username = htmlspecialchars($adDetails['loggedUserName']);
-            $productName = htmlspecialchars($adDetails['productName']);
-            $productPrice = htmlspecialchars($adDetails['price']);
-            $productDescription = htmlspecialchars($adDetails['productDescription']);
-            // Process the image file
+
+            // Validate and sanitize inputs
+            $username = $this->sanitizeInput($adDetails['loggedUserName']);
+            $productName = $this->sanitizeInput($adDetails['productName']);
+            $productPrice = $this->sanitizeInput($adDetails['price']);
+            $productDescription = $this->sanitizeInput($adDetails['productDescription']);
+
             $image = $_FILES['image'];
             $responseData = $this->processImage($image);
 
             if ($responseData['success']) {
-                $imageTempName = $image['tmp_name'];
-                $imageName = $image['name'];
-                $targetDirectory = "img/";
-                $imageExtension = explode('.', $imageName);
-                $newImageName = "OurMarket" . "-" . date("Y-m-d") . "-" . time() . "-"
-                    . $username . "." . end($imageExtension); // making each file unique by renaming it
-                //when everything is correct
-                $checkInDb = $this->adService->postNewAd($this->createAd($productName, $productPrice, $productDescription, "/" .
-                    $targetDirectory . $newImageName, $adDetails['loggedUserId']));
-                if ($checkInDb) {
-                    $uploadedFile = move_uploaded_file($imageTempName, $targetDirectory . $newImageName);
-                    if (!$uploadedFile) {
-                        $responseData = array(
-                            "success" => false,
-                            "message" => "Something went Wrong while processing your uploaded image"
-                        );
-                    }
-                } else {
-                    $responseData = array(
-                        "success" => false,
-                        "message" => "Something went Wrong while processing your Add request"
-                    );
-                }
+                $responseData = $this->adService->saveNewAd($productName, $productPrice, $productDescription, $image, $username);
             }
 
-            // Convert the response message to a JSON string
-            $responseJson = json_encode($responseData);
-
-            // Send the response message as the body of the HTTP response
-            echo $responseJson;
+            echo json_encode($responseData);
         }
     }
 
@@ -199,5 +173,9 @@ class AdsController
         header("Access-Control-Allow-Methods: *");
         header("Cache-Control: no-store, no-cache, must-revalidate");
         header('Content-Type: application/json');
+    }
+    private function sanitizeInput($input)
+    {
+        return htmlspecialchars($input, ENT_QUOTES, 'UTF-8');
     }
 }

@@ -9,21 +9,21 @@ function disableLoginButton() {
     // Set the id of the p element to be the same as the loginLink element
     p.setAttribute("id", loginLinkId);
     loginLink.parentNode.replaceChild(p, loginLink);
-    document.getElementById("signOut").disabled = false;
+    document.getElementById("logOut").disabled = false;
 }
 
 function enableLogin() {
-    document.getElementById("signOut").disabled = true;
+    document.getElementById("logOut").disabled = true;
     const p = document.getElementById("loginLink");
     const a = document.createElement("a");
     a.className = "dropdown-item";
     a.innerHTML = "Log In";
-    a.href = "/home/login";
+    a.href = "/homepage/login"; // Redirect to the login page
     const loginLinkId = p.getAttribute("id");
     a.setAttribute("id", loginLinkId);
     p.parentNode.replaceChild(a, p);
-
 }
+
 
 function resetPostNewAddForm() {
     // Reset form elements
@@ -110,7 +110,7 @@ function createHorizontalAdCard(ad) {
 
     // Create the image element
     let image = document.createElement("img");
-    image.src = ad.imageUri;
+    image.src = ad.productImageURI;
     image.classList.add("img-fluid", "rounded-start");
     imageCol.appendChild(image);
 
@@ -133,7 +133,7 @@ function createHorizontalAdCard(ad) {
     // Create the product description element
     let productDescription = document.createElement("p");
     productDescription.classList.add("card-text");
-    productDescription.textContent = ad.description;
+    productDescription.textContent = ad.productDescription;
     detailsBody.appendChild(productDescription);
 
     // Create the list group element
@@ -144,7 +144,7 @@ function createHorizontalAdCard(ad) {
     // Create the price list item element
     let priceListItem = document.createElement("li");
     priceListItem.classList.add("list-group-item");
-    priceListItem.innerHTML = '<strong>Price:</strong> €' + formatPricesInDecimal(ad.price);
+    priceListItem.innerHTML = '<strong>Price:</strong> €' + formatPricesInDecimal(ad.productPrice);
     listGroup.appendChild(priceListItem);
 
     // Create the status list item element

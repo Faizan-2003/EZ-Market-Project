@@ -7,7 +7,7 @@ Class  MyPurchasesController extends Controller{
     public function displayMyPurchasesPage()
     {
         $ads = $this->adService->getAllAvailableAds(); // only showing available ads
-        require __DIR__ . "/../Views/MyPurchases/MyPurchases.php";
+        require __DIR__ . "/../Views/MyPurchasespage/MyPurchases.php";
         $this->showAvailableAds($ads);
         require __DIR__ . '/../Views/Footer.php';
         $this->loginAndSignout();

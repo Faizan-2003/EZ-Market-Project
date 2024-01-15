@@ -1,8 +1,8 @@
 <?php
-require __DIR__ . "/../Models/User.php";
-require __DIR__ . "/../Models/Ad.php";
-require __DIR__ . "/../Services/AdService.php";
-require  __DIR__ . "/../Logic/LoggingInAndOut.php";
+require_once __DIR__ . "/../Models/User.php";
+require_once __DIR__ . "/../Models/Ad.php";
+require_once __DIR__ . "/../Services/AdService.php";
+require_once __DIR__ . "/../Logic/LoggingInAndOut.php";
 
 class HomepageController
 {
@@ -15,12 +15,12 @@ class HomepageController
 
     public function displayHomePage()
     {
-        $ads = $this->adService->getAllAvailableAds(); // only showing available ads
-        require __DIR__ . "/../Views/Homepage/Homepage.php";
-        $this->showAvailableAds($ads);
-        require __DIR__ . '/../Views/Footer.php';
+        $ads = $this->adService->getAllAvailableAds();
+
         $this->loginAndSignout();
+        $this->renderHomepageView($ads);
     }
+
     private function loginAndSignout(): void
     {
         if (!is_null(getLoggedUser())) {
@@ -32,12 +32,24 @@ class HomepageController
         }
     }
 
+    private function renderHomepageView($ads): void
+    {
+        // You can now include the view files after processing the data
+        require __DIR__ . "/../Views/Homepage/Homepage.php";
+        $this->showAvailableAds($ads);
+        require __DIR__ . '/../Views/Footer.php';
+    }
+
     private function showAvailableAds($ads): void
     {
         if (is_null($ads)) {
             require __DIR__ . '/../Views/HomePage/NoAvailableAds.html';
         } else {
-            require __DIR__ . '/../Views/HomePage/DisplayAvailableAds.php';
+            try {
+                require __DIR__ . '/../Views/HomePage/DisplayAvailableAds.php';
+            } catch (Exception $e) {
+                error_log('Error in DisplayAvailableAds.php: ' . $e->getMessage());
+            }
         }
     }
 }

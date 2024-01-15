@@ -1,7 +1,9 @@
 <?php
+
 require __DIR__ . '/../repositories/AdRepository.php';
 require_once __DIR__ . '/../Models/User.php';
 require_once __DIR__ . "/../Models/Ad.php";
+
 class AdService
 {
     private AdRepository $adRepository;
@@ -11,26 +13,31 @@ class AdService
         $this->adRepository = $adRepository;
     }
 
-    public function getAllAdsByStatus(Status $status)
+    public function getAllAdsByStatus(Status $status): array
     {
         return $this->adRepository->getAllAdsByStatus($status);
     }
-    public function searchAdsByProductName($productName)
+
+    public function searchAdsByProductName(string $productName): array
     {
         return $this->adRepository->searchAdsByProductName($productName);
     }
-    public function getAdByID($adId)
+
+    public function getAdByID(int $adId): ?Ad
     {
         return $this->adRepository->getAdByID($adId);
     }
-    public function getAllAvailableAds()
+
+    public function getAllAvailableAds(): array
     {
         return $this->getAllAdsByStatus(Status::Available);
     }
-    public function getAdsByLoggedUser($loggedUser)
+
+    public function getAdsByLoggedUser(User $loggedUser): array
     {
         return $this->adRepository->getAdsByLoggedUser($loggedUser);
     }
+
     public function postNewAd(Ad $ad): bool
     {
         try {
@@ -41,20 +48,22 @@ class AdService
         }
     }
 
-    public function updateStatusOfAd($status, $adID)
+    public function updateStatusOfAd(Status $status, int $adID): void
     {
         $this->adRepository->updateStatusOfAd($status, $adID);
     }
-    public function deleteAd($adID, $imageFile)
+
+    public function deleteAd(int $adID, string $imageFile): void
     {
         $this->adRepository->deleteAd($adID, $imageFile);
     }
-    public function markAdAsSold($adId)
+
+    public function markAdAsSold(int $adId): void
     {
-        //Marking as sold as did not want to show the status of ad passing as string from javascript
-        $this->updateStatusOfAd(status::Sold, $adId);
+        $this->updateStatusOfAd(Status::Sold, $adId);
     }
-    public function editAdWithNewDetails($newImage, $productName, $description, $price, $adID)
+
+    public function editAdWithNewDetails(array $newImage, string $productName, string $description, float $price, int $adID): void
     {
         $this->adRepository->editAd($newImage, $productName, $description, $price, $adID);
     }

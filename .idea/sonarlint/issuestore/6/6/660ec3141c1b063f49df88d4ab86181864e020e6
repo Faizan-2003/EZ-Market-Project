@@ -1,27 +1,28 @@
 
-kphp:S103"KSplit this 223 characters long line (which is greater than 120 authorized).(Õ‹Ûúÿÿÿÿ8ÌéŞÃĞ1
-fphp:S103,"KSplit this 177 characters long line (which is greater than 120 authorized).(ôıæú8 ‘õĞ1
-ephp:S1032"KSplit this 149 characters long line (which is greater than 120 authorized).(Ó¾ÈA8 ‘õĞ1
-fphp:S1033"KSplit this 121 characters long line (which is greater than 120 authorized).(°Ş… 8 ‘õĞ1
-ephp:S103<"KSplit this 223 characters long line (which is greater than 120 authorized).(æÕ„@8 ‘õĞ1
-ephp:S103J"KSplit this 149 characters long line (which is greater than 120 authorized).(Ó¾ÈA8 ‘õĞ1
-fphp:S103K"KSplit this 121 characters long line (which is greater than 120 authorized).(°Ş… 8 ‘õĞ1
-fphp:S103’"KSplit this 149 characters long line (which is greater than 120 authorized).(Ó¾ÈA8 ‘õĞ1
-gphp:S103“"KSplit this 121 characters long line (which is greater than 120 authorized).(°Ş… 8¼…‡Ğ1
-gphp:S103›"KSplit this 188 characters long line (which is greater than 120 authorized).(£ÏğŸ8¼…‡Ğ1
-fphp:S103¨"KSplit this 149 characters long line (which is greater than 120 authorized).(Ó¾ÈA8 ‘õĞ1
-gphp:S103©"KSplit this 121 characters long line (which is greater than 120 authorized).(°Ş… 8¼…‡Ğ1
-lphp:S103Ï"KSplit this 194 characters long line (which is greater than 120 authorized).(ß©˜÷şÿÿÿÿ8ö‘Ğ1
-gphp:S103Ş"KSplit this 219 characters long line (which is greater than 120 authorized).(ïºøª8½…‡Ğ1
-gphp:S103à"KSplit this 145 characters long line (which is greater than 120 authorized).(ÊÅŠ£8½…‡Ğ1
-q	php:S11923"UDefine a constant instead of duplicating this literal "/../Errors/error.log" 4 times.(°Ş… 8ÍéŞÃĞ1
-Œ	php:S11923"pDefine a constant instead of duplicating this literal "Something went wrong getting ads from database " 4 times.(°Ş… 8ÍéŞÃĞ1
-a	php:S1192-"FDefine a constant instead of duplicating this literal ":adId" 3 times.(öÖÚ48 ‘õĞ1
-b	php:S11922"GDefine a constant instead of duplicating this literal " Line " 4 times.(Ó¾ÈA8ÍéŞÃĞ1
-p	php:S1192$"TDefine a constant instead of duplicating this literal "An error occurred: " 6 times.(ÑÅ³º8¡‘õĞ1
-m	php:S11922"RDefine a constant instead of duplicating this literal "F j, Y, g:i a e O" 4 times.(Ó¾ÈA8ÎéŞÃĞ1
-o	php:S1192œ"MDefine a constant instead of duplicating this literal ":productName" 3 times.(çøìûûÿÿÿÿ8½…‡Ğ1
->	php:S1116ü"Remove this empty statement.(ôŸìúÿÿÿÿ8½…‡Ğ1
+kphp:S103"KSplit this 223 characters long line (which is greater than 120 authorized).(Õ‹Ûúÿÿÿÿ8ÌéŞÃĞ1
+fphp:S103-"KSplit this 177 characters long line (which is greater than 120 authorized).(ôıæú8 ‘õĞ1
+ephp:S1033"KSplit this 149 characters long line (which is greater than 120 authorized).(Ó¾ÈA8 ‘õĞ1
+fphp:S1034"KSplit this 121 characters long line (which is greater than 120 authorized).(°Ş… 8 ‘õĞ1
+ephp:S103="KSplit this 223 characters long line (which is greater than 120 authorized).(æÕ„@8 ‘õĞ1
+ephp:S103K"KSplit this 149 characters long line (which is greater than 120 authorized).(Ó¾ÈA8 ‘õĞ1
+fphp:S103L"KSplit this 121 characters long line (which is greater than 120 authorized).(°Ş… 8 ‘õĞ1
+fphp:S103“"KSplit this 149 characters long line (which is greater than 120 authorized).(Ó¾ÈA8 ‘õĞ1
+gphp:S103”"KSplit this 121 characters long line (which is greater than 120 authorized).(°Ş… 8¼…‡Ğ1
+gphp:S103œ"KSplit this 188 characters long line (which is greater than 120 authorized).(£ÏğŸ8¼…‡Ğ1
+fphp:S103©"KSplit this 149 characters long line (which is greater than 120 authorized).(Ó¾ÈA8 ‘õĞ1
+gphp:S103ª"KSplit this 121 characters long line (which is greater than 120 authorized).(°Ş… 8¼…‡Ğ1
+lphp:S103Ï"KSplit this 194 characters long line (which is greater than 120 authorized).(ß©˜÷şÿÿÿÿ8ñşæíĞ1
+gphp:S103Ş"KSplit this 241 characters long line (which is greater than 120 authorized).(È¦½8ÄßçíĞ1
+:php:S113"'Add a new line at the end of this file.8³èíĞ1
+gphp:S112Ì"FDefine and throw a dedicated exception instead of using a generic one.(¹§§˜ûÿÿÿÿ8ñşæíĞ1
+gphp:S112ü"FDefine and throw a dedicated exception instead of using a generic one.(¥––õıÿÿÿÿ8³èíĞ1
+q	php:S11924"UDefine a constant instead of duplicating this literal "/../Errors/error.log" 4 times.(°Ş… 8ÍéŞÃĞ1
+Œ	php:S11924"pDefine a constant instead of duplicating this literal "Something went wrong getting ads from database " 4 times.(°Ş… 8ÍéŞÃĞ1
+a	php:S1192."FDefine a constant instead of duplicating this literal ":adId" 3 times.(öÖÚ48 ‘õĞ1
+b	php:S11923"GDefine a constant instead of duplicating this literal " Line " 4 times.(Ó¾ÈA8ÍéŞÃĞ1
+p	php:S1192%"TDefine a constant instead of duplicating this literal "An error occurred: " 6 times.(ÑÅ³º8¡‘õĞ1
+m	php:S11923"RDefine a constant instead of duplicating this literal "F j, Y, g:i a e O" 4 times.(Ó¾ÈA8ÎéŞÃĞ1
+o	php:S1192"MDefine a constant instead of duplicating this literal ":productName" 3 times.(çøìûûÿÿÿÿ8½…‡Ğ1
 r	php:S4833"QReplace "require_once" with namespace import mechanism through the "use" keyword.(ùé‚Úÿÿÿÿÿ8¡‘õĞ1
 r	php:S4833"QReplace "require_once" with namespace import mechanism through the "use" keyword.(ªöíòıÿÿÿÿ8¡‘õĞ1
 r	php:S4833"QReplace "require_once" with namespace import mechanism through the "use" keyword.(Ÿ¬˜øÿÿÿÿ8¡‘õĞ1

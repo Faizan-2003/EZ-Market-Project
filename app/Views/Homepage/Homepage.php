@@ -7,42 +7,12 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Homepage</title>
     <link rel="icon" type="image/x-icon" href="/images/favicon.svg">
-    <link rel="stylesheet" href="/Public/CSS/ShoppingCart.css">
+    <style> <?php include __DIR__ . '/../../public/CSS/ShoppingCart.css'; ?> </style>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
     <script src="https://kit.fontawesome.com/22097c36aa.js" crossorigin="anonymous"></script>
-
-        <style>
-            .custom-navbar {
-                background-color: #ffb703 !important;
-            }
-
-            .navbar-brand img {
-                width: 100px;
-            }
-
-            .navbar-dark .navbar-toggler-icon {
-                background-color: black !important;
-            }
-
-            .navbar-dark .navbar-nav .nav-link {
-                color: black !important;
-                font-size: 20px; /* Adjust the font size as needed */
-                font-weight: normal; /* Reset font weight for all links */
-            }
-
-            .navbar-dark .navbar-nav .nav-link.active {
-                font-weight: bold; /* Set font weight for active link */
-            }
-
-            #searchBar {
-                background-color: #000080
-            }
-        </style>
-
 </head>
-
 <body class="d-flex flex-column h-100">
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark bg-info p-3 custom-navbar">
+<nav class="navbar navbar-expand-lg navbar-dark bg-info p-3 custom-navbar">
     <div class="container-fluid">
         <a class="navbar-brand"><img src="/images/Logo.png" alt="WebsiteLogo">
         </a>
@@ -51,49 +21,34 @@
         </button>
 
         <div class="collapse navbar-collapse" id="navbarNavDropdown">
-            <ul class="navbar-nav ms-auto ">
+            <ul class="navbar-nav mx-auto">
                 <li class="nav-item">
                     <a class="nav-link mx-3 active" aria-current="page" href="#">Home</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link mx-3" href="/homepage/myAds" >My Ads</a>
+                    <a class="nav-link mx-3" href="/homepage/myAds">My Ads</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link mx-3" href="/homepage/myPurchases">My Purchases</a>
+                    <a class="nav-link mx-3" href="/homepage/mypurchases">My Purchases</a>
                 </li>
             </ul>
-            <ul class="navbar-nav ms-auto  d-lg-inline-flex">
+            <ul class="navbar-nav">
                 <li class="nav-item">
                     <a class="nav-link mx-2" href="/homepage/shoppingCart">
-                        <i class="fa badge fa-lg" style="font-size:1.5em" >&#xf07a;</i>  <!-- value="<?= $_SESSION['countShoppingCartItems'] ?>" -->
+                        <i class="fa badge fa-lg" style="font-size:1.5em" >&#xf07a;</i> <!-- value="<?= $_SESSION['countShoppingCartItems'] ?>" -->
                     </a>
                 </li>
-                <li class="nav-item dropdown">
-                    <a class="nav-link mx-2 dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="white" class="bi bi-person" viewBox="0 0 16 16">
-                            <path d="M8 8a3 3 0 1 0 0-6 3 3 0 0 0 0 6Zm2-3a2 2 0 1 1-4 0 2 2 0 0 1 4 0Zm4 8c0 1-1 1-1 1H3s-1 0-1-1 1-4 6-4 6 3 6 4Zm-1-.004c-.001-.246-.154-.986-.832-1.664C11.516 10.68 10.289 10 8 10c-2.29 0-3.516.68-4.168 1.332-.678.678-.83 1.418-.832 1.664h10Z" />
-                        </svg>
-                    </a>
-                    <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                        <li><a id="loginLink" class="dropdown-item" href="/homepage/login">Login</a></li>
-                        <li>
-                            <hr class="dropdown-divider">
-                        </li>
-                        <li>
-                            <form method="POST">
-                                <button class="dropdown-item" name="btnSignOut" id="signOut" type="submit" value="Sign Out" disabled="true">Sign out
-                                </button>
-                            </form>
-                        </li>
-                    </ul>
+                <li class="nav-item">
+                    <a class="nav-link mx-2" href="/homepage/login" style="border: 1px solid #000080; padding: 10px 15px; border-radius: 5px;">Log In</a>
                 </li>
 
             </ul>
         </div>
+
     </div>
 </nav>
 <div class="container-fluid" id="searchBar">
     <div class="container py-3 mx-auto">
-        <input class="form-control" type="search" placeholder="Search in Our Market" aria-label="Search" style="border-color: black" oninput="onInputValueChangeForSearch(this)">
+        <input class="form-control" type="search" placeholder="Search for products" aria-label="Search" style="border-color: black" oninput="onInputValueChangeForSearch(this)">
     </div>
 </div>

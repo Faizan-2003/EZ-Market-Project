@@ -1,4 +1,4 @@
 
-kphp:S103	"KSplit this 157 characters long line (which is greater than 120 authorized).(„ç‹úÿÿÿÿ8Ø†ËĞ1
-kphp:S103"KSplit this 188 characters long line (which is greater than 120 authorized).(¿´Ê¨ıÿÿÿÿ8Ø†ËĞ1
-:php:S113"'Add a new line at the end of this file.8ÿ³›Ğ1
+kphp:S103
+"KSplit this 138 characters long line (which is greater than 120 authorized).(äœÙçøÿÿÿÿ8“¿‡òĞ1
+ephp:S103"KSplit this 133 characters long line (which is greater than 120 authorized).(²’ôh8Ğê´òĞ1

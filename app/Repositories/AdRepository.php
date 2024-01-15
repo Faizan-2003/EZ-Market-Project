@@ -7,12 +7,13 @@ require_once __DIR__ . "/../Models/Status.php";
 
 class AdRepository extends Repository
 {
-    private $userRepo;
+    private $userRepository;
+    private $dbStoredName;
 
     public function __construct()
     {
         parent::__construct();
-        $this->userRepo = new UserRepository();
+        $this->userRepository = new UserRepository();
     }
 
     public function getAllAdsByStatus(Status $status)
@@ -65,7 +66,7 @@ class AdRepository extends Repository
                 $result = $stmt->fetchAll();
                 $ads = array();
                 foreach ($result as $row) {
-                    $ads[] = $this->MakeAnAD($row);
+                    $ads[] = $this->makeAnAd($row);
                 }
                 return $ads;
             }
@@ -129,7 +130,7 @@ class AdRepository extends Repository
         $ad->setPostedDate($dBRow["postedDate"]);
         $ad->setProductImageURI($dBRow["productImageURI"]);
         $ad->setProductStatus(Status::from($dBRow["productStatus"]));
-        $ad->setUserID($this->userRepo->getUserById($dBRow["userID"]));
+        $ad->setUserID($this->userRepository->getUserById($dBRow["userID"]));
         return $ad;
     }
 
@@ -190,10 +191,9 @@ class AdRepository extends Repository
             trigger_error("An error occurred: " . $e->getMessage(), E_USER_ERROR);
         }
     }
-    public function editAd($newImage, $productName, $productDescription, $productPrice, $adID)
+    public function editAd($newImage, string $productName, string $productDescription, float $productPrice, int $adID)
     {
         try {
-            // Assuming $dbStoredName is a class property, otherwise adjust accordingly
             if (!isset($this->dbStoredName)) {
                 $this->dbStoredName = $this->getCurrentImageUriByAdId($adID);
             }
@@ -201,7 +201,7 @@ class AdRepository extends Repository
             $storingImageUri = $this->editImageFile($this->dbStoredName, $newImage);
 
             if (is_null($storingImageUri)) {
-                trigger_error("Something went wrong while updating image, please try again!", E_USER_ERROR);
+                throw new Exception("Something went wrong while updating the image, please try again!");
             }
 
             $stmt = $this->connection->prepare("UPDATE Ads SET productName = :productName, productDescription = :description, productPrice = :price, productImageURI = :imageURI WHERE id = :id");
@@ -212,29 +212,30 @@ class AdRepository extends Repository
             $stmt->bindValue(":id", $adID);
             $stmt->execute();
         } catch (PDOException | Exception $e) {
+            // Provide a more detailed error message or log the error
             trigger_error("An error occurred: " . $e->getMessage(), E_USER_ERROR);
         }
     }
-
-    public function searchAdsByProductName($productName)
+    public function searchAdsByProductName(string $productName)
     {
         try {
-            $stmt = $this->connection->prepare("SELECT id,productName,productDescription,productPrice,postedDate,productImageURI,productStatus,userID FROM Ads WHERE `productName` LIKE :productName AND status =:status");
+            $stmt = $this->connection->prepare("SELECT id, productName, productDescription, productPrice, postedDate, productImageURI, productStatus, userID FROM Ads WHERE `productName` LIKE :productName AND productStatus = :productStatus");
             $stmt->bindValue(":productName", '%' . $productName . '%');
-            $stmt->bindValue(":productStatus", Status::Available->label()); // getting only available ads otherwise user can search  see every ad
+            $stmt->bindValue(":productStatus", Status::Available->label());
             $stmt->execute();
             $result = $stmt->fetchAll();
             $ads = array();
             foreach ($result as $row) {
-                $ads[] = $this->MakeAnAD($row);
+                $ads[] = $this->makeAnAd($row);
             }
             return $ads;
-        } catch (PDOException|Exception $e) {
+        } catch (PDOException | Exception $e) {
             trigger_error("An error occurred: " . $e->getMessage(), E_USER_ERROR);
         }
     }
 
-    private function editImageFile($dbStoredImageName, $newImage)
+
+    private function editImageFile(string $dbStoredImageName, array $newImage)
     {
         try {
             $imageTempName = $newImage['tmp_name'];
@@ -244,14 +245,15 @@ class AdRepository extends Repository
             $storedImageName = explode('.', $dbStoredImageName);
             $dbStoredNameWithoutExtension = reset($storedImageName);
             $targetDirectory = __DIR__ . '/../public';
+
             if (unlink($targetDirectory . $dbStoredImageName)) {
-                // deleting the file and renaming the new received image and returning it
                 $newFileName = $dbStoredNameWithoutExtension . '.' . $newImageExtension;
-                if(!move_uploaded_file($imageTempName, $targetDirectory . $newFileName)){
-                    trigger_error("error occurred while moving file " , E_USER_ERROR);
-                };
+                if (!move_uploaded_file($imageTempName, $targetDirectory . $newFileName)) {
+                    throw new Exception("Error occurred while moving the file");
+                }
                 return $newFileName;
             }
+
             return null;
         } catch (Exception $e) {
             trigger_error("An error occurred: " . $e->getMessage(), E_USER_ERROR);

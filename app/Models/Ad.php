@@ -145,11 +145,13 @@ class Ad implements jsonSerializable
     {
         $this->productPrice = $productPrice;
     }
-    public function jsonSerialize(): mixed
+
+    public function jsonSerialize(): array
     {
         return get_object_vars($this);
     }
-    public function __equals($other): bool
+
+    public function __equals(Ad $other): bool
     {
         return $this->id === $other->id;
     }

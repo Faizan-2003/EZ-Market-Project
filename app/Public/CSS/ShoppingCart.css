@@ -1,3 +1,14 @@
+/* ShoppingCart.css */
+nav.custom-navbar {
+    background-color: #ffb703 !important;
+    height: 90px;
+    margin: 0;
+}
+
+#searchBar {
+    background-color: #000080;
+}
+
 .badge:after {
     content: attr(value);
     font-size: 14px;
@@ -12,3 +23,62 @@
     font-weight: bold;
 }
 
+
+/* Add these styles to your CSS file (ShoppingCart.css) */
+
+/* Add these styles to your CSS file (ShoppingCart.css) */
+
+.with-border {
+    border: 5px solid #ffb703; /* Yellow border */
+}
+
+.img-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    height: 300px; /* Set a fixed height for the image container */
+}
+
+.img-container img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Ensure the image covers the entire container */
+}
+
+#AddToCart {
+    background-color: #000080;
+    color: white;
+    width: 80%; /* Set the width to 80% */
+    margin: 0 auto; /* Center the button horizontally */
+}
+
+.img-container img {
+    border-radius: 0;
+}
+.card-img-top {
+    border-radius: 0 !important;
+}
+
+.navbar-brand img {
+    width: 150px;
+}
+
+.navbar-dark .navbar-toggler-icon {
+    background-color: black !important;
+}
+
+.navbar-dark .navbar-nav .nav-link {
+    color: black !important;
+    font-size: 20px;
+    font-weight: normal;
+}
+
+.navbar-dark .navbar-nav .nav-link.active {
+    font-weight: bold;
+}
+
+.card-footer .card-text {
+    background-color: #ffb703; /* Your desired background color */
+    padding: 10px; /* Add padding for better visual appearance */
+}
