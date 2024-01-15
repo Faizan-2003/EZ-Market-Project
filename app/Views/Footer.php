@@ -4,13 +4,13 @@
         Copyright &copy; 2024 EZMarket - Muhammad Faizan
     </div>
     <div class="d-flex" style="float: right">
-        <a href="#">
+        <a href="#" style="color: #000080;">
             <i class="fab fa-facebook fa-2x mx-2"></i>
         </a>
-        <a href="#">
+        <a href="#" style="color: #000080;">
             <i class="fab fa-instagram fa-2x mx-2"></i>
         </a>
-        <a href="#">
+        <a href="#" style="color: #000080;">
             <i class="fab fa-twitter fa-2x mx-2"></i>
         </a>
     </div>

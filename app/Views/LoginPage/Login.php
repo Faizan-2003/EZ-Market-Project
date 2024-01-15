@@ -8,7 +8,7 @@
         <title class="login"> EZ market-Login</title>
         <link rel="icon" type="image/x-icon" href="/images/favicon.svg">
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
-        <link rel="stylesheet" href="/CSS/LoginStyles.css">
+        <style><?php include __DIR__ . '/../../public/CSS/LoginStyles.css'; ?> </style>
     </head>
 
     <body>

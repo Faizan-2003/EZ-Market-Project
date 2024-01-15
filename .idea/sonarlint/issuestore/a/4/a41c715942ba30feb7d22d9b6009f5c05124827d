@@ -1,12 +1,11 @@
 
-PWeb:AvoidCommentedOutCodeCheck&"Remove this commented out code.(šœøå8®¤ñĞ1
+PWeb:AvoidCommentedOutCodeCheck&"Remove this commented out code.(šœøå8óÑƒùĞ1
 fphp:S103"KSplit this 130 characters long line (which is greater than 120 authorized).(ÒšºÅ8ò•›ñĞ1
 kphp:S103"KSplit this 214 characters long line (which is greater than 120 authorized).(Î£âÿÿÿÿÿ8Å¤ñĞ1
-kphp:S103"KSplit this 202 characters long line (which is greater than 120 authorized).(‰Ìéüÿÿÿÿ8Å¤ñĞ1
-fphp:S103&"KSplit this 147 characters long line (which is greater than 120 authorized).(šœøå8Å¤ñĞ1
-fphp:S103*"KSplit this 153 characters long line (which is greater than 120 authorized).(¸¨·™8Å¤ñĞ1
-fphp:S1034"KSplit this 176 characters long line (which is greater than 120 authorized).(è¡¯ë8¯¶ÎğĞ1
-:php:S113"'Add a new line at the end of this file.8…ª®ğĞ1
+kphp:S103"KSplit this 202 characters long line (which is greater than 120 authorized).(‰Ìéüÿÿÿÿ8ÁÒƒùĞ1
+fphp:S103&"KSplit this 146 characters long line (which is greater than 120 authorized).(šœøå8ÁÒƒùĞ1
+fphp:S103*"KSplit this 153 characters long line (which is greater than 120 authorized).(¸¨·™8ÂÒƒùĞ1
+fphp:S1032"KSplit this 176 characters long line (which is greater than 120 authorized).(è¡¯ë8ÂÒƒùĞ1
 G	php:S2003
 "&Replace "include" with "include_once".(øÑğ¶ûÿÿÿÿ8ºæ¦ñĞ1
 m	php:S4833

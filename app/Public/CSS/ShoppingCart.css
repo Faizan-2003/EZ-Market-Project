@@ -73,8 +73,8 @@ nav.custom-navbar {
     font-size: 20px;
     font-weight: normal;
 }
-
-.navbar-dark .navbar-nav .nav-link.active {
+.navbar-nav .nav-link.active-page {
+    border-bottom: 2px solid #000080;
     font-weight: bold;
 }
 
