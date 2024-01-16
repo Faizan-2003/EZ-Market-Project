@@ -16,8 +16,6 @@ class Router
             $controller = new HomepageController($adService);
             $controller->displayHomePage();
             break;
-
-
             case 'homepage/login':
                 require __DIR__ . '/../Controllers/LoginController.php';
                 $userRepository = new UserRepository();
@@ -25,7 +23,6 @@ class Router
                 $controller = new LoginController($userService);
                 $controller->displayLoginPage();
                 break;
-
             case 'homepage/login/signup':
                 require __DIR__ . '/../Controllers/RegisterUserController.php';
                 $controller=new RegisterUserController();

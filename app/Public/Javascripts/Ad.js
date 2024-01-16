@@ -1,3 +1,4 @@
+session_start();
 
 function disableLoginButton() {
     const loginLink = document.getElementById("loginLink");

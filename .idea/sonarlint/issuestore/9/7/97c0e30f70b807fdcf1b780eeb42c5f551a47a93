@@ -1,10 +1,19 @@
 
-J	php:S1781")Write this "Class" keyword in lower case.(…œùÿÿÿÿ8š‰šĞ1
-:php:S113"'Add a new line at the end of this file.8š‰šĞ1
-W	php:S1185"6Remove this method "__construct" to simply inherit it.(éúÜÅûÿÿÿÿ8š‰šĞ1
-G	php:S2003
-"&Replace "require" with "require_once".(¼¥ÿ³øÿÿÿÿ8š‰šĞ1
-B	php:S2003"&Replace "require" with "require_once".(Şş”¾8š‰šĞ1
-m	php:S4833
-"LReplace "require" with namespace import mechanism through the "use" keyword.(¼¥ÿ³øÿÿÿÿ8š‰šĞ1
-h	php:S4833"LReplace "require" with namespace import mechanism through the "use" keyword.(Şş”¾8š‰šĞ1
+kphp:S1030"KSplit this 137 characters long line (which is greater than 120 authorized).(„ğˆûÿÿÿÿ8ŒÔœÑ1
+~php:S115
+"^Rename this constant "Vat_Rate" to match the regular expression ^[A-Z][A-Z0-9]*(_[A-Z0-9]+)*$.( ÷Øùÿÿÿÿ8ÔœÑ1
+P	php:S1066("/Merge this if statement with the enclosing one.(ò™Úãøÿÿÿÿ8ÔœÑ1
+G	php:S2003"&Replace "require" with "require_once".(‹Ğùÿÿÿÿ8ÔœÑ1
+B	php:S2003"&Replace "require" with "require_once".(É¿ˆ¸8ÔœÑ1
+G	php:S2003"&Replace "require" with "require_once".(Ùƒššüÿÿÿÿ8ÔœÑ1
+G	php:S2003"&Replace "require" with "require_once".(Ù†“Àıÿÿÿÿ8ÔœÑ1
+B	php:S2003"&Replace "require" with "require_once".(Şş”¾8ÔœÑ1
+G	php:S2003"&Replace "require" with "require_once".(ÈÇÉ‡ùÿÿÿÿ8ÔœÑ1
+B	php:S2003""&Replace "require" with "require_once".(õ–Ø8ÔœÑ1
+m	php:S4833"LReplace "require" with namespace import mechanism through the "use" keyword.(‹Ğùÿÿÿÿ8ÔœÑ1
+h	php:S4833"LReplace "require" with namespace import mechanism through the "use" keyword.(É¿ˆ¸8ÔœÑ1
+m	php:S4833"LReplace "require" with namespace import mechanism through the "use" keyword.(Ùƒššüÿÿÿÿ8ÔœÑ1
+m	php:S4833"LReplace "require" with namespace import mechanism through the "use" keyword.(Ù†“Àıÿÿÿÿ8ÔœÑ1
+h	php:S4833"LReplace "require" with namespace import mechanism through the "use" keyword.(Şş”¾8ÔœÑ1
+m	php:S4833"LReplace "require" with namespace import mechanism through the "use" keyword.(ÈÇÉ‡ùÿÿÿÿ8ÔœÑ1
+h	php:S4833""LReplace "require" with namespace import mechanism through the "use" keyword.(õ–Ø8ÔœÑ1

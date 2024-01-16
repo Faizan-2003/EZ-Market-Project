@@ -23,11 +23,6 @@ nav.custom-navbar {
     font-weight: bold;
 }
 
-
-/* Add these styles to your CSS file (ShoppingCart.css) */
-
-/* Add these styles to your CSS file (ShoppingCart.css) */
-
 .with-border {
     border: 5px solid #ffb703; /* Yellow border */
 }
@@ -82,3 +77,7 @@ nav.custom-navbar {
     background-color: #ffb703; /* Your desired background color */
     padding: 10px; /* Add padding for better visual appearance */
 }
+.btn-success {
+    background-color: #ffb703 !important;
+}
+

@@ -1,27 +1,51 @@
 <?php
 
-Class  MyPurchasesController extends Controller{
-    public function __construct() {
-        parent::__construct();
-    }
-    public function displayMyPurchasesPage()
+require_once __DIR__ . '/../Models/User.php';
+require_once __DIR__ . '/../Models/Ad.php';
+require_once __DIR__ . '/../Services/AdService.php';
+require_once __DIR__ . '/../Logic/LoggingInAndOut.php';
+
+class MyPurchasesController
+{
+    private AdService $adService;
+    private ?User $loggedUser;
+
+    public function __construct()
     {
-        $ads = $this->adService->getAllAvailableAds(); // only showing available ads
-        require __DIR__ . "/../Views/MyPurchasespage/MyPurchases.php";
-        $this->showAvailableAds($ads);
+        $adRepository = new AdRepository();
+        $this->adService = new AdService($adRepository);
+        $this->loggedUser = getLoggedUser();  // Use the function directly
+    }
+
+    public function displayMyPurchasesPage(): void
+    {
+        $displayMessage = $this->displayInfo();
+
+        // Check if the logged-in user exists
+        if (!is_null($this->loggedUser)) {
+            $purchasedAds = $this->adService->getPurchasedAds($this->loggedUser);
+        } else {
+            $purchasedAds = null;
+        }
+
+        require __DIR__ . '/../Views/MyPurchasesPage/MyPurchases.php';
         require __DIR__ . '/../Views/Footer.php';
         $this->loginAndSignout();
     }
 
-    private function loginAndSignout(): void
+    private function displayInfo(): string
     {
-        if (!is_null(getLoggedUser())) {
-            echo '<script>disableLoginButton();</script>';
+        if (is_null($this->loggedUser)) {
+            $displayMessage = "Please Log in to the system to see your purchased ads.";
+        } else {
+            $greet = $this->loggedUser ? "Welcome " . $this->loggedUser->getFirstName() : "";
+            $displayMessage = $greet . ", " . $this->loggedUser->getFirstName();
         }
-        if (isset($_POST["btnSignOut"])) {
-            logOutFromApp();
-            echo '<script>enableLogin()</script>';
-        }
+        return $displayMessage;
     }
 
+    private function loginAndSignout(): void
+    {
+        // Add your login and signout logic here
+    }
 }

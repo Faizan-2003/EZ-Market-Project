@@ -13,6 +13,7 @@ function getLoggedUser()
         return null;
     }
 }
+
 function assignLoggedUserToSession($verifiedUser): void
 {
     $_SESSION["loggedUser"] = $verifiedUser;

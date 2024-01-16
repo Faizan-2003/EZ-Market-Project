@@ -19,8 +19,9 @@ class User implements jsonSerializable
      */
     public function setId(int $id): void
     {
-        $this->id = $id;
+        $this->userID = $id;  // Corrected the property name to userID
     }
+
 
     /**
      * @return string

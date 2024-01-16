@@ -96,3 +96,5 @@ M
 app/Public/images/favicon.svg,3\d\3d2e45ef8a6f8d5543bd291153136c5dcd3c19ca
 L
 app/Public/Javascripts/Ad.js,a\b\ab8614431a5193360d6174dca16285b4f11bb1f8
+J
+app/Logic/ShoppingCart.php,d\1\d1897217963f728894f1444fec87cc7952a64148

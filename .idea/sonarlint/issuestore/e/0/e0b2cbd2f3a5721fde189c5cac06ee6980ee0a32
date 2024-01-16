@@ -1,0 +1,7 @@
+
+fphp:S103"KSplit this 130 characters long line (which is greater than 120 authorized).(ÒΊΕ8™ΎΡ1
+kphp:S103"KSplit this 214 characters long line (which is greater than 120 authorized).(Ξ£βÿÿÿÿÿ8ΦΖΡ1
+kphp:S103"KSplit this 202 characters long line (which is greater than 120 authorized).(‰Μιόÿÿÿÿ8ΦΖΡ1
+fphp:S103,"KSplit this 153 characters long line (which is greater than 120 authorized).(Έ¨·™8ΦΖΡ1
+B	php:S2003"&Replace "include" with "include_once".(ωϋΖΗ8ΦΖΡ1
+h	php:S4833"LReplace "include" with namespace import mechanism through the "use" keyword.(ωϋΖΗ8ΦΖΡ1

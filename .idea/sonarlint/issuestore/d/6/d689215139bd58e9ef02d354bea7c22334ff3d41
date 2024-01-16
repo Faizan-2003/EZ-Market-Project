@@ -1,10 +1,11 @@
 
-E	php:S1781")Write this "Class" keyword in lower case.(”¡8âİ›šĞ1
-:php:S113"'Add a new line at the end of this file.8äİ›šĞ1
-W	php:S1185"6Remove this method "__construct" to simply inherit it.(éúÜÅûÿÿÿÿ8åİ›šĞ1
-G	php:S2003
-"&Replace "require" with "require_once".(Ï¦êúÿÿÿÿ8çİ›šĞ1
-B	php:S2003"&Replace "require" with "require_once".(Şş”¾8éİ›šĞ1
-m	php:S4833
-"LReplace "require" with namespace import mechanism through the "use" keyword.(Ï¦êúÿÿÿÿ8ëİ›šĞ1
-h	php:S4833"LReplace "require" with namespace import mechanism through the "use" keyword.(Şş”¾8ìİ›šĞ1
+P	php:S1481"4Remove this unused "$displayMessage" local variable.(üç¢­8ç°»œÑ1
+S	php:S1481"2Remove this unused "$purchasedAds" local variable.(Üè§ïûÿÿÿÿ8ï°»œÑ1
+B	php:S2003"&Replace "require" with "require_once".(µ—½‡8ï°»œÑ1
+B	php:S2003 "&Replace "require" with "require_once".(Şş”¾8ï°»œÑ1
+r	php:S4833"QReplace "require_once" with namespace import mechanism through the "use" keyword.(ìƒÀúÿÿÿÿ8ï°»œÑ1
+m	php:S4833"QReplace "require_once" with namespace import mechanism through the "use" keyword.(£€†‘8ï°»œÑ1
+r	php:S4833"QReplace "require_once" with namespace import mechanism through the "use" keyword.(âÈ ·şÿÿÿÿ8ï°»œÑ1
+r	php:S4833"QReplace "require_once" with namespace import mechanism through the "use" keyword.(Ùç•Ğùÿÿÿÿ8ï°»œÑ1
+h	php:S4833"LReplace "require" with namespace import mechanism through the "use" keyword.(µ—½‡8ï°»œÑ1
+h	php:S4833 "LReplace "require" with namespace import mechanism through the "use" keyword.(Şş”¾8ï°»œÑ1
