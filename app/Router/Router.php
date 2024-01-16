@@ -16,11 +16,16 @@ class Router
             $controller = new HomepageController($adService);
             $controller->displayHomePage();
             break;
+
+
             case 'homepage/login':
                 require __DIR__ . '/../Controllers/LoginController.php';
-                $controller = new LoginController();
+                $userRepository = new UserRepository();
+                $userService = new UserService($userRepository);
+                $controller = new LoginController($userService);
                 $controller->displayLoginPage();
                 break;
+
             case 'homepage/login/signup':
                 require __DIR__ . '/../Controllers/RegisterUserController.php';
                 $controller=new RegisterUserController();

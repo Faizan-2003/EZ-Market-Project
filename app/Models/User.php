@@ -1,10 +1,10 @@
 <?php
 class User implements jsonSerializable
 {
-    private $userID;
-    private string $firstName;
-    private string $lastName;
-    private string $email;
+    public $userID;
+    public string $firstName;
+    public string $lastName;
+    public string $email;
 
     /**
      * @return int

@@ -3,21 +3,17 @@ require_once __DIR__ . '/../repositories/UserRepository.php';
 
 class UserService
 {
-    private UserRepository $repository;
+    private UserRepository $userRepository;
 
-
-    public function __construct()
+    public function __construct(UserRepository $userRepository)
     {
-        $this->repository = new UserRepository();
+        $this->userRepository = $userRepository;
     }
 
     public function verifyAndGetUser($email, $password)
     {
-        $stmt = $this->connection->prepare("SELECT * FROM User WHERE email = :email AND password = :password");
-        echo $stmt->queryString; // Add this line for debugging
-        return $this->repository->verifyAndGetUser($email, $password);
+        return $this->userRepository->verifyAndGetUser($email, $password);
     }
-
 
     /**
      * Hashes a password using Argon2i algorithm with a randomly generated salt.
@@ -37,20 +33,23 @@ class UserService
             return $hashPassword;
         } catch (Exception $exception) {
             // Handle the exception according to your application's needs.
-            throw new Exception('Error hashing password: ' . $exception->getMessage());
+            // Log the error, display a user-friendly message, etc.
+            error_log('Error hashing password: ' . $exception->getMessage());
+            // Re-throw the exception if you want to propagate it further.
+            throw $exception;
         }
     }
-
 
 
     public function createNewUser($userDetails): bool
     {
         $hashPasswordWithSalt = $this->hashPassword($userDetails["password"]);
-        $userDetails["hashPassword"] = $hashPasswordWithSalt[0];
-        return $this->repository->insertUserInDatabase($userDetails);
+        $userDetails["hashPassword"] = $hashPasswordWithSalt; // Fix here
+        return $this->userRepository->insertUserInDatabase($userDetails); // Fix here
     }
 
-    public function CheckUserExistenceByEmail($email) :bool{
-        return $this->repository->CheckUserEmailExistence($email);
+    public function CheckUserExistenceByEmail($email): bool
+    {
+        return $this->userRepository->CheckUserEmailExistence($email); // Fix here
     }
 }
