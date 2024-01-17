@@ -40,7 +40,7 @@ class ShoppingCartController
             if (isset($_POST["AdID"])) {
                 try {
                     $dbAd = $this->adService->getAdByID(htmlspecialchars($_POST["AdID"]));
-                    if ($dbAd->getStatus() !== Status::Available) {
+                    if ($dbAd->getProductStatus() !== Status::Available) {
                         echo "<script>alert('This product is already sold')</script>";
                         echo "<script>location.href = '/homepage'</script>";
                         exit();

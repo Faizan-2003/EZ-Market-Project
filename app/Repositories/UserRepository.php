@@ -63,14 +63,11 @@ class UserRepository extends Repository
     public function insertUserInDatabase($userDetails): bool
     {
         try {
-            // Hash the password before storing it in the database
-            $hashedPassword = password_hash($userDetails["password"], PASSWORD_DEFAULT);
-
-            $stmt = $this->connection->prepare("INSERT INTO User(firstName, lastName, email, password) VALUES (:firstName, :lastName, :email, :password)");
+            $stmt = $this->connection->prepare("INSERT INTO User(firstName, lastName, email, password) VALUES (:firstName,:lastName,:email,:password)");
             $stmt->bindValue(":firstName", $userDetails["firstName"]);
             $stmt->bindValue(":lastName", $userDetails["lastName"]);
             $stmt->bindValue(":email", $userDetails["email"]);
-            $stmt->bindValue(":password", $hashedPassword); // Store the hashed password
+            $stmt->bindValue(":password", $userDetails["password"]);
             $stmt->execute();
 
             return $stmt->rowCount() > 0;
@@ -79,7 +76,6 @@ class UserRepository extends Repository
         }
         return false;
     }
-
 
     public function CheckUserEmailExistence($email): bool
     {
@@ -101,5 +97,4 @@ class UserRepository extends Repository
         exit();
     }
 }
-
 ?>

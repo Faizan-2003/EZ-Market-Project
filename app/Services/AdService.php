@@ -18,7 +18,7 @@ class AdService
         return $this->adRepository->getAllAdsByStatus($status);
     }
 
-    public function searchAdsByProductName(string $productName): array
+    public function searchAdsByProductName($productName)
     {
         return $this->adRepository->searchAdsByProductName($productName);
     }

@@ -413,7 +413,6 @@ function escapeHtml(unsafe) {
         .replace(/"/g, "&quot;")
         .replace(/'/g, "&#039;");
 }
-
 async function editAdModalSaveChangeButtonClicked() {
     let adId = escapeHtml(document.getElementById("hiddenAdIdEditAdModal").value);
     let adProductName = escapeHtml(document.getElementById("AdEditProductName").value);
@@ -475,29 +474,27 @@ function getImageFileUsingPath() {
         }).catch(err => console.error(err));
 
 }
-
 function onInputValueChangeForSearch(input) {
     let productName = escapeHtml(input.value);
     fetch("http://localhost/api/searchproducts?name=" + productName)
         .then(response => response.json())
         .then(ads => {
             document.getElementById("containerRowContainerAvailableAds").innerHTML = ""; // clearing first
-            if (Object.keys(ads).length !== 0) {
+
+            if (ads.length > 0) {
                 ads.forEach(function (ad) {
                     showAvailableAdsForHomePage(ad);
-                })
-            }
-            else {
+                });
+            } else {
                 resultNotFoundForSearchMessage(input.value);
             }
         });
-
 }
+
 function resultNotFoundForSearchMessage(inputValue) {
     let errorMessage = document.createElement("h2");
     errorMessage.innerHTML = "🤷 Sorry, no search result found for " + '"' + inputValue + '"' + " 🙁";
     document.getElementById("containerRowContainerAvailableAds").appendChild(errorMessage);
-
 }
 function showAvailableAdsForHomePage(ad) {
     let col = document.createElement("div");

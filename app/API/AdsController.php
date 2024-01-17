@@ -1,7 +1,7 @@
 <?php
-require __DIR__ . '/../../Services/AdService.php';
-require_once __DIR__ . '/../../Models/Ad.php';
-require_once __DIR__ . '/../../Models/User.php';
+require __DIR__ . '/../Services/AdService.php';
+require_once __DIR__ . '/../Models/Ad.php';
+require_once __DIR__ . '/../Models/User.php';
 
 class AdsController
 {
@@ -9,7 +9,8 @@ class AdsController
 
     public function __construct()
     {
-        $this->adService = new AdService();
+        $adRepository = new AdRepository();
+        $this->adService = new AdService($adRepository);
     }
     public function postNewAdRequest(): void
     {

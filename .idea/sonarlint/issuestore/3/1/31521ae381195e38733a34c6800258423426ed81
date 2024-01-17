@@ -1,6 +1,6 @@
 
-fphp:S103B"KSplit this 130 characters long line (which is greater than 120 authorized).(œÑ8¬îîĞ1
-G	php:S2003"&Replace "require" with "require_once".(Ëš¾îûÿÿÿÿ8¬îîĞ1
-m	php:S4833"LReplace "require" with namespace import mechanism through the "use" keyword.(Ëš¾îûÿÿÿÿ8¬îîĞ1
-r	php:S4833"QReplace "require_once" with namespace import mechanism through the "use" keyword.(ìƒÀúÿÿÿÿ8¬îîĞ1
-r	php:S4833"QReplace "require_once" with namespace import mechanism through the "use" keyword.(ùé‚Úÿÿÿÿÿ8¬îîĞ1
+fphp:S103B"KSplit this 130 characters long line (which is greater than 120 authorized).(œÑ8¡•ğ§Ñ1
+G	php:S2003"&Replace "require" with "require_once".(Ëš¾îûÿÿÿÿ8¡•ğ§Ñ1
+m	php:S4833"LReplace "require" with namespace import mechanism through the "use" keyword.(Ëš¾îûÿÿÿÿ8¡•ğ§Ñ1
+r	php:S4833"QReplace "require_once" with namespace import mechanism through the "use" keyword.(ìƒÀúÿÿÿÿ8¡•ğ§Ñ1
+r	php:S4833"QReplace "require_once" with namespace import mechanism through the "use" keyword.(ùé‚Úÿÿÿÿÿ8¡•ğ§Ñ1

@@ -39,4 +39,5 @@ function getItemsInShoppingCart()
 function clearShoppingCart(): void
 {
     unset($_SESSION['cartItems']);
+    updateCountOfItemsInCart(); // Update the count after clearing the cart
 }

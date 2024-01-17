@@ -216,23 +216,28 @@ class AdRepository extends Repository
             trigger_error("An error occurred: " . $e->getMessage(), E_USER_ERROR);
         }
     }
-    public function searchAdsByProductName(string $productName)
+    public function searchAdsByProductName($productName)
     {
         try {
-            $stmt = $this->connection->prepare("SELECT id, productName, productDescription, productPrice, postedDate, productImageURI, productStatus, userID FROM Ads WHERE `productName` LIKE :productName AND productStatus = :productStatus");
+            $stmt = $this->connection->prepare("SELECT id, productName, description, postedDate, price, imageURI, userID, status FROM Ads WHERE `productName` LIKE :productName AND status = :status");
             $stmt->bindValue(":productName", '%' . $productName . '%');
-            $stmt->bindValue(":productStatus", Status::Available->label());
+            $stmt->bindValue(":status", Status::Available->label());
             $stmt->execute();
             $result = $stmt->fetchAll();
             $ads = array();
             foreach ($result as $row) {
-                $ads[] = $this->makeAnAd($row);
+                $ads[] = $this->MakeAnAD($row);
             }
-            return $ads;
+            echo json_encode($ads);
         } catch (PDOException | Exception $e) {
-           error_log("An error occurred: " . $e->getMessage(), E_USER_ERROR);
+            $errorResponse = [
+                'error' => true,
+                'message' => 'An error occurred: ' . $e->getMessage(),
+            ];
+            echo json_encode($errorResponse);
         }
     }
+
 
 
     private function editImageFile(string $dbStoredImageName, array $newImage)
