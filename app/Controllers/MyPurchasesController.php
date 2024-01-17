@@ -36,7 +36,7 @@ class MyPurchasesController
     private function displayInfo(): string
     {
         if (is_null($this->loggedUser)) {
-            $displayMessage = "Please Log in to the system to see your purchased ads.";
+            $displayMessage = "Please Log in to the system to see your purchased products😊.";
         } else {
             $greet = $this->loggedUser ? "Welcome " . $this->loggedUser->getFirstName() : "";
             $displayMessage = $greet . ", " . $this->loggedUser->getFirstName();
@@ -46,6 +46,36 @@ class MyPurchasesController
 
     private function loginAndSignout(): void
     {
-        // Add your login and signout logic here
+        if (!is_null($this->loggedUser)) {
+            echo '<script>            
+           // disableLoginButton();
+            showPostNewAd();
+            </script>';
+        } else {
+            echo '<script>
+          hidePostNewAd();
+            </script>';
+        }
+
+        // Check if the user is logged in and update the button accordingly
+        if (!is_null($this->loggedUser)) {
+            echo '<script>
+            p.innerHTML = "Log Out";           
+            </script>';
+        } else {
+            echo '<script>
+            // Code for not logged-in user (e.g., show login button)
+            </script>';
+        }
+
+        if (isset($_POST["btnlogin"])) {
+            logOutFromApp();
+            echo '<script>
+          enableLogin();
+          hidePostNewAd();
+          loginMessageForSignOut();
+          clearScreen();
+            </script>';
+        }
     }
 }

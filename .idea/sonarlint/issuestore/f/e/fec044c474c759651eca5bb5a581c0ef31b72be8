@@ -4,5 +4,9 @@ kphp:S103"KSplit this 214 characters long line (which is greater than 120 au
 kphp:S103"KSplit this 202 characters long line (which is greater than 120 authorized).(‰Ìéüÿÿÿÿ8Ç³”™Ñ1
 kphp:S103""KSplit this 122 characters long line (which is greater than 120 authorized).(Åø¯£ûÿÿÿÿ8Íİ´œÑ1
 fphp:S103,"KSplit this 153 characters long line (which is greater than 120 authorized).(¸¨·™8Ç³”™Ñ1
+fphp:S1038"KSplit this 134 characters long line (which is greater than 120 authorized).(”¦æİ8ˆÉ«ÃÑ1
+fphp:S103Q"KSplit this 123 characters long line (which is greater than 120 authorized).(òğ—8‰É«ÃÑ1
+fphp:S103X"KSplit this 123 characters long line (which is greater than 120 authorized).(ÑëØ¶8‰É«ÃÑ1
+fphp:S103^"KSplit this 130 characters long line (which is greater than 120 authorized).(ÿ ×“8‰É«ÃÑ1
 B	php:S2003"&Replace "include" with "include_once".(ùûÆÇ8Ç³”™Ñ1
 h	php:S4833"LReplace "include" with namespace import mechanism through the "use" keyword.(ùûÆÇ8Ç³”™Ñ1

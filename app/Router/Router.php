@@ -44,7 +44,7 @@ class Router
                 break;
             case 'homepage/shoppingCart/payment':
                 require __DIR__ . '/../Controllers/PaymentController.php';
-                $controller = new Pay();
+                $controller = new PaymentController();
                 $controller->displayPaymentPage();
                 break;
             case 'api/adsapi':
