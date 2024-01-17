@@ -1,15 +1,41 @@
 <?php
+require __DIR__.'/../Services/UserService.php';
 
-Class RegisterUserController extends Controller{
-    public function __construct() {
-        parent::__construct();
-    }
-    public function displayRegisterUserPage()
+
+
+Class RegisterUserController{
+    private UserService $userService;
+
+    public function __construct()
     {
-        $ads = $this->adService->getAllAvailableAds(); // only showing available ads
-        require __DIR__ . "/../Views/RegisterUser/RegisterUser.php";
-        $this->showAvailableAds($ads);
+        $userRepository = new UserRepository();
+        $this->userService = new UserService($userRepository);
+    }
+    public function displayRegisterUserPage():void{
+
+        require __DIR__.'/../Views/RegisterNewUser/RegisterNewUser.html';
         require __DIR__ . '/../Views/Footer.php';
-        $this->loginAndSignout();
+
+        $this->createUser();
+    }
+    private function createUser() :void{
+        if(isset($_POST["btnRegister"])){
+            if($this->userService->CheckUserExistenceByEmail(htmlspecialchars($_POST["email"]))){
+                echo"<script>displayModalForSignUp('ooooooops!','The email address you entered is already taken, Please choose another email address')</script>";
+                return;
+            }
+            $userDetails= array(
+                "firstName" =>htmlspecialchars($_POST["FirstName"]),
+                "lastName" =>htmlspecialchars($_POST["LastName"]),
+                "email" => htmlspecialchars($_POST["email"]),
+                "password" =>htmlspecialchars($_POST["password"])
+            );
+            if($this->userService->createNewUser($userDetails)){
+                echo"<script>displayModalForSignUp('Hurrahh!',' Your account has been created successfully. You can now log in.')</script>";
+            }
+            else{
+                echo"<script>displayModalForSignUp('Ohoooo!','Something went wrong while creating your account. please, Try Again!')</script>";
+            }
+        }
     }
 }

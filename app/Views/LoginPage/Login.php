@@ -30,7 +30,7 @@
         <div class="p"><button class="w-100 btn btn-lg btn-success" type="submit" name="btnLogin" style="background-color: #000080;">Log in</button></div>
 
         <div class="text-center pt-3">
-            <p class="text-black">Not a member?<a href="/homepage/login/signup"> Register</a></p>
+            <p class="text-black">Not a member yet? <a href="/homepage/login/register">Register</a></p>
         </div>
         <p class="mt-5 mb-3 text-black copyRight"> &#169;EZmarket.com</p>
 

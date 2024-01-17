@@ -1,10 +1,87 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="h-100">
+
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Register New User</title>
+    <link rel="icon" type="image/x-icon" href="/images/favicon.svg">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
+    <link rel="stylesheet" href="/CSS/Register.css">
 </head>
 <body>
+<section class="vh-100">
+    <div class="container h-75">
+        <div class="row d-flex align-items-center h-100">
+            <!-- Left Sidebar -->
+            <div class="col-md-6 side-text">
+                <h1 class="text-center mb-4 headtext">Register yourself at EZ Market!</h1>
+                <h2 class="text-center subtext">Shop used items at good prices at EZ Market</h2>
+                <!-- Image Box -->
+                <div class="image-box text-center">
+                    <img src="/images/Logo.png" alt="Logo Image" style="max-width: 70%; border-radius: 25px;">
+                </div>
+            </div>
+            <!-- Registration Form -->
+            <div class="col-md-6">
+                <div class="card h-100" style="border-radius: 15px;">
+                    <div class="card-body p-5">
+                        <h2 class="text-uppercase text-center mb-5">Create an account</h2>
+                        <form method="POST">
+                            <div class="row mb-3">
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label class="form-label" for="FirstName">Your First Name</label>
+                                        <input type="text" id="FirstName" name="FirstName" class="form-control form-control-lg" autocomplete="first-name" required oninput="validate(this)" />
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label class="form-label is-invalid" for="LastName">Your Last Name</label>
+                                        <input type="text" id="LastName" name="LastName" class="form-control form-control-lg" autocomplete="last-name" required oninput="validate(this)" />
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group mb-3">
+                                <label class="form-label" for="Email">Your Email</label>
+                                <input type="email" id="Email" name="email" class="form-control form-control-lg" autocomplete="email" required />
+                            </div>
+                            <div class="row mb-3">
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label class="form-label" for="password">Password</label>
+                                        <input type="password" id="password" name="password" class="form-control form-control-lg" autocomplete="new-password" required oninput="verifyPasswordLength(this)" />
+                                        <i class="fa fa-eye" data-bs-toggle="password-toggle" data-bs-target="#password"></i>
+                                        <div id="feedback-invalid-pass"></div>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label class="form-label" for="RepeatPassword">Repeat your password</label>
+                                        <input type="password" id="RepeatPassword" class="form-control form-control-lg" autocomplete="new-password" required oninput="confirmRepeatedPassword(this)" />
+                                        <i class="fa fa-eye" data-bs-toggle="password-toggle" data-bs-target="#password"></i>
+                                        <div id="feedback-invalid"></div>
+                                    </div>
+                                </div>
+                            </div>
 
+                            <div class="d-flex justify-content-center pt-4">
+                                <button type="submit" name="btnRegister" id="btnRegister" class="w-100 btn btn-lg btn-success" style="background-color: #000080;">
+                                    Register
+                                </button>
+                            </div>
+                            <p class="text-center text-muted mt-5 mb-0">Already have an account? <a href="/homepage/login" class="fw-link"><u>Login Here</u></a></p>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script>
+<script src="/Javascripts/Register.js"> </script>
 </body>
+
 </html>

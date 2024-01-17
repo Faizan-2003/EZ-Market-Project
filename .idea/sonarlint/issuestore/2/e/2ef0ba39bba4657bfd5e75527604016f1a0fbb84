@@ -1,10 +1,12 @@
 
-J	php:S1781")Write this "Class" keyword in lower case.(“‚¯Ôûÿÿÿÿ8ĞõœšĞ1
-:php:S113"'Add a new line at the end of this file.8ĞõœšĞ1
-W	php:S1185"6Remove this method "__construct" to simply inherit it.(éúÜÅûÿÿÿÿ8ĞõœšĞ1
-G	php:S2003
-"&Replace "require" with "require_once".(’Ã”Âùÿÿÿÿ8ĞõœšĞ1
-B	php:S2003"&Replace "require" with "require_once".(Şş”¾8ĞõœšĞ1
-m	php:S4833
-"LReplace "require" with namespace import mechanism through the "use" keyword.(’Ã”Âùÿÿÿÿ8ĞõœšĞ1
-h	php:S4833"LReplace "require" with namespace import mechanism through the "use" keyword.(Şş”¾8ĞõœšĞ1
+fphp:S103"KSplit this 161 characters long line (which is greater than 120 authorized).(êÛõê8‹›§¤Ñ1
+kphp:S103""KSplit this 140 characters long line (which is greater than 120 authorized).(Õ»îùÿÿÿÿ8œ©ğ¦Ñ1
+kphp:S103%"KSplit this 143 characters long line (which is greater than 120 authorized).(Æ—–”ÿÿÿÿÿ8Ğ±ï¦Ñ1
+J	php:S1781")Write this "Class" keyword in lower case.(õ‰«¶üÿÿÿÿ8‹›§¤Ñ1
+:php:S113"'Add a new line at the end of this file.8‹›§¤Ñ1
+G	php:S2003"&Replace "require" with "require_once".(òß‰İÿÿÿÿÿ8‹›§¤Ñ1
+A	php:S2003"&Replace "require" with "require_once".(ÉşÏ68ü‹©¤Ñ1
+B	php:S2003"&Replace "require" with "require_once".(Şş”¾8Ò¾¼¤Ñ1
+m	php:S4833"LReplace "require" with namespace import mechanism through the "use" keyword.(òß‰İÿÿÿÿÿ8‹›§¤Ñ1
+g	php:S4833"LReplace "require" with namespace import mechanism through the "use" keyword.(ÉşÏ68ü‹©¤Ñ1
+h	php:S4833"LReplace "require" with namespace import mechanism through the "use" keyword.(Şş”¾8Ò¾¼¤Ñ1

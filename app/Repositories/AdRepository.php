@@ -230,7 +230,7 @@ class AdRepository extends Repository
             }
             return $ads;
         } catch (PDOException | Exception $e) {
-            trigger_error("An error occurred: " . $e->getMessage(), E_USER_ERROR);
+           error_log("An error occurred: " . $e->getMessage(), E_USER_ERROR);
         }
     }
 

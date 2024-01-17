@@ -1,0 +1,27 @@
+.custom-navbar {
+    background-color: #ffb703 !important;
+    height: 90px;
+    margin: 0;
+}
+.navbar-brand img {
+    max-height: 90px;
+    width: auto;
+}
+.side-text{
+    background-color: #ffb703;
+    color: white;
+    padding: 20px;
+    border-top-left-radius: 15px;
+    border-bottom-left-radius: 15px;
+}
+.headtext{
+    font-size: 60px;
+    font-weight: bold;
+    color: #000080;
+}
+
+.subtext {
+    font-size: 30px;
+    color: #000080;
+}
+

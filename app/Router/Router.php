@@ -23,7 +23,7 @@ class Router
                 $controller = new LoginController($userService);
                 $controller->displayLoginPage();
                 break;
-            case 'homepage/login/signup':
+            case 'homepage/login/register':
                 require __DIR__ . '/../Controllers/RegisterUserController.php';
                 $controller=new RegisterUserController();
                 $controller->displayRegisterUserPage();

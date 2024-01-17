@@ -4,8 +4,7 @@ require_once __DIR__ . "/../Models/Ad.php";
 require_once __DIR__ . "/../Services/AdService.php";
 require_once __DIR__ . "/../Logic/LoggingInAndOut.php";
 
-class HomepageController
-{
+class HomepageController{
     private AdService $adService;
 
     public function __construct(AdService $adService)

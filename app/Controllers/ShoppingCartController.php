@@ -42,7 +42,7 @@ class ShoppingCartController
                     $dbAd = $this->adService->getAdByID(htmlspecialchars($_POST["AdID"]));
                     if ($dbAd->getStatus() !== Status::Available) {
                         echo "<script>alert('This product is already sold')</script>";
-                        echo "<script>location.href = '/home'</script>";
+                        echo "<script>location.href = '/homepage'</script>";
                         exit();
                     } else {
                         if (!checkTheExistenceOfItemInCart($dbAd)) { // this is only one product so cannot be bought more than 1 quantity

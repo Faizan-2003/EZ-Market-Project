@@ -36,9 +36,10 @@
             </ul>
             <ul class="navbar-nav">
                 <li class="nav-item">
-                    <a class="nav-link mx-2 active-page" href="/homepage/shoppingCart">
+                    <a class="nav-link mx-2 active-page selected" href="/homepage/shoppingCart">
                         <i class="fa badge fa-lg" style="font-size:1.5em">&#xf07a;</i>
                     </a>
+
                 </li>
                 <li class="nav-item">
                     <a class="nav-link mx-2" href="/homepage/login" style="border: 1px solid #000080; padding: 10px 15px; border-radius: 5px;">Log In</a>

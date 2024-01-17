@@ -21,6 +21,10 @@ nav.custom-navbar {
     top: -10px;
     opacity: 0.9;
     font-weight: bold;
+
+}
+.selected i {
+    color: #000080 !important;
 }
 
 .with-border {
@@ -81,3 +85,19 @@ nav.custom-navbar {
     background-color: #ffb703 !important;
 }
 
+.btn-Shop {
+    background-color: #000080 !important;
+    padding: 10px 20px !important;
+    font-size: 20px !important;
+    font-weight: bold !important;
+    border-radius: 10px !important;
+    border: none !important;
+    margin-top: 30px !important; /* Adjust the value to your preference */
+}
+
+
+.emptycart{
+    color: #000080 !important;
+    font-size: 90px !important;
+    font-weight: bold !important;
+}

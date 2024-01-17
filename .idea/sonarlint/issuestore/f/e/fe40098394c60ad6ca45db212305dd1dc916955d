@@ -1,10 +1,10 @@
 
-kphp:S103"KSplit this 132 characters long line (which is greater than 120 authorized).(¢ĞÆ¦ùÿÿÿÿ8¨ÃÂ˜Ñ1
-kphp:S1032"KSplit this 121 characters long line (which is greater than 120 authorized).(ª¹Ş´üÿÿÿÿ8¨ÃÂ˜Ñ1
-ephp:S103B"KSplit this 152 characters long line (which is greater than 120 authorized).(ëöÌA8¨ÃÂ˜Ñ1
-ephp:S103^"KSplit this 145 characters long line (which is greater than 120 authorized).(Ó¾ÈA8¨ÃÂ˜Ñ1
-e	php:S1784"DExplicitly mention the visibility of this method "verifyAndGetUser".(…·‘‰ÿÿÿÿÿ8¨ÃÂ˜Ñ1
->	php:S1780d"Remove this closing tag "?>".(Ö‘äÏúÿÿÿÿ8¨ÃÂ˜Ñ1
-h	php:S1192"GDefine a constant instead of duplicating this literal ":email" 3 times.(íÆÔÅøÿÿÿÿ8¨ÃÂ˜Ñ1
-r	php:S4833"QReplace "require_once" with namespace import mechanism through the "use" keyword.(ìƒÀúÿÿÿÿ8¨ÃÂ˜Ñ1
-r	php:S4833"QReplace "include_once" with namespace import mechanism through the "use" keyword.(ê‚‹€øÿÿÿÿ8¨ÃÂ˜Ñ1
+kphp:S103"KSplit this 132 characters long line (which is greater than 120 authorized).(¢ĞÆ¦ùÿÿÿÿ8úåœ¤Ñ1
+kphp:S1032"KSplit this 121 characters long line (which is greater than 120 authorized).(ª¹Ş´üÿÿÿÿ8úåœ¤Ñ1
+ephp:S103E"KSplit this 155 characters long line (which is greater than 120 authorized).(ëöÌA8Ğ¿Ø¦Ñ1
+ephp:S103b"KSplit this 145 characters long line (which is greater than 120 authorized).(Ó¾ÈA8ûåœ¤Ñ1
+e	php:S1784"DExplicitly mention the visibility of this method "verifyAndGetUser".(…·‘‰ÿÿÿÿÿ8ûåœ¤Ñ1
+>	php:S1780i"Remove this closing tag "?>".(Ö‘äÏúÿÿÿÿ8ûåœ¤Ñ1
+h	php:S1192"GDefine a constant instead of duplicating this literal ":email" 3 times.(íÆÔÅøÿÿÿÿ8ûåœ¤Ñ1
+r	php:S4833"QReplace "require_once" with namespace import mechanism through the "use" keyword.(ìƒÀúÿÿÿÿ8ûåœ¤Ñ1
+r	php:S4833"QReplace "include_once" with namespace import mechanism through the "use" keyword.(ê‚‹€øÿÿÿÿ8ûåœ¤Ñ1

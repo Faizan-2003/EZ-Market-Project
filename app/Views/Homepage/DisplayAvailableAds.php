@@ -19,7 +19,7 @@
                         </button>
                         <div class="card-footer">
                             <p class="card-text">
-                                <small class="text-black"><?= $ad->getPostedDate() ?> posted by</small>
+                                <small class="text-black">Post on <?= $ad->getPostedDate() ?> by</small>
                                 <strong><?= $ad->getUserID()->getFirstName() ?></strong>
                             </p>
                         </div>

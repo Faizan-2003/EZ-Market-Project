@@ -67,7 +67,7 @@
                                         <p class="mb-2">
                                             €<?= htmlspecialchars_decode(number_format($this->total, 2, '.')) ?></p>
                                     </div>
-                                    <form method="POST" action="/home/shoppingCart/payment">
+                                    <form method="POST" action="/homepage/shoppingCart/payment">
                                         <button name="buttonCheckOut" type="submit" class="btn  btn-block btn-lg d-sm-block float-right" style="float: right !important; background-color:#00ff00;">
                                             <div class="d-flex">
                                                 <span>Checkout € <strong><?= htmlspecialchars_decode(number_format($this->total, 2, '.')) ?></strong><i class="fas fa-long-arrow-alt-right ms-2"></i></span>

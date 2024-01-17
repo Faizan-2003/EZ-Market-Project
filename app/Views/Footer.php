@@ -1,7 +1,7 @@
 <footer class="footer mt-auto py-3  d-flex justify-content-between align-items-center text-white" style="background-color: #ffb703; height: 80px">
     <div class="pl-5"><img src="/images/Logo.png" alt="Website Logo" class="img-fluid" style="max-width:150px;"></div>
     <div class="text-center text-black">
-        Copyright &copy; 2024 EZMarket - Muhammad Faizan
+        Copyright &copy; 2024 EZ Market - Muhammad Faizan
     </div>
     <div class="d-flex" style="float: right">
         <a href="#" style="color: #000080;">

@@ -98,3 +98,7 @@ L
 app/Public/Javascripts/Ad.js,a\b\ab8614431a5193360d6174dca16285b4f11bb1f8
 J
 app/Logic/ShoppingCart.php,d\1\d1897217963f728894f1444fec87cc7952a64148
+R
+"app/Public/Javascripts/Register.js,4\3\433219f347e421d01fd55769f4740f464bd56b2b
+K
+app/Public/CSS/Register.css,0\5\05d33c98cc7c06f7dbc15756e918c7a28373abc8
