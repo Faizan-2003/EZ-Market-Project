@@ -1,16 +1,14 @@
 
-fphp:S103!"KSplit this 122 characters long line (which is greater than 120 authorized).(½·Ù8ÓçÂÂÑ1
-K	php:S1109"/Move this closing curly brace to the next line.(åĞƒ‘8ÔçÂÂÑ1
-L	php:S1481"+Remove this unused "$total" local variable.(êáÕÔşÿÿÿÿ8ÔçÂÂÑ1
-B	php:S2003"&Replace "require" with "require_once".(É¿ˆ¸8ÛçÂÂÑ1
-G	php:S2003"&Replace "require" with "require_once".(‹Ğùÿÿÿÿ8ÛçÂÂÑ1
-G	php:S2003"&Replace "require" with "require_once".(Ùƒššüÿÿÿÿ8ÛçÂÂÑ1
-B	php:S2003"&Replace "require" with "require_once".(’ÿÕß8ŞçÂÂÑ1
-B	php:S2003"&Replace "require" with "require_once".(Şş”¾8âçÂÂÑ1
-B	php:S2003"&Replace "require" with "require_once".(šß·ë8£§ĞÂÑ1
-h	php:S4833"LReplace "require" with namespace import mechanism through the "use" keyword.(É¿ˆ¸8ãçÂÂÑ1
-m	php:S4833"LReplace "require" with namespace import mechanism through the "use" keyword.(‹Ğùÿÿÿÿ8ãçÂÂÑ1
-m	php:S4833"LReplace "require" with namespace import mechanism through the "use" keyword.(Ùƒššüÿÿÿÿ8ãçÂÂÑ1
-h	php:S4833"LReplace "require" with namespace import mechanism through the "use" keyword.(’ÿÕß8ãçÂÂÑ1
-h	php:S4833"LReplace "require" with namespace import mechanism through the "use" keyword.(Şş”¾8ãçÂÂÑ1
-h	php:S4833"LReplace "require" with namespace import mechanism through the "use" keyword.(šß·ë8£§ĞÂÑ1
+fphp:S103*"KSplit this 122 characters long line (which is greater than 120 authorized).(½·Ù8ÇÏùïÑ1
+~php:S115"^Rename this constant "Vat_Rate" to match the regular expression ^[A-Z][A-Z0-9]*(_[A-Z0-9]+)*$.( ÷Øùÿÿÿÿ8şã¾òÑ1
+K	php:S1109"/Move this closing curly brace to the next line.(åĞƒ‘8µíªïÑ1
+B	php:S2003"&Replace "require" with "require_once".(É¿ˆ¸8µíªïÑ1
+G	php:S2003"&Replace "require" with "require_once".(‹Ğùÿÿÿÿ8µíªïÑ1
+G	php:S2003"&Replace "require" with "require_once".(Ùƒššüÿÿÿÿ8µíªïÑ1
+G	php:S2003("&Replace "require" with "require_once".(ÓÒÇ†ıÿÿÿÿ8ÈÏùïÑ1
+h	php:S4833"LReplace "require" with namespace import mechanism through the "use" keyword.(É¿ˆ¸8µíªïÑ1
+m	php:S4833"LReplace "require" with namespace import mechanism through the "use" keyword.(‹Ğùÿÿÿÿ8µíªïÑ1
+m	php:S4833"LReplace "require" with namespace import mechanism through the "use" keyword.(Ùƒššüÿÿÿÿ8µíªïÑ1
+r	php:S4833"QReplace "require_once" with namespace import mechanism through the "use" keyword.(É…üëùÿÿÿÿ8ûÇ¼ïÑ1
+r	php:S4833"QReplace "require_once" with namespace import mechanism through the "use" keyword.(´İ»«üÿÿÿÿ8ûÇ¼ïÑ1
+m	php:S4833("LReplace "require" with namespace import mechanism through the "use" keyword.(ÓÒÇ†ıÿÿÿÿ8ÈÏùïÑ1

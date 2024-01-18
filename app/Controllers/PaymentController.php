@@ -5,6 +5,7 @@ require  __DIR__ . '/../Logic/LoggingInAndOut.php';
 class PaymentController
 {
     private $adService;
+    const Vat_Rate = 0.21;
 
     public function __construct()
     {
@@ -13,29 +14,38 @@ class PaymentController
 
     public function displayPaymentPage(): void
     {
-        session_start();
-            require __DIR__ . '/../Views/PaymentPage/PaymentHeader.php';
-            $this->checkOutShoppingCart();
-            require __DIR__ . '/../Views/Footer.php';
-            $this->loginAndSignout();
-        }
+        require_once __DIR__ . '/../Views/PaymentPage/PaymentHeader.php';
 
-    private function checkOutShoppingCart(): void
+        // Pass the total to the payment page
+        $totalAmount = getTotalAmountOfItemsInShoppingCart();
+        $vatAmount = $totalAmount * self::Vat_Rate;
+        $total = $totalAmount + $vatAmount;
+
+        $this->checkOutShoppingCart($total);
+        require_once __DIR__ . '/../Views/Footer.php';
+
+        $this->loginAndSignout();
+    }
+
+
+
+
+    private function checkOutShoppingCart($total): void
     {
-        require __DIR__ . '/../Views/PaymentPage/PaymentBody.php';
-
         if (isset($_POST["buttonCheckOut"])) {
             if ($this->checkShoppingCartItemsAvailabilityInDb()) {
-                $total = getTotalAmountOfItemsInShoppingCart();
+                $total;
                 $this->updateAdStatusToSold();
-                clearShoppingCart(); // after payment
+                clearShoppingCart();
+                require __DIR__ . '/../Views/PaymentPage/paymentBody.php';
             } else {
                 echo '<script>alert("Some the products in your shopping are not available, please shop again!")</script>';
-                clearShoppingCart(); // after the items are not available to buy
-                echo '<script>location.href = "/home/myAds"</script>';
+                clearShoppingCart();
+                echo '<script>location.href = "/homepage/myAds"</script>';
             }
         }
     }
+
     private function updateAdStatusToSold(): void
     {
         $items = getItemsInShoppingCart();
@@ -56,10 +66,10 @@ class PaymentController
 
     private function checkShoppingCartItemsAvailabilityInDb(): bool
     {
-        $items = getItemsInShoppingCart(); // making sure that products in shopping cart are available to be sold
+        $items = getItemsInShoppingCart();
         foreach ($items as $item) {
             $dbAd = $this->adService->getAdByID($item->getId());
-            if ($dbAd->getStatus() !== Status::Available) {
+            if ($dbAd->getProductStatus() !== Status::Available) {
                 return false;
             }
         }

@@ -1,6 +1,8 @@
 <?php
 require_once __DIR__ . '/../Models/Ad.php';
-session_start();
+if (session_status() == PHP_SESSION_NONE) {
+    session_start();
+}
 
 function addItemToShoppingCart($item): void
 {
@@ -21,29 +23,31 @@ function removeItemFromCart($item): void
 }
 function updateItemCountInSession(): void
 {
-    updateCountOfItemsInCart(); // Assuming this function updates the count
+    updateCountOfItemsInCart();
     $_SESSION['itemCount'] = $_SESSION['countShoppingCartItems'];
 }
 function updateCountOfItemsInCart(): void
 {
-    $_SESSION['countShoppingCartItems'] = count($_SESSION['cartItems']);
+    if (isset($_SESSION['cartItems']) && is_array($_SESSION['cartItems'])) {
+        $_SESSION['countShoppingCartItems'] = count($_SESSION['cartItems']);
+    } else {
+        // Handle the case where cartItems is not set or not an array
+        $_SESSION['countShoppingCartItems'] = 0;
+    }
 }
 
-function getTotalAmountOfItemsInShoppingCart(): float
-{
-    $total = 0.0;
+function getTotalAmountOfItemsInShoppingCart() {
+    $totalAmount = 0;
 
     if (isset($_SESSION['cartItems']) && is_array($_SESSION['cartItems'])) {
-        foreach ($_SESSION['cartItems'] as $cartItem) {
-            // Ensure that $cartItem is an instance of Ad with a getPrice method
-            if ($cartItem instanceof Ad && method_exists($cartItem, 'getPrice')) {
-                $total += $cartItem->getPrice();
-            }
+        foreach ($_SESSION['cartItems'] as $ad) {
+            $totalAmount += $ad->getProductPrice();
         }
     }
 
-    return $total;
+    return $totalAmount;
 }
+
 
 function checkTheExistenceOfItemInCart($item): bool
 {

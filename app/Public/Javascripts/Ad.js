@@ -1,5 +1,3 @@
-session_start();
-
 function disableLoginButton() {
     const loginLink = document.getElementById("loginLink");
     const p = document.createElement("p");
@@ -554,33 +552,28 @@ function showAvailableAdsForHomePage(ad) {
     card.appendChild(cardFooter);
     col.appendChild(card);
 
-    // Append col to the parent element
     document.getElementById("containerRowContainerAvailableAds").appendChild(col);
 
 }
 function addToCartClicked(adID) {
-    // Create a form element
+
     let form = document.createElement("form");
     form.method = "post";
     form.action = "/homepage/shoppingCart";
 
-    // Create a hidden input field to store the data
     let input = document.createElement("input");
     input.type = "hidden";
     input.name = "AdID";
     input.value = adID;
 
-    // Append the input to the form
     form.appendChild(input);
 
-    // Append the form to the body
     document.body.appendChild(form);
 
-    // Submit the form
     form.submit();
 }
 
-function formatPricesInDecimal(price){
+function formatPricesInDecimal(price) {
     let formattedPrice = new Intl.NumberFormat('en-US', {
         style: 'decimal',
         useGrouping: true,

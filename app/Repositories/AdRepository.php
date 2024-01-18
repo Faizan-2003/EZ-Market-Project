@@ -82,22 +82,23 @@ class AdRepository extends Repository
     public function updateStatusOfAd($status, $adID)
     {
         try {
-            $stmt = $this->connection->prepare("UPDATE Ads SET productStatus= :productStatus WHERE id= :adId");
+            $stmt = $this->connection->prepare("UPDATE Ads SET productStatus = :productStatus WHERE id = :adId");
             $stmt->bindValue(":productStatus", $status->label());
-            $stmt->bindValue(":id", $adID);
+            $stmt->bindValue(":adId", $adID);
 
             if ($stmt->execute()) {
                 $rows_updated = $stmt->rowCount();
                 if ($rows_updated <= 0) {
-                    trigger_error(" Ad couldn't be Updated Please,Try again", E_USER_ERROR);
+                    trigger_error("Ad couldn't be updated. Please try again.", E_USER_ERROR);
                 }
             } else {
-                trigger_error(" Ad couldn't be Updated", E_USER_ERROR);
+                trigger_error("Ad couldn't be updated.", E_USER_ERROR);
             }
         } catch (PDOException|Exception $e) {
-            trigger_error("An error occurred:  while updating status of ad", E_USER_ERROR);
+            trigger_error("An error occurred while updating the status of ad: " . $e->getMessage(), E_USER_ERROR);
         }
     }
+
 
     public function deleteAd($adID, $imageURI)
     {
