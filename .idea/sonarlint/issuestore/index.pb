@@ -102,7 +102,5 @@ R
 "app/Public/Javascripts/Register.js,4\3\433219f347e421d01fd55769f4740f464bd56b2b
 K
 app/Public/CSS/Register.css,0\5\05d33c98cc7c06f7dbc15756e918c7a28373abc8
-c
-3app/Views/MyPurchasesPage/DisplayBoughtProducts.php,5\f\5f56b8f981c98e8e77617ae1b36833c9407caddc
 \
 ,app/Views/MyPurchasesPage/DivMyPurchases.php,e\9\e9ba2cb8984cc5f7ccfe12f3f6287874baa5bd93

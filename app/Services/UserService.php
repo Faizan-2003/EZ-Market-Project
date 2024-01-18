@@ -43,13 +43,14 @@ class UserService
 
     public function createNewUser($userDetails): bool
     {
-        $hashPasswordWithSalt = $this->hashPassword($userDetails["password"]);
-        $userDetails["hashPassword"] = $hashPasswordWithSalt; // Fix here
-        return $this->userRepository->insertUserInDatabase($userDetails); // Fix here
+        $hashedPassword = password_hash($userDetails["password"], PASSWORD_BCRYPT);
+        $userDetails["hashPassword"] = $hashedPassword;
+        return $this->userRepository->insertUserInDatabase($userDetails);
     }
+
 
     public function CheckUserExistenceByEmail($email): bool
     {
-        return $this->userRepository->CheckUserEmailExistence($email); // Fix here
+        return $this->userRepository->CheckUserEmailExistence($email);
     }
 }
