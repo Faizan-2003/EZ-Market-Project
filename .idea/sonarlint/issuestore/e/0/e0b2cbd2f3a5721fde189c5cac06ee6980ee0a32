@@ -2,6 +2,7 @@
 fphp:S103"KSplit this 130 characters long line (which is greater than 120 authorized).(ÒšºÅ8™¾œÑ1
 kphp:S103"KSplit this 214 characters long line (which is greater than 120 authorized).(Î£âÿÿÿÿÿ8ÖÆœÑ1
 kphp:S103"KSplit this 202 characters long line (which is greater than 120 authorized).(‰Ìéüÿÿÿÿ8ÖÆœÑ1
+fphp:S103("KSplit this 180 characters long line (which is greater than 120 authorized).(ÕÎ£¨8Ã“àæÑ1
 fphp:S103-"KSplit this 153 characters long line (which is greater than 120 authorized).(¸¨·™8ÖÆœÑ1
 B	php:S2003"&Replace "include" with "include_once".(ùûÆÇ8ÖÆœÑ1
 h	php:S4833"LReplace "include" with namespace import mechanism through the "use" keyword.(ùûÆÇ8ÖÆœÑ1

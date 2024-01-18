@@ -38,7 +38,7 @@ class Router
                 $controller->displayMyPurchasesPage();
                 break;
             case 'homepage/shoppingCart':
-                require __DIR__ . '/../Controllers/ShoppingCartController.php';
+                require_once __DIR__ . '/../Controllers/ShoppingCartController.php';
                 $controller = new ShoppingCartController();
                 $controller->displayShoppingCartPage();
                 break;

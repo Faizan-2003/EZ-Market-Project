@@ -2,6 +2,7 @@
 require __DIR__ . '/../Services/AdService.php';
 require __DIR__ . '/../Logic/ShoppingCart.php';
 require __DIR__ . '/../Logic/LoggingInAndOut.php';
+
 class ShoppingCartController
 {
     private $adService;
@@ -14,9 +15,10 @@ class ShoppingCartController
         $adRepository = new AdRepository();
         $this->adService = new AdService($adRepository);
     }
-
     public function displayShoppingCartPage(): void
     {
+        //session_start();
+
         $this->addItemToCart();
         $this->removeItemFromCart();
         require __DIR__ . '/../Views/ShoppingCart/shoppingCartHeader.php';
@@ -26,7 +28,7 @@ class ShoppingCartController
     }
     private function checkCartItemsAndDisplayAccordingly(): void
     {
-        if (!isset($_SESSION['countShoppingCartItems']) || $_SESSION['countShoppingCartItems'] === 0) {
+        if (!isset($_SESSION['cartItems']) || !is_array($_SESSION['cartItems']) || empty($_SESSION['cartItems'])) {
             require __DIR__ . '/../Views/ShoppingCart/ShoppingCartEmpty.html';
         } else {
             $this->total = getTotalAmountOfItemsInShoppingCart();
@@ -34,6 +36,7 @@ class ShoppingCartController
             require __DIR__ . '/../Views/ShoppingCart/ShoppingCartDisplayProduct.php';
         }
     }
+
     private function addItemToCart(): void
     {
         if ($_SERVER['REQUEST_METHOD'] === "POST") {
@@ -45,7 +48,11 @@ class ShoppingCartController
                         echo "<script>location.href = '/homepage'</script>";
                         exit();
                     } else {
-                        if (!checkTheExistenceOfItemInCart($dbAd)) { // this is only one product so cannot be bought more than 1 quantity
+                        if (!isset($_SESSION['cartItems']) || !is_array($_SESSION['cartItems'])) {
+                            $_SESSION['cartItems'] = [];
+                        }
+
+                        if (!checkTheExistenceOfItemInCart($dbAd)) {
                             addItemToShoppingCart($dbAd);
                         }
                     }
@@ -54,15 +61,17 @@ class ShoppingCartController
                 }
             }
         }
+        updateItemCountInSession();
     }
     private function removeItemFromCart(): void
     {
         if (isset($_POST["removeCartItem"])) {
             $ad = $this->adService->getAdByID(htmlspecialchars($_POST['hiddenSHoppingCartItemID']));
-            if (checkTheExistenceOfItemInCart($ad)) {
+            if (isset($_SESSION['cartItems']) && is_array($_SESSION['cartItems']) && checkTheExistenceOfItemInCart($ad)) {
                 removeItemFromCart($ad);
             }
         }
+        updateItemCountInSession();
     }
     private function loginAndSignout(): void
     {

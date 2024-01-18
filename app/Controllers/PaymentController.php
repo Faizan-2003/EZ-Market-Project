@@ -13,10 +13,7 @@ class PaymentController
 
     public function displayPaymentPage(): void
     {
-//        if ($_SESSION['countShoppingCartItems'] === 0 or !isset($_POST["buttonCheckOut"])) {
-//            header("Location: /homepage/shoppingCart");
-//            exit(); // preventing to open this page when nothing is there in cart
-//        } else {
+        session_start();
             require __DIR__ . '/../Views/PaymentPage/PaymentHeader.php';
             $this->checkOutShoppingCart();
             require __DIR__ . '/../Views/Footer.php';

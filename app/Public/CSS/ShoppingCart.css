@@ -10,7 +10,7 @@ nav.custom-navbar {
 }
 
 .badge:after {
-    content: attr(value);
+    content: attr(data-value);
     font-size: 14px;
     color: #fff;
     background: black;
@@ -21,8 +21,8 @@ nav.custom-navbar {
     top: -10px;
     opacity: 0.9;
     font-weight: bold;
-
 }
+
 .selected i {
     color: #000080 !important;
 }

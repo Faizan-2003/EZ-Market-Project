@@ -35,7 +35,7 @@
             <ul class="navbar-nav">
                 <li class="nav-item">
                     <a class="nav-link mx-2" href="/homepage/shoppingCart">
-                        <i class="fa badge fa-lg" style="font-size:1.5em">&#xf07a;</i> <!-- value="<?= $_SESSION['countShoppingCartItems'] ?>" -->
+                        <i class="fa badge fa-lg" style="font-size:1.5em" data-value="<?= isset($_SESSION['cartItems']) ? count($_SESSION['cartItems']) : 0; ?>">&#xf07a;</i>
                     </a>
                 </li>
                 <li class="nav-item">

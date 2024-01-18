@@ -14,11 +14,15 @@ class HomepageController{
 
     public function displayHomePage()
     {
+        session_start();
+
+
         $ads = $this->adService->getAllAvailableAds();
 
         $this->loginAndSignout();
         $this->renderHomepageView($ads);
     }
+
 
     private function loginAndSignout(): void
     {
@@ -33,7 +37,6 @@ class HomepageController{
 
     private function renderHomepageView($ads): void
     {
-        // You can now include the view files after processing the data
         require __DIR__ . "/../Views/Homepage/Homepage.php";
         $this->showAvailableAds($ads);
         require __DIR__ . '/../Views/Footer.php';

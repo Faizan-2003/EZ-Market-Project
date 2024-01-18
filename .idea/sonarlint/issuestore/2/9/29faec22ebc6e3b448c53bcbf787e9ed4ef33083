@@ -2,7 +2,8 @@
 fphp:S103"KSplit this 130 characters long line (which is greater than 120 authorized).(ÒšºÅ8Ô‹·ÂÑ1
 kphp:S103"KSplit this 214 characters long line (which is greater than 120 authorized).(Î£âÿÿÿÿÿ8õ›ÅÂÑ1
 kphp:S103"KSplit this 132 characters long line (which is greater than 120 authorized).(··şÿüÿÿÿÿ8õ›ÅÂÑ1
-fphp:S103+"KSplit this 153 characters long line (which is greater than 120 authorized).(¸¨·™8ö›ÅÂÑ1
+kphp:S103&"KSplit this 173 characters long line (which is greater than 120 authorized).(Êû±şÿÿÿÿ8ÜÜ¤èÑ1
+fphp:S103*"KSplit this 153 characters long line (which is greater than 120 authorized).(¸¨·™8ö›ÅÂÑ1
 :php:S113"'Add a new line at the end of this file.8Ö‹·ÂÑ1
 G	php:S2003
 "&Replace "include" with "include_once".(øÑğ¶ûÿÿÿÿ8ö›ÅÂÑ1

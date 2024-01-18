@@ -23,6 +23,7 @@ class MyAdsController
 
     public function displayMyAdsPage(): void
     {
+        session_start();
         $displayMessage = $this->displayInfo();
 
         // Check if the logged-in user exists

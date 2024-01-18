@@ -19,6 +19,8 @@ class MyPurchasesController
 
     public function displayMyPurchasesPage(): void
     {
+        session_start();
+
         $displayMessage = $this->displayInfo();
 
         // Check if the logged-in user exists
