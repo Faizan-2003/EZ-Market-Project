@@ -35,8 +35,10 @@ class AdService
 
     public function getAdsByLoggedUser(User $loggedUser): array
     {
-        return $this->adRepository->getAdsByLoggedUser($loggedUser);
+        $ads = $this->adRepository->getAdsByLoggedUser($loggedUser);
+        return $ads ?: []; // Return an empty array if $ads is null
     }
+
 
     public function postNewAd(Ad $ad): bool
     {

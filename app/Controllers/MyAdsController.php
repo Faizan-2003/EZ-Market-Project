@@ -14,14 +14,17 @@ class MyAdsController
     {
         $adRepository = new AdRepository();
         $this->adService = new AdService($adRepository);
-        $this->loggedUserAds = null; // Initialize the property
+
+        // Initialize the property before using it
+        $this->loggedUserAds = null;
+
         $this->loggedUser = getLoggedUser();
         if (!is_null($this->loggedUser)) {
             $this->loggedUserAds = $this->adService->getAdsByLoggedUser($this->loggedUser);
-            //var_dump($this->loggedUserAds);
         }
         // var_dump($this->loggedUser);  // Check if it's retrieving the user
     }
+
 
     public function displayMyAdsPage(): void
     {
@@ -77,14 +80,17 @@ class MyAdsController
     {
         if (!is_null($this->loggedUser)) {
             require __DIR__ . '/../Views/MyAdsPage/EditAd.php';
-            if (!is_null($this->adService->getAdsByLoggedUser($this->loggedUser))) {
-                $loggedUserAds = $this->adService->getAdsByLoggedUser($this->loggedUser);
+
+            $loggedUserAds = $this->adService->getAdsByLoggedUser($this->loggedUser);
+
+            if (!empty($loggedUserAds)) {
                 require __DIR__ . '/../Views/MyAdsPage/MyAdsDiv.php';
             } else {
                 require __DIR__ . '/../Views/MyAdsPage/NoAdsFound.html';
             }
         }
     }
+
 
 }
 ?>
