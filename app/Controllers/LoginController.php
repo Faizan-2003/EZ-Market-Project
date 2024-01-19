@@ -10,8 +10,10 @@ class LoginController
     {
         $this->userService = $userService;
     }
+
     public function displayLoginPage(): void
     {
+        session_start(); // Start the session
         if (is_null(getLoggedUser())) {
             require __DIR__ . "/../Views/LoginPage/Login.php";
             require __DIR__ . '/../Views/LoginPage/LoginError.php';
@@ -39,3 +41,4 @@ class LoginController
         }
     }
 }
+?>

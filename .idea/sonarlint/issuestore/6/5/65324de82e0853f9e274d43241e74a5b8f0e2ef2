@@ -3,10 +3,14 @@ fphp:S103"KSplit this 130 characters long line (which is greater than 120 au
 kphp:S103"KSplit this 214 characters long line (which is greater than 120 authorized).(Î£âÿÿÿÿÿ8·¶ı˜Ñ1
 kphp:S103"KSplit this 202 characters long line (which is greater than 120 authorized).(‰Ìéüÿÿÿÿ8·¶ı˜Ñ1
 kphp:S103("KSplit this 173 characters long line (which is greater than 120 authorized).(Êû±şÿÿÿÿ8¸ã£èÑ1
-fphp:S103,"KSplit this 153 characters long line (which is greater than 120 authorized).(¸¨·™8·¶ı˜Ñ1
-fphp:S1039"KSplit this 134 characters long line (which is greater than 120 authorized).(”¦æİ8¼è›Ñ1
-fphp:S103R"KSplit this 123 characters long line (which is greater than 120 authorized).(òğ—8’­ş™Ñ1
-fphp:S103Y"KSplit this 123 characters long line (which is greater than 120 authorized).(ÑëØ¶8’­ş™Ñ1
-fphp:S103_"KSplit this 130 characters long line (which is greater than 120 authorized).(ÿ ×“8’­ş™Ñ1
+fphp:S103+"KSplit this 159 characters long line (which is greater than 120 authorized).(Ô£á¦8ÅùùšÒ1
+ephp:S103."KSplit this 162 characters long line (which is greater than 120 authorized).(·²‘e8ÅùùšÒ1
+fphp:S103;"KSplit this 134 characters long line (which is greater than 120 authorized).(”¦æİ8ÅùùšÒ1
+fphp:S103P"KSplit this 123 characters long line (which is greater than 120 authorized).(òğ—8ÎÑò“Ò1
+fphp:S103W"KSplit this 123 characters long line (which is greater than 120 authorized).(ÑëØ¶8Íñ§—Ò1
+kphp:S103["KSplit this 233 characters long line (which is greater than 120 authorized).(àø™ãÿÿÿÿÿ8Íñ§—Ò1
+kphp:S103_"KSplit this 123 characters long line (which is greater than 120 authorized).(¤ÁÕÀûÿÿÿÿ8Íñ§—Ò1
+fphp:S103c"KSplit this 211 characters long line (which is greater than 120 authorized).(±à¥ü8Íñ§—Ò1
+fphp:S103h"KSplit this 130 characters long line (which is greater than 120 authorized).(ÿ ×“8Íñ§—Ò1
 B	php:S2003"&Replace "include" with "include_once".(ùûÆÇ8¸¶ı˜Ñ1
 h	php:S4833"LReplace "include" with namespace import mechanism through the "use" keyword.(ùûÆÇ8¸¶ı˜Ñ1

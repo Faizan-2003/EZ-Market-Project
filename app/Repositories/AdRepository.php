@@ -42,7 +42,7 @@ class AdRepository extends Repository
     {
         try {
 
-            $stmt = $this->connection->prepare("SELECT id,productName,productDescription,productPrice,postedDate,productImageURI,productStatus,userID From Ads WHERE id= :adId");
+            $stmt = $this->connection->prepare("SELECT id,productName,productDescription,productPrice,postedDate,productImageURI,productStatus,userID,buyerID From Ads WHERE id= :adId");
             $stmt->bindValue(":adId", $adId);
             $stmt->execute();
             $row = $stmt->fetch();
@@ -58,9 +58,10 @@ class AdRepository extends Repository
     public function getAdsByLoggedUser($loggedUser)
     {
         try {
-            $stmt = $this->connection->prepare("SELECT id,productName,productDescription,productPrice,postedDate,productImageURI,productStatus,userID From Ads WHERE UserID= :userID ORDER BY postedDate DESC"); // latest post
-            $id = $loggedUser->getId();
+            $stmt = $this->connection->prepare("SELECT id, productName, productDescription, productPrice, postedDate, productImageURI, productStatus, userID, buyerID FROM Ads WHERE UserID = :userID ORDER BY postedDate DESC");
+            $id = $loggedUser->userID; // Update this line to reflect the actual property name
             $stmt->bindParam(":userID", $id);
+
             if ($this->checkAdinDB($stmt)) {
                 $stmt->execute();
                 $result = $stmt->fetchAll();

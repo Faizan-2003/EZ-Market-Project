@@ -15,6 +15,8 @@ class MyPurchasesController
         $adRepository = new AdRepository();
         $this->adService = new AdService($adRepository);
         $this->loggedUser = getLoggedUser();  // Use the function directly
+
+        var_dump($this->loggedUser);  // Check if it's retrieving the user
     }
 
     public function displayMyPurchasesPage(): void
@@ -25,7 +27,7 @@ class MyPurchasesController
 
         // Check if the logged-in user exists
         if (!is_null($this->loggedUser)) {
-            $purchasedAds = $this->adService->getPurchasedAds($this->loggedUser);
+           // $purchasedAds = $this->adService->getPurchasedAds($this->loggedUser);
         } else {
             $purchasedAds = null;
         }
@@ -40,8 +42,7 @@ class MyPurchasesController
         if (is_null($this->loggedUser)) {
             $displayMessage = "Please Log in to the system to see your purchased products😊.";
         } else {
-            $greet = $this->loggedUser ? "Welcome " . $this->loggedUser->getFirstName() : "";
-            $displayMessage = $greet . ", " . $this->loggedUser->getFirstName();
+            $displayMessage = $this->loggedUser ? "Welcome, " . $this->loggedUser->getFirstName() : "";
         }
         return $displayMessage;
     }
@@ -50,7 +51,6 @@ class MyPurchasesController
     {
         if (!is_null($this->loggedUser)) {
             echo '<script>            
-           // disableLoginButton();
             showPostNewAd();
             </script>';
         } else {
@@ -73,7 +73,6 @@ class MyPurchasesController
         if (isset($_POST["btnlogin"])) {
             logOutFromApp();
             echo '<script>
-          enableLogin();
           hidePostNewAd();
           loginMessageForSignOut();
           clearScreen();

@@ -3,36 +3,30 @@ require __DIR__ . "/../Models/User.php";
 require __DIR__ . "/../Models/Ad.php";
 require __DIR__ . "/../Services/AdService.php";
 require __DIR__ . "/../Logic/LoggingInAndOut.php";
-
 class MyAdsController
 {
 
     private AdService $adService;
     private ?User $loggedUser;
+    private ?array $loggedUserAds; // Declare the property explicitly
 
     public function __construct()
     {
         $adRepository = new AdRepository();
         $this->adService = new AdService($adRepository);
-        $this->loggedUser = getLoggedUser();  // Use the function directly
-
-       // var_dump($this->loggedUser);  // Check if it's retrieving the user
+        $this->loggedUserAds = null; // Initialize the property
+        $this->loggedUser = getLoggedUser();
+        if (!is_null($this->loggedUser)) {
+            $this->loggedUserAds = $this->adService->getAdsByLoggedUser($this->loggedUser);
+            //var_dump($this->loggedUserAds);
+        }
+        // var_dump($this->loggedUser);  // Check if it's retrieving the user
     }
-
-
 
     public function displayMyAdsPage(): void
     {
-        session_start();
         $displayMessage = $this->displayInfo();
-
-        // Check if the logged-in user exists
-        if (!is_null($this->loggedUser)) {
-            $loggedUserAds = $this->adService->getAdsByLoggedUser($this->loggedUser);
-        } else {
-            $loggedUserAds = null;
-        }
-
+        $this->showAds();
         require __DIR__ . '/../Views/MyAdsPage/MyAds.php';
         require __DIR__ . '/../Views/Footer.php';
         $this->loginAndSignout();
@@ -43,19 +37,15 @@ class MyAdsController
         if (is_null($this->loggedUser)) {
             $displayMessage = "Please Log in to the system to see your ADs or to post new ADs😊.";
         } else {
-            // Use a ternary operator to check if $this->loggedUser is not null
-            $greet = $this->loggedUser ? "Welcome " . $this->loggedUser->getFirstName() : "";
-            $displayMessage = $greet . ", " . $this->loggedUser->getFirstName();
+            $displayMessage = $this->loggedUser ? "Welcome, " . $this->loggedUser->getFirstName() : "";
         }
         return $displayMessage;
     }
-
 
     private function loginAndSignout(): void
     {
         if (!is_null($this->loggedUser)) {
             echo '<script>            
-           // disableLoginButton();
             showPostNewAd();
             </script>';
         } else {
@@ -64,10 +54,9 @@ class MyAdsController
             </script>';
         }
 
-        // Check if the user is logged in and update the button accordingly
         if (!is_null($this->loggedUser)) {
             echo '<script>
-            p.innerHTML = "Log Out";           
+          //  p.innerHTML = "Log Out";           
             </script>';
         } else {
             echo '<script>
@@ -75,15 +64,27 @@ class MyAdsController
             </script>';
         }
 
-        if (isset($_POST["btnlogin"])) {
+        if (isset($_POST["btnLogin"])) {
             logOutFromApp();
             echo '<script>
-          enableLogin();
           hidePostNewAd();
           loginMessageForSignOut();
           clearScreen();
             </script>';
         }
     }
+    private function showAds(): void
+    {
+        if (!is_null($this->loggedUser)) {
+            require __DIR__ . '/../Views/MyAdsPage/EditAd.php';
+            if (!is_null($this->adService->getAdsByLoggedUser($this->loggedUser))) {
+                $loggedUserAds = $this->adService->getAdsByLoggedUser($this->loggedUser);
+                require __DIR__ . '/../Views/MyAdsPage/MyAdsDiv.php';
+            } else {
+                require __DIR__ . '/../Views/MyAdsPage/NoAdsFound.html';
+            }
+        }
+    }
+
 }
 ?>

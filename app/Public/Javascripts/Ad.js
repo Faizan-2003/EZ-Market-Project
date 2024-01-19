@@ -1,32 +1,6 @@
-function disableLoginButton() {
-    const loginLink = document.getElementById("loginLink");
-    const p = document.createElement("p");
-    p.className = "dropdown-item";
-    p.innerHTML = "Logged";
-    const loginLinkId = loginLink.getAttribute("id");
-
-    // Set the id of the p element to be the same as the loginLink element
-    p.setAttribute("id", loginLinkId);
-    loginLink.parentNode.replaceChild(p, loginLink);
-    document.getElementById("logOut").disabled = false;
-}
-
-function enableLogin() {
-    document.getElementById("logOut").disabled = true;
-    const p = document.getElementById("loginLink");
-    const a = document.createElement("a");
-    a.className = "dropdown-item";
-    a.innerHTML = "Log In";
-    a.href = "/homepage/login"; // Redirect to the login page
-    const loginLinkId = p.getAttribute("id");
-    a.setAttribute("id", loginLinkId);
-    p.parentNode.replaceChild(a, p);
-}
-
-
-function resetPostNewAddForm() {
-    // Reset form elements
-    document.querySelector('#postNewAddForm').reset();
+function resetPostNewAdForm() {
+    // Assuming your form has an id "postNewAdForm"
+    document.getElementById("postNewAdForm").reset();
 }
 
 function hidePostNewAd() {
@@ -45,6 +19,9 @@ function showPostNewAd() {
 }
 
 function postNewAdd() {
+    console.log('postNewAdd function called');
+
+
     const inputLoggedUserId = escapeHtml(document.getElementById("hiddenLoggedUserId").value);
     const inputLoggedUserName = escapeHtml(document.getElementById("loggedUserName").value);
     const inputProductName = escapeHtml(document.getElementById("productName").value);
@@ -56,16 +33,23 @@ function postNewAdd() {
     if (!validateForm(inputProductName, inputPrice, inputProductDescription, imageInput)) {
         return;
     }
+
     const data = {
         productName: inputProductName,
-        price: inputPrice,
+        productPrice: inputPrice,
         productDescription: inputProductDescription,
         loggedUserId: inputLoggedUserId,
         loggedUserName: inputLoggedUserName
     };
+
     let formData = new FormData();
     formData.append("image", imageInput);
-    formData.append("adDetails", JSON.stringify(data));
+
+    // Append other form data as well
+    for (let key in data) {
+        formData.append(key, data[key]);
+    }
+
     sendRequestForInsertingAd(formData);
 }
 
@@ -83,7 +67,7 @@ function sendRequestForInsertingAd(formData) {
         .then(function (responseData) {
             if (responseData.success) {
                 document.getElementById("close").click();
-                resetPostNewAddForm();  // clearing the fields of the form
+                resetPostNewAdForm();  // clearing the fields of the form
                 loadAdsOfLoggedUser();
             } else {
                 alert(responseData.message);
@@ -109,13 +93,13 @@ function createHorizontalAdCard(ad) {
 
     // Create the image element
     let image = document.createElement("img");
-    image.src = ad.productImageURI;
+    image.src = ad.productIamageURI;
     image.classList.add("img-fluid", "rounded-start");
     imageCol.appendChild(image);
 
     // Create the details column element
     let detailsCol = document.createElement("div");
-    detailsCol.classList.add("col-md-8", "col-xl-8", "d-flex", "flex-column", "justify-content-around");
+    detailsCol.classList.add("col-md-8", "col-xl-8", "d-flex", "flex-column", "justify-content-around", "align-items-center", "h-100");
     row.appendChild(detailsCol);
 
     // Create the details body element
@@ -149,7 +133,7 @@ function createHorizontalAdCard(ad) {
     // Create the status list item element
     let statusListItem = document.createElement("li");
     statusListItem.classList.add("list-group-item");
-    statusListItem.innerHTML = '<strong>Status:</strong> ' + ad.status;
+    statusListItem.innerHTML = '<strong>Status:</strong> ' + ad.productStatus;
     listGroup.appendChild(statusListItem);
 
     // Create the posted date list item element
@@ -166,7 +150,9 @@ function createHorizontalAdCard(ad) {
     return [card, buttonContainer];
 }
 function loadAdsOfLoggedUser() {
+
     const inputLoggedUserId = escapeHtml(document.getElementById("hiddenLoggedUserId").value);
+    console.log('Logged User ID:', inputLoggedUserId);
     let data = { loggedUserId: inputLoggedUserId }
     // Send a POST request to the server with logged user and promising the ads as response of logged user
     fetch('http://localhost/api/adsbyloggeduser', {
@@ -177,6 +163,7 @@ function loadAdsOfLoggedUser() {
         }
     }).then(response => response.json())
         .then(ads => {
+            console.log('Ads:', ads);
             clearScreen();// clearing screen
             // Handling the ads data here
             ads.forEach(function (ad) {
@@ -186,7 +173,8 @@ function loadAdsOfLoggedUser() {
                     displayOtherStatusAds(ad);
                 }
             })
-        }).catch(err => console.error(err));
+        })
+        .catch(err => console.error(err));
 }
 
 function validateForm(productName, price, description, image) {
@@ -308,7 +296,7 @@ function displayAvailableAds(ad) {
     editButton.setAttribute('data-bs-target', '#editModal');
     editButton.addEventListener('click', () => {
         editAdButtonClicked(
-            ad.id, ad.imageUri, ad.productName, ad.description, ad.price,
+            ad.id, ad.productImageURI, ad.productName, ad.productDescription, ad.productPrice,
         );
     });
     const icon = document.createElement('i');
@@ -418,24 +406,30 @@ async function editAdModalSaveChangeButtonClicked() {
     let adDescription = escapeHtml(document.getElementById("AdEditDescription").value);
     let inputImageElement = document.getElementById("AdEditImageInput");
     let inputImage = inputImageElement.files[0];
+
     if (!inputImage) {
         inputImage = await getImageFileUsingPath();
     }
-    if (!validateForm(adProductName, adProductPrice, adDescription, inputImage)) {
-        return;
+
+    try {
+        // Wrap the edit request in a try-catch block
+        const data = {
+            productName: adProductName,
+            price: adProductPrice,
+            productDescription: adDescription,
+            adId: adId,
+        };
+
+        let formData = new FormData();
+        formData.append("inputImage", inputImage);
+        formData.append("editedAdDetails", JSON.stringify(data));
+
+        await sendEditRequestToAPI(formData);
+        document.getElementById("buttonCloseEditModal").click();
+        loadAdsOfLoggedUser();
+    } catch (error) {
+        alert(error.message);
     }
-
-    const data = {
-        productName: adProductName,
-        price: adProductPrice,
-        productDescription: adDescription,
-        adId: adId,
-    };
-    let formData = new FormData();
-    formData.append("inputImage", inputImage);
-    formData.append("editedAdDetails", JSON.stringify(data))
-    sendEditRequestToAPI(formData);
-
 }
 
 function sendEditRequestToAPI(formData) {

@@ -104,3 +104,5 @@ K
 app/Public/CSS/Register.css,0\5\05d33c98cc7c06f7dbc15756e918c7a28373abc8
 \
 ,app/Views/MyPurchasesPage/DivMyPurchases.php,e\9\e9ba2cb8984cc5f7ccfe12f3f6287874baa5bd93
+P
+ app/Views/MyAdsPage/MyAdsDiv.php,c\f\cf91ea604351550e2b926baa8a71cb33c1b9f443

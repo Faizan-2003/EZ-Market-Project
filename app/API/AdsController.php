@@ -15,6 +15,7 @@ class AdsController
     public function postNewAdRequest(): void
     {
         $this->sendHeaders();
+        $responseData = array();
 
         if ($_SERVER["REQUEST_METHOD"] == "POST") {
             $adDetails = json_decode($_POST['adDetails'], true);
@@ -35,6 +36,7 @@ class AdsController
             echo json_encode($responseData);
         }
     }
+
 
     public function handleSearchRequest(): void
     {
@@ -103,13 +105,14 @@ class AdsController
         if ($_SERVER["REQUEST_METHOD"] == "POST") {
             $body = file_get_contents('php://input');
             $data = json_decode($body);
-            $loggedUserId = htmlspecialchars($data->loggedUserId);
+            $loggedUserId = (int)$data->loggedUserId; // Cast to integer
             $user = new User();
             $user->setId($loggedUserId);
-            $ads = $this->adService->getAdsByLoggedUser($user); //already had method so just making user object and setting id only
+            $ads = $this->adService->getAdsByLoggedUser($user);
             echo json_encode($ads);
         }
     }
+
 
     private function createAd($name, $price, $description, $imageURI, $userID): Ad
     {
@@ -175,6 +178,7 @@ class AdsController
         header("Cache-Control: no-store, no-cache, must-revalidate");
         header('Content-Type: application/json');
     }
+
     private function sanitizeInput($input)
     {
         return htmlspecialchars($input, ENT_QUOTES, 'UTF-8');

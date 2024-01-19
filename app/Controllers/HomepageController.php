@@ -14,9 +14,6 @@ class HomepageController{
 
     public function displayHomePage()
     {
-        session_start();
-
-
         $ads = $this->adService->getAllAvailableAds();
 
         $this->loginAndSignout();

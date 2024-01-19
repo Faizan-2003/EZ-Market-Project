@@ -39,9 +39,11 @@
                     <a class="nav-link mx-2" href="/homepage/shoppingCart">
                         <i class="fa badge fa-lg" style="font-size:1.5em" data-value="<?= isset($_SESSION['cartItems']) ? count($_SESSION['cartItems']) : 0; ?>">&#xf07a;</i>
                     </a>
+                <li class="nav-item">
+                    <a class="nav-link mx-2 login" href="/homepage/login" style="border: 1px solid #000080; padding: 10px 15px; border-radius: 5px;">Log In</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link mx-2" href="/homepage/login" style="border: 1px solid #000080; padding: 10px 15px; border-radius: 5px;">Log In</a>
+                    <a class="nav-link mx-2 logout"  href="/homepage/login" style="border: 1px solid #000080; padding: 10px 15px; border-radius: 5px;">Log Out</a>
                 </li>
             </ul>
         </div>
@@ -59,10 +61,6 @@
             </button>
         </div>
     </div>
-
-
-
-
 </div>
 
 <div>
@@ -88,7 +86,18 @@
                         <label for="productName"><strong>Product Name</strong></label>
                         <input type="text" class="form-control" id="productName" placeholder="Enter product name" required>
                     </div>
-                    <!-- Rest of your form fields -->
+                    <div class="form-group">
+                        <label for="image"><strong>Image</strong></label><br>
+                        <input type="file" class="form-control-file" id="image" accept="image/png, image/jpeg,image/jpg" ondragover="allowDrop(event)" ondrop="dropFile(event)" required style="   .dragover {border: 2px dashed #000;}">
+                    </div>
+                    <div class="form-group">
+                        <label for="price"><strong>Price</strong></label>
+                        <input type="number" class="form-control" id="price" placeholder="Set Your Product Price" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="productDescription"><strong>Product Description</strong></label>
+                        <textarea class="form-control" id="productDescription" rows="3" placeholder="Describe about your product like how long it is used for,what's the brand of the product" required></textarea>
+                    </div>
                 </div>
                 <!-- Modal footer -->
                 <div class="modal-footer">
@@ -101,3 +110,4 @@
         </div>
     </div>
 </div>
+

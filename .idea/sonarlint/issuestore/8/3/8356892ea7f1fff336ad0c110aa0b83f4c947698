@@ -1,3 +1,5 @@
 
+lphp:S116"QRename this field "$BuyerID" to match the regular expression ^[a-z][a-zA-Z0-9]*$.(±éÈ 8†©Œò“1
+H	php:S1068",Remove this unused "$BuyerID" private field.(±éÈ 8†©Œò“1
 m	php:S4833"QReplace "require_once" with namespace import mechanism through the "use" keyword.(‘≤¶Í8ÿÌ‰Î—1
 m	php:S4833"QReplace "require_once" with namespace import mechanism through the "use" keyword.(°¶Ô§8ŸÌ‰Î—1
