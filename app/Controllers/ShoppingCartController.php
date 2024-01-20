@@ -16,9 +16,7 @@ class ShoppingCartController
     {
         $adRepository = new AdRepository();
         $this->adService = new AdService($adRepository);
-        $this->loggedUser = getLoggedUser();  // Use the function directly
-
-        //    var_dump($this->loggedUser);  // Check if it's retrieving the user
+        $this->loggedUser = getLoggedUser();
     }
     public function displayShoppingCartPage(): void
     {
