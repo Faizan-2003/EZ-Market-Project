@@ -38,7 +38,11 @@ class AdService
         $ads = $this->adRepository->getAdsByLoggedUser($loggedUser);
         return $ads ?: []; // Return an empty array if $ads is null
     }
-
+    public function getPurchasesByLoggedInUser(User $loggedUser): array
+    {
+        $ads = $this->adRepository->getPurchasesByLoggedInUser($loggedUser);
+        return $ads ?: [];
+    }
 
     public function postNewAd(Ad $ad): bool
     {
@@ -69,4 +73,26 @@ class AdService
     {
         $this->adRepository->editAd($newImage, $productName, $description, $price, $adID);
     }
+    // In AdService class
+    public function processPurchaseBuyer(User $loggedInUser, $total): array
+    {
+        $adIDs = []; // Initialize an array to store the ad IDs
+
+        // Iterate over the items in the shopping cart
+        foreach (getItemsInShoppingCart() as $item) {
+            $adID = $item->getId();
+
+            // Update the ad status and set the buyerID
+            $this->adRepository->processPurchase($adID, $loggedInUser);
+
+            // Store the ad ID in the array
+            $adIDs[] = $adID;
+        }
+
+        // Additional logic related to the purchase, if needed
+
+        return $adIDs; // Return the array of ad IDs
+    }
+
+
 }

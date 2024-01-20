@@ -1,7 +1,9 @@
 
 kphp:S103!"KSplit this 129 characters long line (which is greater than 120 authorized).(à°İ¬ÿÿÿÿÿ8ˆÿ¨›Ò1
-]	php:S1784‘"@Explicitly mention the visibility of this method "processImage".(ñ ÚÊ8Ş¹§Ñ1
-I	php:S1144u"-Remove this unused private "createad" method.(º‹ÛÓ8ˆÿ¨›Ò1
+]	php:S1784ª"@Explicitly mention the visibility of this method "processImage".(ñ ÚÊ8Ş¹§Ñ1
+J	php:S1144"-Remove this unused private "createad" method.(º‹ÛÓ8ˆÿ¨›Ò1
+h	php:S1192T"LDefine a constant instead of duplicating this literal "php://input" 3 times.(Öõõã8ş†Õ¦Ò1
+T	php:S1172s"3Remove the unused function parameter "$loggedUser".(§»Çöúÿÿÿÿ8¡’„§Ò1
 G	php:S2003"&Replace "require" with "require_once".(‹Ğùÿÿÿÿ8Ş¹§Ñ1
 X	php:S1793\"<Replace this "else if" keyword sequence by "elseif" keyword.(Ø‘ É8Ş¹§Ñ1
 m	php:S4833"LReplace "require" with namespace import mechanism through the "use" keyword.(‹Ğùÿÿÿÿ8Ş¹§Ñ1

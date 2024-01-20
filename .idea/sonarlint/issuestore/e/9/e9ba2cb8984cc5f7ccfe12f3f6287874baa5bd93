@@ -1,7 +1,4 @@
 
-SWeb:ImgWithoutAltCheck"%Add an "alt" attribute to this image.(öß¨¬ûÿÿÿÿ8ä–£ÃÑ1
-UWeb:AvoidCommentedOutCodeCheck"Remove this commented out code.(¤ ®Öúÿÿÿÿ8úñ¦ÃÑ1
-fphp:S103"KSplit this 138 characters long line (which is greater than 120 authorized).(ˆ˜¡º8‹—£ÃÑ1
-kphp:S103"KSplit this 135 characters long line (which is greater than 120 authorized).(ó£ú¬ùÿÿÿÿ8‹—£ÃÑ1
-kphp:S103"KSplit this 128 characters long line (which is greater than 120 authorized).(¤ ®Öúÿÿÿÿ8²–§ÃÑ1
-fphp:S103"KSplit this 203 characters long line (which is greater than 120 authorized).(¦Ê€¶8Œ—£ÃÑ1
+kphp:S103"KSplit this 137 characters long line (which is greater than 120 authorized).(´©àÆøÿÿÿÿ8áòŽ¥Ò1
+fphp:S103"KSplit this 122 characters long line (which is greater than 120 authorized).(ÄÅ¢’8áòŽ¥Ò1
+:php:S113"'Add a new line at the end of this file.8áòŽ¥Ò1

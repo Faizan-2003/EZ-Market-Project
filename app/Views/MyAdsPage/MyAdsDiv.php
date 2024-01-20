@@ -1,6 +1,5 @@
-<div class="container ml-2" id="myAdsContainer">
+<div class="container ml-2 " id="myAdsContainer">
     <?php
-    //$loggedUserAds = $this->loggedUserAds;
     if (!empty($loggedUserAds))
     {
         foreach ($loggedUserAds as $ad) {

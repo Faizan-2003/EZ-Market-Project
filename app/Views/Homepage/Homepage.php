@@ -7,9 +7,11 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Homepage - EZ Market</title>
     <link rel="icon" type="image/x-icon" href="/images/favicon.svg">
-    <style> <?php include __DIR__ . '/../../public/CSS/ShoppingCart.css'; ?> </style>
+    <style> <?php include __DIR__ . '/../../public/CSS/WebsiteStyle.css'; ?> </style>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
     <script src="https://kit.fontawesome.com/22097c36aa.js" crossorigin="anonymous"></script>
+    <script src="/../../Javascripts/Ad.js"></script>
+
 </head>
 
 <body class="d-flex flex-column h-100">
@@ -47,7 +49,7 @@
 </nav>
 <div class="container-fluid" id="searchBar">
     <div class="container py-3 mx-auto">
-        <input class="form-control" type="search" placeholder="Search for products" aria-label="Search" style="border-color: black" oninput="onInputValueChangeForSearch(this)">
+        <input class="form-control" type="search" placeholder="Search for your favourite products at EZ Market..." aria-label="Search" oninput="onInputValueChangeForSearch(this)">
     </div>
 </div>
 

@@ -79,6 +79,28 @@ class AdRepository extends Repository
             exit();
         }
     }
+    public function getPurchasesByLoggedInUser($loggedUser)
+    {
+        try {
+            $stmt = $this->connection->prepare("SELECT id, productName, productDescription, productPrice, postedDate, productImageURI, productStatus, userID, buyerID FROM Ads WHERE buyerID = :userID ORDER BY postedDate DESC");
+            $id = $loggedUser->userID; // Update this line to reflect the actual property name
+            $stmt->bindParam(":userID", $id);
+
+            if ($this->checkAdinDB($stmt)) {
+                $stmt->execute();
+                $result = $stmt->fetchAll();
+                $ads = array();
+                foreach ($result as $row) {
+                    $ads[] = $this->makeAnAd($row);
+                }
+                return $ads;
+            }
+            return null;
+        } catch (PDOException $e) {
+            // Handle the exception
+            trigger_error("An error occurred: " . $e->getMessage(), E_USER_ERROR);
+        }
+    }
 
     public function updateStatusOfAd($status, $adID)
     {
@@ -218,29 +240,30 @@ class AdRepository extends Repository
             trigger_error("An error occurred: " . $e->getMessage(), E_USER_ERROR);
         }
     }
-    public function searchAdsByProductName($productName)
+    public function searchAdsByProductName($productName): void
     {
         try {
-            $stmt = $this->connection->prepare("SELECT id, productName, description, postedDate, price, imageURI, userID, status FROM Ads WHERE `productName` LIKE :productName AND status = :status");
+            $stmt = $this->connection->prepare("SELECT id, productName, productDescription, productPrice, postedDate, productImageURI, productStatus, userID, buyerID FROM Ads WHERE `productName` LIKE :productName AND productStatus = :status");
             $stmt->bindValue(":productName", '%' . $productName . '%');
             $stmt->bindValue(":status", Status::Available->label());
             $stmt->execute();
+
             $result = $stmt->fetchAll();
             $ads = array();
+
             foreach ($result as $row) {
                 $ads[] = $this->MakeAnAD($row);
             }
-            echo json_encode($ads);
+
+            echo json_encode(['ads' => $ads]);
         } catch (PDOException | Exception $e) {
-            $errorResponse = [
-                'error' => true,
-                'message' => 'An error occurred: ' . $e->getMessage(),
-            ];
-            echo json_encode($errorResponse);
+            // Log the error using your existing ErrorLog class or mechanism
+            $this->errorLog->logError('An error occurred: ' . $e->getMessage());
+
+            // Return a generic error message
+            echo json_encode(['error' => true, 'message' => 'An error occurred.']);
         }
     }
-
-
 
     private function editImageFile(string $dbStoredImageName, array $newImage)
     {
@@ -266,4 +289,26 @@ class AdRepository extends Repository
             trigger_error("An error occurred: " . $e->getMessage(), E_USER_ERROR);
         }
     }
+    // In AdRepository class
+    // In AdRepository class
+    public function processPurchase($adID, $loggedInUser): bool
+    {
+        try {
+            // Check if the user is logged in
+            $buyerID = (!is_null($loggedInUser)) ? $loggedInUser->getId() : null;
+
+            $stmt = $this->connection->prepare("UPDATE Ads SET buyerID = :buyerID, productStatus = :status WHERE id = :adID");
+            $stmt->bindValue(":buyerID", $buyerID, PDO::PARAM_INT);  // Assuming buyerID is an integer
+            $stmt->bindValue(":status", Status::Sold->label());  // Assuming "Sold" is the appropriate status
+            $stmt->bindValue(":adID", $adID, PDO::PARAM_INT);  // Assuming adID is an integer
+
+            return $stmt->execute();
+        } catch (PDOException $e) {
+            // Log or handle the exception
+            trigger_error("An error occurred: " . $e->getMessage(), E_USER_ERROR);
+            return false;
+        }
+    }
+
+
 }

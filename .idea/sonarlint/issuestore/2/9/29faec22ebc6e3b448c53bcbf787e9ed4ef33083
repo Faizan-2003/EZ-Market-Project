@@ -6,6 +6,6 @@ kphp:S103&"KSplit this 173 characters long line (which is greater than 120 au
 fphp:S103*"KSplit this 153 characters long line (which is greater than 120 authorized).(ธจท8๖ลยั1
 :php:S113"'Add a new line at the end of this file.8ึทยั1
 G	php:S2003
-"&Replace "include" with "include_once".(๘ั๐ถ๛ÿÿÿÿ8๖ลยั1
+"&Replace "include" with "include_once".( ุÜ๙ÿÿÿÿ8๖ลยั1
 m	php:S4833
-"LReplace "include" with namespace import mechanism through the "use" keyword.(๘ั๐ถ๛ÿÿÿÿ8๖ลยั1
+"LReplace "include" with namespace import mechanism through the "use" keyword.( ุÜ๙ÿÿÿÿ8๖ลยั1

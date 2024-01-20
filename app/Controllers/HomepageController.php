@@ -24,11 +24,11 @@ class HomepageController{
     private function loginAndSignout(): void
     {
         if (!is_null(getLoggedUser())) {
-            echo '<script>disableLoginButton();</script>';
+           // echo '<script>HideLogOutButton();</script>';
         }
         if (isset($_POST["btnSignOut"])) {
             logOutFromApp();
-            echo '<script>enableLogin()</script>';
+           // echo '<script>enableLogin()</script>';
         }
     }
 

@@ -8,7 +8,7 @@
     <title>My Shopping Cart - EZ Market</title>
     <link rel="icon" type="image/x-icon" href="/images/favicon.svg">
     <style>
-        <?php include __DIR__ . '/../../public/CSS/ShoppingCart.css'; ?>
+        <?php include __DIR__ . '/../../public/CSS/WebsiteStyle.css'; ?>
     </style>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
     <script src="https://kit.fontawesome.com/22097c36aa.js" crossorigin="anonymous"></script>

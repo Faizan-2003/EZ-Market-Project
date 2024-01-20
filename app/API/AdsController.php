@@ -112,6 +112,31 @@ class AdsController
             echo json_encode($ads);
         }
     }
+    public function sendPurchasedAdsByLoggedUser($loggedUser): void
+    {
+        $this->sendHeaders();
+
+        if ($_SERVER["REQUEST_METHOD"] == "POST") {
+            $body = file_get_contents('php://input');
+            $data = json_decode($body);
+            $loggedUserId = (int)$data->loggedUserId; // Cast to integer
+
+            // Fetch the logged user (you might need to adapt this based on your authentication system)
+            $user = new User();
+            $user->setId($loggedUserId);
+
+            // Get purchased ads for the logged user
+            $purchasedAds = $this->adService->getPurchasesByLoggedInUser($user);
+
+            if ($purchasedAds === false) {
+                // Log an error or handle it appropriately
+                error_log('Failed to fetch purchased ads.');
+                echo json_encode(['error' => 'Failed to fetch purchased ads.']);
+            } else {
+                echo json_encode($purchasedAds);
+            }
+        }
+    }
 
 
     private function createAd($name, $price, $description, $imageURI, $userID): Ad

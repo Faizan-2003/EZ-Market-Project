@@ -9,11 +9,16 @@ class ShoppingCartController
     private $total;
     private $vatAmount;
     const Vat_Rate = 0.21;
+    private ?User $loggedUser;
+
 
     public function __construct()
     {
         $adRepository = new AdRepository();
         $this->adService = new AdService($adRepository);
+        $this->loggedUser = getLoggedUser();  // Use the function directly
+
+        //    var_dump($this->loggedUser);  // Check if it's retrieving the user
     }
     public function displayShoppingCartPage(): void
     {

@@ -273,7 +273,87 @@ function displayOtherStatusAds(ad) {
     overlay.appendChild(status);
     myAdsContainer.appendChild(card);
 }
+function displayPurchasedAd(ad) {
+    console.log('Displaying purchased ad:', ad);
 
+    const myPurchaseContainer = document.getElementById("myPurchaseContainer");
+    let requireElements = createHorizontalPurchaseCard(ad);
+    let card = requireElements[0];
+    let buttonContainer = requireElements[1];
+
+    myPurchaseContainer.appendChild(card);
+}
+function createHorizontalPurchaseCard(ad) {
+    console.log('Displaying ad:', ad);
+
+    let card = document.createElement("div");
+    card.classList.add("card", "mb-3");
+    card.style.maxWidth = "900px";
+    card.style.position = "relative";
+
+    // Create the inner row element
+    let row = document.createElement("div");
+    row.classList.add("row", "g-0");
+    card.appendChild(row);
+
+    // Create the image column element
+    let imageCol = document.createElement("div");
+    imageCol.classList.add("col-md-4", "col-xl-4");
+    row.appendChild(imageCol);
+
+    // Create the image element
+    let image = document.createElement("img");
+    image.src = ad.productIamageURI;
+    image.classList.add("img-fluid", "rounded-start");
+    imageCol.appendChild(image);
+
+    // Create the details column element
+    let detailsCol = document.createElement("div");
+    detailsCol.classList.add("col-md-8", "col-xl-8", "d-flex", "flex-column", "justify-content-around", "align-items-center", "h-100");
+    row.appendChild(detailsCol);
+
+    // Create the details body element
+    let detailsBody = document.createElement("div");
+    detailsBody.classList.add("card-body");
+    detailsCol.appendChild(detailsBody);
+
+    // Create the product name element
+    let productName = document.createElement("h5");
+    productName.classList.add("card-title");
+    productName.textContent = ad.productName;
+    detailsBody.appendChild(productName);
+
+    // Create the product description element
+    let productDescription = document.createElement("p");
+    productDescription.classList.add("card-text");
+    productDescription.textContent = ad.productDescription;
+    detailsBody.appendChild(productDescription);
+
+    // Create the list group element
+    let listGroup = document.createElement("ul");
+    listGroup.classList.add("list-group", "list-group-flush");
+    detailsBody.appendChild(listGroup);
+
+    // Create the price list item element
+    let priceListItem = document.createElement("li");
+    priceListItem.classList.add("list-group-item");
+    priceListItem.innerHTML = '<strong>Price:</strong> €' + formatPricesInDecimal(ad.productPrice);
+    listGroup.appendChild(priceListItem);
+
+    // Create the status list item element
+    let statusListItem = document.createElement("li");
+    statusListItem.classList.add("list-group-item");
+    statusListItem.innerHTML = '<strong>Status:</strong> ' + ad.productStatus;
+    listGroup.appendChild(statusListItem);
+
+    // Create the posted date list item element
+    let postedDateListItem = document.createElement("li");
+    postedDateListItem.classList.add("list-group-item");
+    postedDateListItem.innerHTML = '<strong>Posted at: </strong>' + ad.postedDate;
+    listGroup.appendChild(postedDateListItem);
+
+    return [card];
+}
 function displayAvailableAds(ad) {
     const myAdsContainer = document.getElementById("myAdsContainer");
     let requireElements = createHorizontalAdCard(ad);
@@ -311,7 +391,7 @@ function displayAvailableAds(ad) {
     btnDeleteAd.className = "btn btn-danger mx-2";
     btnDeleteAd.innerHTML = '<i class="fa-solid fa-trash"></i> Delete';
     btnDeleteAd.addEventListener('click', function () {
-        btnDeleteAdClicked(ad.id, ad.imageUri);
+        btnDeleteAdClicked(ad.id, ad.productImageURI);
     });
     buttonContainer.appendChild(btnDeleteAd);
     myAdsContainer.appendChild(card);
@@ -468,27 +548,60 @@ function getImageFileUsingPath() {
 }
 function onInputValueChangeForSearch(input) {
     let productName = escapeHtml(input.value);
-    fetch("http://localhost/api/searchproducts?name=" + productName)
-        .then(response => response.json())
-        .then(ads => {
-            document.getElementById("containerRowContainerAvailableAds").innerHTML = ""; // clearing first
 
+    if (productName.trim() === "") {
+        // Clear the search results container if the search bar is empty
+        document.getElementById("searchResultsContainer").innerHTML = "";
+        return;
+    }
+
+    fetch('http://localhost/api/searchproducts?name=' + productName)
+        .then(response => {
+            if (!response.ok) {
+                throw new Error('Network response was not ok');
+            }
+            return response.text();  // Use text() instead of json() to see the raw response
+        })
+        .then(data => {
+            console.log('Response Data:', data);  // Log the raw response data
+            return JSON.parse(data);  // Try to parse the data as JSON
+        })
+        .then(ads => {
+            // Your existing code to handle successful response
+            document.getElementById("searchResultsContainer").innerHTML = "";
             if (ads.length > 0) {
                 ads.forEach(function (ad) {
-                    showAvailableAdsForHomePage(ad);
+                    showSearchResult(ad);
                 });
             } else {
-                resultNotFoundForSearchMessage(input.value);
+                resultNotFoundForSearchMessage(productName);
             }
+        })
+        .catch(error => {
+            console.error('Error during fetch:', error.message);
+            console.error('Error status:', error.status);
         });
+
+
+
 }
 
 function resultNotFoundForSearchMessage(inputValue) {
     let errorMessage = document.createElement("h2");
     errorMessage.innerHTML = "🤷 Sorry, no search result found for " + '"' + inputValue + '"' + " 🙁";
-    document.getElementById("containerRowContainerAvailableAds").appendChild(errorMessage);
+
+    // Use the appropriate container ID
+    let containerId = "containerRowContainerAvailableAds"; // Change this if needed
+
+    let container = document.getElementById(containerId);
+
+    // Check if the container exists before appending the error message
+    if (container) {
+        container.innerHTML = "";
+        container.appendChild(errorMessage);
+    }
 }
-function showAvailableAdsForHomePage(ad) {
+function showSearchResult(ad) {
     let col = document.createElement("div");
     col.classList.add("col-md-4", "col-sm-12", "col-xl-3", "my-3");
 
@@ -496,7 +609,7 @@ function showAvailableAdsForHomePage(ad) {
     card.classList.add("card", "h-100", "shadow");
 
     let img = document.createElement("img");
-    img.src = ad.imageUri;
+    img.src = ad.productImageURI;
     img.classList.add("img-fluid", "card-img-top");
     img.alt = ad.productName;
     img.style.width = "300px";
@@ -511,12 +624,12 @@ function showAvailableAdsForHomePage(ad) {
 
     let p = document.createElement("p");
     p.classList.add("card-text");
-    p.textContent = ad.description;
+    p.textContent = ad.productDescription;
 
     let button = document.createElement("button");
     button.classList.add("btn", "btn-primary", "position-relative");
     button.type = "submit";
-    button.innerHTML = "<i class='fa-solid fa-cart-plus'></i> €" + formatPricesInDecimal(ad.price);
+    button.innerHTML = "<i class='fa-solid fa-cart-plus'></i> €" + formatPricesInDecimal(ad.productPrice);
     // add event listener to button
     button.addEventListener("click", function () {
         addToCartClicked(ad.id);
@@ -533,7 +646,9 @@ function showAvailableAdsForHomePage(ad) {
     small.textContent = ad.postedDate + " posted by";
 
     let strong = document.createElement("strong");
-    strong.textContent = ad.user.firstName;
+
+    // Check if ad.user is defined before accessing its properties
+    strong.textContent = ad.user && ad.user.firstName ? ad.user.firstName : "Unknown";
 
     pFooter.appendChild(small);
     small.appendChild(strong);
@@ -547,7 +662,20 @@ function showAvailableAdsForHomePage(ad) {
     col.appendChild(card);
 
     document.getElementById("containerRowContainerAvailableAds").appendChild(col);
+    let containerId = "containerRowContainerAvailableAds"; // Change this if needed
 
+    let container = document.getElementById("containerRowContainerAvailableAds");
+
+    // Check if the container exists before appending the search result
+    if (container) {
+        container.appendChild(col);
+    }
+
+}
+function escapeHtml(text) {
+    const div = document.createElement('div');
+    div.textContent = text;
+    return div.innerHTML;
 }
 function addToCartClicked(adID) {
 

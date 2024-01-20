@@ -57,6 +57,11 @@ class Router
                 $controller = new AdsController();
                 $controller->sendAdsByLoggedUser();
                 break;
+                case 'api/adsbypurchaseduser':
+                    require __DIR__ . '/../API/AdsController.php';
+                    $controller = new AdsController();
+                    $controller->sendPurchasedAdsByLoggedUser();
+                    break;
             case 'api/updateAd':
                 require __DIR__ . '/../API/AdsController.php';
                 $controller = new AdsController();

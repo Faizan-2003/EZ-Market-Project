@@ -22,15 +22,16 @@ class MyAdsController
         if (!is_null($this->loggedUser)) {
             $this->loggedUserAds = $this->adService->getAdsByLoggedUser($this->loggedUser);
         }
-        // var_dump($this->loggedUser);  // Check if it's retrieving the user
     }
 
 
     public function displayMyAdsPage(): void
     {
         $displayMessage = $this->displayInfo();
-        $this->showAds();
+
         require __DIR__ . '/../Views/MyAdsPage/MyAds.php';
+        $this->showAds();
+
         require __DIR__ . '/../Views/Footer.php';
         $this->loginAndSignout();
     }

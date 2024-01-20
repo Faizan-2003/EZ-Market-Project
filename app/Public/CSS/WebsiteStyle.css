@@ -1,4 +1,4 @@
-/* ShoppingCart.css */
+/* WebsiteStyle.css */
 nav.custom-navbar {
     background-color: #ffb703 !important;
     height: 90px;
@@ -8,7 +8,6 @@ nav.custom-navbar {
 #searchBar {
     background-color: #000080;
 }
-
 .badge:after {
     content: attr(data-value);
     font-size: 14px;
@@ -36,20 +35,20 @@ nav.custom-navbar {
     align-items: center;
     justify-content: center;
     overflow: hidden;
-    height: 300px; /* Set a fixed height for the image container */
+    height: 300px;
 }
 
 .img-container img {
     width: 100%;
     height: 100%;
-    object-fit: cover; /* Ensure the image covers the entire container */
+    object-fit: cover;
 }
 
 #AddToCart {
     background-color: #000080;
     color: white;
-    width: 80%; /* Set the width to 80% */
-    margin: 0 auto; /* Center the button horizontally */
+    width: 80%;
+    margin: 0 auto;
 }
 
 .img-container img {
@@ -78,8 +77,8 @@ nav.custom-navbar {
 }
 
 .card-footer .card-text {
-    background-color: #ffb703; /* Your desired background color */
-    padding: 10px; /* Add padding for better visual appearance */
+    background-color: #ffb703;
+    padding: 10px;
 }
 .btn-success {
     background-color: #ffb703 !important;
@@ -92,7 +91,7 @@ nav.custom-navbar {
     font-weight: bold !important;
     border-radius: 10px !important;
     border: none !important;
-    margin-top: 30px !important; /* Adjust the value to your preference */
+    margin-top: 30px !important;
 }
 
 
@@ -111,4 +110,9 @@ nav.custom-navbar {
     color: black !important;
     font-size: 30px !important;
     margin-top: 30px !important;
+}
+
+#searchBar{
+    background-color: #000080;
+    border-color: black;
 }

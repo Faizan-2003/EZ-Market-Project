@@ -1,16 +1,18 @@
 <?php
-require __DIR__ . '/../Logic/ShoppingCart.php';
-require __DIR__ . '/../Services/AdService.php';
-require  __DIR__ . '/../Logic/LoggingInAndOut.php';
+require_once __DIR__ . '/../Logic/ShoppingCart.php';
+require_once __DIR__ . '/../Services/AdService.php';
+require_once __DIR__ . '/../Logic/LoggingInAndOut.php';
+
 class PaymentController
 {
-    private $adService;
-    const Vat_Rate = 0.21;
+    private AdService $adService;
+    const VAT_RATE = 0.21;
 
     public function __construct()
     {
         $adRepository = new AdRepository();
-        $this->adService = new AdService($adRepository);    }
+        $this->adService = new AdService($adRepository);
+    }
 
     public function displayPaymentPage(): void
     {
@@ -18,7 +20,7 @@ class PaymentController
 
         // Pass the total to the payment page
         $totalAmount = getTotalAmountOfItemsInShoppingCart();
-        $vatAmount = $totalAmount * self::Vat_Rate;
+        $vatAmount = $totalAmount * self::VAT_RATE;
         $total = $totalAmount + $vatAmount;
 
         $this->checkOutShoppingCart($total);
@@ -27,19 +29,16 @@ class PaymentController
         $this->loginAndSignout();
     }
 
-
-
-
     private function checkOutShoppingCart($total): void
     {
         if (isset($_POST["buttonCheckOut"])) {
             if ($this->checkShoppingCartItemsAvailabilityInDb()) {
-                $total;
                 $this->updateAdStatusToSold();
+                $this->processPurchaseBuyer($total);
                 clearShoppingCart();
-                require __DIR__ . '/../Views/PaymentPage/paymentBody.php';
+                require_once __DIR__ . '/../Views/PaymentPage/paymentBody.php';
             } else {
-                echo '<script>alert("Some the products in your shopping are not available, please shop again!")</script>';
+                echo '<script>alert("Some of the products in your shopping cart are not available. Please shop again!")</script>';
                 clearShoppingCart();
                 echo '<script>location.href = "/homepage/myAds"</script>';
             }
@@ -53,6 +52,7 @@ class PaymentController
             $this->adService->markAdAsSold($item->getId());
         }
     }
+
     private function loginAndSignout(): void
     {
         if (!is_null(getLoggedUser())) {
@@ -74,5 +74,13 @@ class PaymentController
             }
         }
         return true;
+    }
+
+    private function processPurchaseBuyer($total): void
+    {
+        $loggedInUser = getLoggedUser();
+        if (!is_null($loggedInUser)) {
+            $adIDs = $this->adService->processPurchaseBuyer($loggedInUser, $total);
+        }
     }
 }

@@ -42,8 +42,6 @@ V
 &app/Views/Homepage/NoAvailableAds.html,d\1\d1c963c508e608c9aa145e4bf809f69f68a03c63
 M
 app/Views/MyAdsPage/MyAds.php,6\5\65324de82e0853f9e274d43241e74a5b8f0e2ef2
-P
- app/Views/MyAdsPage/DivMyAds.php,0\f\0fb859f1ecfc76069bbe87408480244b5f83a755
 N
 app/Views/MyAdsPage/EditAd.php,8\e\8e279add4e7759f89831e710769bafc58a856fd4
 e
@@ -106,3 +104,5 @@ K
 ,app/Views/MyPurchasesPage/DivMyPurchases.php,e\9\e9ba2cb8984cc5f7ccfe12f3f6287874baa5bd93
 P
  app/Views/MyAdsPage/MyAdsDiv.php,c\f\cf91ea604351550e2b926baa8a71cb33c1b9f443
+O
+app/Public/CSS/WebsiteStyle.css,b\a\ba1057cb53f3f163d3ea56a8453deaecf75de97e
