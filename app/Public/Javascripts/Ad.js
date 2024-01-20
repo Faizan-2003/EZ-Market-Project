@@ -350,28 +350,24 @@ function displayOtherStatusAds(ad) {
     let card = requireElements[0];
     let buttonContainer = requireElements[1];
 
-    // Create the "Mark As Sold" button element
     const markAsSoldButton = document.createElement("button");
     markAsSoldButton.classList.add("btn", "btn-primary", "mx-2");
     markAsSoldButton.disabled = true;
     markAsSoldButton.textContent = "Mark As Sold";
     buttonContainer.appendChild(markAsSoldButton);
 
-    // Create the "Edit" button element
     const editButton = document.createElement("button");
     editButton.classList.add("btn", "btn-secondary", "mx-2");
     editButton.disabled = true;
     editButton.innerHTML = '<i class="fa-solid fa-file-pen"></i> Edit';
     buttonContainer.appendChild(editButton);
 
-    // Create the "Delete" button element
     const deleteButton = document.createElement("button");
     deleteButton.classList.add("btn", "btn-danger", "mx-2");
     deleteButton.disabled = true;
     deleteButton.innerHTML = '<i class="fa-solid fa-trash"></i> Delete';
     buttonContainer.appendChild(deleteButton);
 
-    // Create the overlay element
     const overlay = document.createElement("div");
     overlay.classList.add("overlay");
     overlay.style.position = "absolute";
@@ -386,7 +382,6 @@ function displayOtherStatusAds(ad) {
     card.appendChild(overlay);
 
 
-    // Create the status element
     let status = document.createElement("h2");
     status.style.color = "white";
     status.textContent = ad.status;
@@ -407,7 +402,6 @@ function btnDeleteAdClicked(adId, image) {
 function sendUpdateRequestToAPi(typeOfOperation, adID, image) {
     let data = { OperationType: typeOfOperation, adID: adID, imageURI: image };
 
-    // Send a POST request to the server with logged user and promising the response message
     fetch('http://localhost/api/updateAd', {
         method: 'POST',
         body: JSON.stringify(data),
@@ -417,7 +411,7 @@ function sendUpdateRequestToAPi(typeOfOperation, adID, image) {
     }).then(response => response.json())
         .then(response => {
             if (response.success) {
-                loadAdsOfLoggedUser(); /// when ever ads are deleted or marked as sold ads are loaded
+                loadAdsOfLoggedUser();
             } else {
                 alert(response.message);
             }
@@ -425,15 +419,15 @@ function sendUpdateRequestToAPi(typeOfOperation, adID, image) {
 }
 
 function clearScreen() {
-    document.getElementById("myAdsContainer").innerHTML = ""; // clearing screen
+    document.getElementById("myAdsContainer").innerHTML = "";
 }
 
 function loginMessageForSignOut() {
-    document.getElementById("displayMessage").innerText = "Please,login in order to view,edit or post an Ad"; // changing the message when logged in
+    document.getElementById("displayMessage").innerText = "Please,login in order to view,edit or post an Ad";
 }
 function editAdButtonClicked(adID, adImage, adProductName, adDescription, adPrice) {
     clearEveryInputInEditModel();
-    setValuesForEditModel(adID, adImage, adProductName, adDescription.replace(/\\/g, ""), adPrice); // removing slash sent by php addslashesMethod
+    setValuesForEditModel(adID, adImage, adProductName, adDescription.replace(/\\/g, ""), adPrice);
 }
 
 function clearEveryInputInEditModel() {
@@ -485,9 +479,10 @@ async function editAdModalSaveChangeButtonClicked() {
     if (!inputImage) {
         inputImage = await getImageFileUsingPath();
     }
-
+    if (!validateForm(adProductName, adProductPrice, adDescription, inputImage)) {
+        return;
+    }
     try {
-        // Wrap the edit request in a try-catch block
         const data = {
             productName: adProductName,
             price: adProductPrice,
@@ -528,14 +523,11 @@ function sendEditRequestToAPI(formData) {
 function getImageFileUsingPath() {
     let imgElement = document.getElementById('AdEditImageURI');
     let imgSrc = imgElement.src;
-    // taking the current previewing image src and sending this data if user does not select image
     return fetch(imgSrc)
         .then(response => response.blob())
         .then(blob => {
             let fileName = imgSrc.substring(imgSrc.lastIndexOf('/') + 1);
             let fileType = blob.type;
-            // taking the file type from blob and passing filetype as argument while creating File
-            // Create a new File object
             let file = new File([blob], fileName, { type: fileType });
             return file;
         }).catch(err => console.error(err));

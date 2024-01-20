@@ -6,11 +6,12 @@
                     <div class="card-body p-4">
                         <div class="row">
                             <div class="col">
-                                <h3 class="mb-3">Shopping Cart</h3>
+                                <div class="d-flex justify-content-between align-items-center">
+                                    <h3 class="mb-3">Shopping Cart</h3>
+                                    <a href="/homepage" class="btn btn-secondary btn-lg" style="margin-right: 10px;">Continue Shopping</a>
+                                </div>
                                 <p>You have <?= count($_SESSION['cartItems']) ?> items in your cart</p>
-
-                                <?php
-                                foreach ($_SESSION['cartItems'] as $ad): ?>
+                                <?php foreach ($_SESSION['cartItems'] as $ad): ?>
                                     <div class="card mb-3">
                                         <div class="card-body">
                                             <h5><?= htmlspecialchars($ad->getProductName()) ?></h5>
@@ -19,7 +20,10 @@
 
                                             <form method="POST">
                                                 <input type="hidden" name="hiddenShoppingCartItemID" value="<?= $ad->getId() ?>">
-                                                <button name="removeCartItem" type="submit">Remove</button>
+                                                <!-- Larger red bin -->
+                                                <button name="removeCartItem" type="submit" class="btn btn-danger btn-lg" style="position: absolute; bottom: 5px; right: 5px;">
+                                                    <i class="fas fa-trash-alt"></i>
+                                                </button>
                                             </form>
                                         </div>
                                     </div>

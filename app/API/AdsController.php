@@ -15,77 +15,69 @@ class AdsController
     public function postNewAdRequest(): void
     {
         $this->sendHeaders();
-        $responseData = array();
+        $responseData = [];
 
         // Respond to a POST request to /api/article
-        if ($_SERVER["REQUEST_METHOD"] == "POST") {
-            if (!isset($_POST['adDetails'])) {
-                // Handle the case when 'adDetails' is not set
-                $responseData = array(
-                    "success" => false,
-                    "message" => "'adDetails' is not set in the POST data"
-                );
+        if ($_SERVER["REQUEST_METHOD"] != "POST") {
+            echo json_encode(["success" => false, "message" => "Invalid request method"]);
+            return;
+        }
+
+        $this->processPostRequest();
+    }
+
+    private function processPostRequest(): void
+    {
+        $responseData = [];
+
+        if (!isset($_POST['adDetails'])) {
+            $responseData = ["success" => false, "message" => "'adDetails' is not set in the POST data"];
+        } else {
+            $adDetails = isset($_POST['adDetails']) ? json_decode($_POST['adDetails'], true) : [];
+
+            if ($adDetails === null) {
+                $responseData = ["success" => false, "message" => "Unable to decode 'adDetails' as JSON"];
             } else {
-                $adDetails = isset($_POST['adDetails']) ? json_decode($_POST['adDetails'], true) : array();
-                if ($adDetails === null) {
-                    $responseData = array(
-                        "success" => false,
-                        "message" => "Unable to decode 'adDetails' as JSON"
-                    );
+                $responseData = $this->processAdDetails($adDetails);
+            }
+        }
+
+        echo json_encode($responseData);
+    }
+
+    private function processAdDetails(array $adDetails): array
+    {
+        $requiredKeys = ['loggedUserName', 'productName', 'price', 'productDescription', 'loggedUserId'];
+
+        if (array_diff($requiredKeys, array_keys($adDetails)) === []) {
+            $username = htmlspecialchars($adDetails['loggedUserName']);
+            $productName = htmlspecialchars($adDetails['productName']);
+            $productPrice = htmlspecialchars($adDetails['price']);
+            $productDescription = htmlspecialchars($adDetails['productDescription']);
+
+            // Process the image file
+            $image = $_FILES['image'];
+            $responseData = $this->processImage($image);
+
+            if ($responseData['success']) {
+                $imageTempName = $image['tmp_name'];
+                $imageName = $image['name'];
+                $targetDirectory = "images/";
+                $imageExtension = pathinfo($imageName, PATHINFO_EXTENSION);
+                $uniqueIdentifier = $productName;
+                $newImageName = "EZM" . "-" . date("Y-m-d") ."-".$username.".".$uniqueIdentifier."-".$imageExtension;
+                $checkInDb = $this->adService->postNewAd($this->createAd($productName, $productPrice, $productDescription, "/" . $targetDirectory . $newImageName, $adDetails['loggedUserId']));
+
+                if ($checkInDb && move_uploaded_file($imageTempName, $targetDirectory . $newImageName)) {
+                    return ["success" => true];
                 } else {
-                    if (isset($adDetails['loggedUserName'], $adDetails['productName'], $adDetails['price'], $adDetails['productDescription'], $adDetails['loggedUserId'])) {
-                        $username = htmlspecialchars($adDetails['loggedUserName']);
-                        $productName = htmlspecialchars($adDetails['productName']);
-                        $productPrice = htmlspecialchars($adDetails['price']);
-                        $productDescription = htmlspecialchars($adDetails['productDescription']);
-
-                        // Process the image file
-                        $image = $_FILES['image'];
-                        $responseData = $this->processImage($image);
-
-                        if ($responseData['success']) {
-                            $imageTempName = $image['tmp_name'];
-                            $imageName = $image['name'];
-                            $targetDirectory = "images/";
-                            $imageExtension = explode('.', $imageName);
-                            $uniqueIdentifier = $productName;
-                            $newImageName = "EZM" . "-" . date("Y-m-d") . "-" . $username . "." .$uniqueIdentifier."-" . end($imageExtension);
-
-                            // when everything is correct
-                            $checkInDb = $this->adService->postNewAd($this->createAd($productName, $productPrice, $productDescription, "/" . $targetDirectory . $newImageName, $adDetails['loggedUserId']));
-
-                            if ($checkInDb) {
-                                $uploadedFile = move_uploaded_file($imageTempName, $targetDirectory . $newImageName);
-
-                                if (!$uploadedFile) {
-                                    $responseData = array(
-                                        "success" => false,
-                                        "message" => "Something went Wrong while processing your uploaded image"
-                                    );
-                                }
-                            } else {
-                                $responseData = array(
-                                    "success" => false,
-                                    "message" => "Something went Wrong while processing your Add request"
-                                );
-                            }
-                        }
-                    } else {
-                        // Handle the case when the required keys are not present
-                        $responseData = array(
-                            "success" => false,
-                            "message" => "Required keys are not present in 'adDetails'"
-                        );
-                    }
+                    return ["success" => false, "message" => "Something went wrong while processing your request"];
                 }
             }
-
-            // Convert the response message to a JSON string
-            $responseJson = json_encode($responseData);
-
-            // Send the response message as the body of the HTTP response
-            echo $responseJson;
+        } else {
+            return ["success" => false, "message" => "Required keys are not present in 'adDetails'"];
         }
+        return false;
     }
 
     public function createAd($productName, $productPrice, $productDescription, $productImageURI, $userID): Ad
@@ -93,12 +85,10 @@ class AdsController
         $ad = new Ad();
         $ad->setProductName($productName);
 
-        // Check if $productPrice is a non-empty string and convert it to float
         if (!empty($productPrice)) {
             $productPrice = (float)$productPrice;
             $ad->setProductPrice($productPrice);
         }
-
         $ad->setProductDescription($productDescription);
         $ad->setProductImageURI($productImageURI);
 
@@ -106,8 +96,6 @@ class AdsController
         if ($userID instanceof User) {
             $ad->setUserID($userID);
         } else {
-            // Handle the case when $userID is not a User object
-            // You might need to create a User object and set its ID
             $user = new User();
             $user->setId($userID);
             $ad->setUserID($user);

@@ -36,6 +36,7 @@ class AdRepository extends Repository
             // Handle the exception
             trigger_error("An error occurred: " . $e->getMessage(), E_USER_ERROR);
         }
+
     }
 
     public function getAdByID($adId): Ad

@@ -12,11 +12,14 @@ class AdService
     }
     public function getAllAdsByStatus(Status $status): array
     {
-        return $this->adRepository->getAllAdsByStatus($status);
+        $ads = $this->adRepository->getAllAdsByStatus($status);
+
+        return $ads ?? []; // Return an empty array if $ads is null
     }
     public function searchAdsByProductName($productName)
     {
         return $this->adRepository->searchAdsByProductName($productName);
+
     }
     public function getAdByID(int $adId): ?Ad
     {

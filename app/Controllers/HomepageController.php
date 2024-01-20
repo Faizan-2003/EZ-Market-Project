@@ -41,7 +41,7 @@ class HomepageController{
 
     private function showAvailableAds($ads): void
     {
-        if (is_null($ads)) {
+        if (empty($ads)) { // Check if $ads is an empty array or null
             require __DIR__ . '/../Views/HomePage/NoAvailableAds.html';
         } else {
             try {

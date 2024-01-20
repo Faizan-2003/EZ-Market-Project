@@ -81,7 +81,7 @@ nav.custom-navbar {
     border: none !important;
     margin-top: 30px !important;
 }
-.emptycart, .noAdsFound{
+.emptycart, .noAdsFound, .noproducts{
     color: #000080 !important;
     font-size: 80px !important;
     font-weight: bold !important;
