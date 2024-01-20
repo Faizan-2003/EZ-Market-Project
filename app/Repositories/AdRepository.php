@@ -131,7 +131,6 @@ class AdRepository extends Repository
             if ($stmt->execute()) {
                 $rows_updated = $stmt->rowCount();
                 if ($rows_updated > 0) {
-                    // delete the file if the database query was successful
                     $imageFile = __DIR__ . '/../public' . $imageURI;
                     unlink($imageFile);
                 } else {
@@ -177,7 +176,7 @@ class AdRepository extends Repository
     public function postNewAd(Ad $ad) :bool
     {
         try {
-            $stmt = $this->connection->prepare("INSERT INTO Ads( productName,description,productPrice,productImageURI,userID) VALUES (:productName,:description,:price,:userID,:imageURI)");
+            $stmt = $this->connection->prepare("INSERT INTO Ads(productName,productDescription,productPrice,productImageURI,userID) VALUES (:productName,:description,:price,:userID,:imageURI)");
             $stmt->bindValue(":productName", $ad->getProductName());
             $stmt->bindValue(":productDescription", $ad->getProductDescription());
             $stmt->bindValue(":productPrice", $ad->getProductPrice());
@@ -289,12 +288,9 @@ class AdRepository extends Repository
             trigger_error("An error occurred: " . $e->getMessage(), E_USER_ERROR);
         }
     }
-    // In AdRepository class
-    // In AdRepository class
     public function processPurchase($adID, $loggedInUser): bool
     {
         try {
-            // Check if the user is logged in
             $buyerID = (!is_null($loggedInUser)) ? $loggedInUser->getId() : null;
 
             $stmt = $this->connection->prepare("UPDATE Ads SET buyerID = :buyerID, productStatus = :status WHERE id = :adID");
