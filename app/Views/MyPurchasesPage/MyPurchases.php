@@ -33,7 +33,6 @@
                 <li class="nav-item">
                     <a class="nav-link mx-3 active-page" aria-current="page" href="#" onclick="displayPurchasedAds()">My Purchases</a>
                 </li>
-
             </ul>
             <ul class="navbar-nav">
                 <li class="nav-item">
@@ -52,4 +51,8 @@
     <?php if (isset($displayMessage)): ?>
         <h1 id="displayMessage" class="display-6 fw-semibold " style="color: white"><?= $displayMessage ?></h1>
     <?php endif; ?>
+</div>
+
+<div class="container text-center mt-3">
+    <button class="btn-purchase" onClick="window.location.href='/homepage'">Shop Now</button>
 </div>

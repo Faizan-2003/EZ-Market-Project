@@ -78,16 +78,12 @@ L
 app/Services/UserService.php,4\1\4165f29445980afc3d0235551b5a3a460930bd28
 I
 app/API/AdsController.php,2\1\21d553d7c10e782eed5fff46e2d020e7915eaec3
-O
-app/Public/CSS/ShoppingCart.css,f\c\fc00893febf6ec0ba889c2b87f02dbbac16b2b07
 M
 app/Views/LoginPage/Login.php,9\9\994a0c60c3f3b6fb90162afea2c5cbcba9213a06
 O
 app/Public/Javascripts/Login.js,4\4\4492637e4a2135b9295b4e0ef299b05f29bd4b2b
 M
 app/Logic/LoggingInAndOut.php,f\c\fcb5ddf71a027d289f0c70ef32a8a727f4fab442
-N
-app/Public/CSS/LoginStyles.css,9\b\9b30940e9abd7c3469d1af5551f7031c2f6fe549
 D
 app/Errors/error.log,6\f\6f287a0b9cb57e1a30052f3ff8aebe205f9092af
 M

@@ -4,7 +4,6 @@ nav.custom-navbar {
     height: 90px;
     margin: 0;
 }
-
 #searchBar {
     background-color: #000080;
 }
@@ -21,15 +20,12 @@ nav.custom-navbar {
     opacity: 0.9;
     font-weight: bold;
 }
-
 .selected i {
     color: #000080 !important;
 }
-
 .with-border {
-    border: 5px solid #ffb703; /* Yellow border */
+    border: 5px solid #ffb703;
 }
-
 .img-container {
     display: flex;
     align-items: center;
@@ -37,35 +33,29 @@ nav.custom-navbar {
     overflow: hidden;
     height: 300px;
 }
-
 .img-container img {
     width: 100%;
     height: 100%;
     object-fit: cover;
 }
-
 #AddToCart {
     background-color: #000080;
     color: white;
     width: 80%;
-    margin: 0 auto;
+    margin: 10px auto;
 }
-
 .img-container img {
     border-radius: 0;
 }
 .card-img-top {
     border-radius: 0 !important;
 }
-
 .navbar-brand img {
     width: 150px;
 }
-
 .navbar-dark .navbar-toggler-icon {
     background-color: black !important;
 }
-
 .navbar-dark .navbar-nav .nav-link {
     color: black !important;
     font-size: 20px;
@@ -75,7 +65,6 @@ nav.custom-navbar {
     border-bottom: 2px solid #000080;
     font-weight: bold;
 }
-
 .card-footer .card-text {
     background-color: #ffb703;
     padding: 10px;
@@ -83,7 +72,6 @@ nav.custom-navbar {
 .btn-success {
     background-color: #ffb703 !important;
 }
-
 .btn-Shop {
     background-color: #000080 !important;
     padding: 10px 20px !important;
@@ -93,11 +81,9 @@ nav.custom-navbar {
     border: none !important;
     margin-top: 30px !important;
 }
-
-
-.emptycart{
+.emptycart, .noAdsFound{
     color: #000080 !important;
-    font-size: 90px !important;
+    font-size: 80px !important;
     font-weight: bold !important;
 }
 .paymentText{
@@ -105,14 +91,49 @@ nav.custom-navbar {
     font-size: 60px !important;
     font-weight: bold !important;
 }
-
 .thankyouText{
     color: black !important;
     font-size: 30px !important;
     margin-top: 30px !important;
 }
-
 #searchBar{
     background-color: #000080;
     border-color: black;
+}
+.img-fluid{
+    width: 300px !important;
+    height: 300px !important;
+    object-fit: cover;
+}
+#buttonPostNewAd{
+    background-color: #ffb703 !important;
+    color: black !important;
+    font-size: 20px !important;
+    font-weight: bold !important;
+    border-radius: 5px !important;
+    margin-top: 5px !important;
+}
+.btn-purchase {
+    background-color: #ffb703;
+    color: black;
+    padding: 10px 20px;
+    font-size: 20px;
+    border: black;
+    border-radius: 5px;
+    margin-bottom: 10px;
+    margin-top: -15px;
+    font-weight: bold;
+}
+.buyproducts {
+    color: #000080;
+    font-size: 40px;
+    border-radius: 5px;
+    font-weight: bold;
+    margin-top: 30px;
+}
+.noPurchaseMade {
+    color: #000080;
+    font-size: 70px;
+    font-weight: bold;
+    margin-top: -15px;
 }
