@@ -224,55 +224,6 @@ function dropFile(event) {
     document.getElementById("image").files[0] = file;
 }
 
-function displayOtherStatusAds(ad) {
-    const myAdsContainer = document.getElementById("myAdsContainer");
-    let requireElements = createHorizontalAdCard(ad);
-    let card = requireElements[0];
-    let buttonContainer = requireElements[1];
-
-    // Create the "Mark As Sold" button element
-    const markAsSoldButton = document.createElement("button");
-    markAsSoldButton.classList.add("btn", "btn-primary", "mx-2");
-    markAsSoldButton.disabled = true;
-    markAsSoldButton.textContent = "Mark As Sold";
-    buttonContainer.appendChild(markAsSoldButton);
-
-    // Create the "Edit" button element
-    const editButton = document.createElement("button");
-    editButton.classList.add("btn", "btn-secondary", "mx-2");
-    editButton.disabled = true;
-    editButton.innerHTML = '<i class="fa-solid fa-file-pen"></i> Edit';
-    buttonContainer.appendChild(editButton);
-
-    // Create the "Delete" button element
-    const deleteButton = document.createElement("button");
-    deleteButton.classList.add("btn", "btn-danger", "mx-2");
-    deleteButton.disabled = true;
-    deleteButton.innerHTML = '<i class="fa-solid fa-trash"></i> Delete';
-    buttonContainer.appendChild(deleteButton);
-
-    // Create the overlay element
-    const overlay = document.createElement("div");
-    overlay.classList.add("overlay");
-    overlay.style.position = "absolute";
-    overlay.style.top = 0;
-    overlay.style.left = 0;
-    overlay.style.right = 0;
-    overlay.style.bottom = 0;
-    overlay.style.backgroundColor = "rgba(0,0,0,0.5)";
-    overlay.style.display = "flex";
-    overlay.style.alignItems = "center";
-    overlay.style.justifyContent = "center";
-    card.appendChild(overlay);
-
-
-    // Create the status element
-    let status = document.createElement("h2");
-    status.style.color = "white";
-    status.textContent = ad.status;
-    overlay.appendChild(status);
-    myAdsContainer.appendChild(card);
-}
 function displayPurchasedAd(ad) {
     console.log('Displaying purchased ad:', ad);
 
@@ -397,7 +348,55 @@ function displayAvailableAds(ad) {
     myAdsContainer.appendChild(card);
 
 }
+function displayOtherStatusAds(ad) {
+    const myAdsContainer = document.getElementById("myAdsContainer");
+    let requireElements = createHorizontalAdCard(ad);
+    let card = requireElements[0];
+    let buttonContainer = requireElements[1];
 
+    // Create the "Mark As Sold" button element
+    const markAsSoldButton = document.createElement("button");
+    markAsSoldButton.classList.add("btn", "btn-primary", "mx-2");
+    markAsSoldButton.disabled = true;
+    markAsSoldButton.textContent = "Mark As Sold";
+    buttonContainer.appendChild(markAsSoldButton);
+
+    // Create the "Edit" button element
+    const editButton = document.createElement("button");
+    editButton.classList.add("btn", "btn-secondary", "mx-2");
+    editButton.disabled = true;
+    editButton.innerHTML = '<i class="fa-solid fa-file-pen"></i> Edit';
+    buttonContainer.appendChild(editButton);
+
+    // Create the "Delete" button element
+    const deleteButton = document.createElement("button");
+    deleteButton.classList.add("btn", "btn-danger", "mx-2");
+    deleteButton.disabled = true;
+    deleteButton.innerHTML = '<i class="fa-solid fa-trash"></i> Delete';
+    buttonContainer.appendChild(deleteButton);
+
+    // Create the overlay element
+    const overlay = document.createElement("div");
+    overlay.classList.add("overlay");
+    overlay.style.position = "absolute";
+    overlay.style.top = 0;
+    overlay.style.left = 0;
+    overlay.style.right = 0;
+    overlay.style.bottom = 0;
+    overlay.style.backgroundColor = "rgba(0,0,0,0.5)";
+    overlay.style.display = "flex";
+    overlay.style.alignItems = "center";
+    overlay.style.justifyContent = "center";
+    card.appendChild(overlay);
+
+
+    // Create the status element
+    let status = document.createElement("h2");
+    status.style.color = "white";
+    status.textContent = ad.status;
+    overlay.appendChild(status);
+    myAdsContainer.appendChild(card);
+}
 function btnMarkAsSoldClicked(adId) {
     event.preventDefault();
     sendUpdateRequestToAPi("ChangeStatusOfAd", adId, "");

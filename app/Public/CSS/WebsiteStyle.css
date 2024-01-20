@@ -137,3 +137,6 @@ nav.custom-navbar {
     font-weight: bold;
     margin-top: -15px;
 }
+.markAsDone {
+    background-color: green !important;
+}
