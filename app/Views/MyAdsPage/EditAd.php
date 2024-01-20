@@ -30,8 +30,8 @@
                 </div>
             </div>
             <div class="modal-footer">
-                <input type="reset" class="btn btn-secondary" data-bs-dismiss="modal" value="cancel">
-                <button type="submit" class="btn btn-primary" onclick="editAdModalSaveChangeButtonClicked()">Save Changes</button>
+                <input type="reset" class="btn btn-secondary btn-lg" data-bs-dismiss="modal" value="cancel">
+                <button type="submit" class="btn btn-warning btn-lg" onclick="editAdModalSaveChangeButtonClicked()">Save Changes</button>
             </div>
         </div>
     </div>
