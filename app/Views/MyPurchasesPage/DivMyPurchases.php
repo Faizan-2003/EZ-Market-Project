@@ -2,21 +2,21 @@
 <?php
 $loggedInUserPurchases = $this->loggedUserPurchases;
 if (!empty($loggedInUserPurchases)) {
-    var_dump($loggedInUserPurchases);
+   // var_dump($loggedInUserPurchases);
     foreach ($loggedInUserPurchases as $purchase) {
         ?>
         <div class="card mb-3" style="max-width: 900px;">
             <div class="row g-0">
                 <div class="col-md-4 col-xl-4">
-                    <img src="<?= $purchase->getImageUri() ?>" class="img-fluid rounded-start" alt="Product Image">
+                    <img src="<?= $purchase->getproductImageURI() ?>" class="img-fluid rounded-start" alt="Product Image">
                 </div>
                 <div class="col-md-8 col-xl-8 d-flex flex-column justify-content-around">
                     <div class="card-body">
                         <h5 class="card-title"><?= $purchase->getProductName() ?></h5>
-                        <p class="card-text"><?= $purchase->getDescription() ?></p>
+                        <p class="card-text"><?= $purchase->getproductDescription() ?></p>
                         <ul class="list-group list-group-flush">
-                            <li class="list-group-item"><strong>Price:</strong> €<?= number_format($purchase->getPrice(), 2, '.') ?></li>
-                            <li class="list-group-item"><strong>Posted at: </strong><?= $purchase->getPostedDate() ?></li>
+                            <li class="list-group-item"><strong>Price:</strong> €<?= number_format($purchase->getproductPrice(), 2, '.') ?></li>
+                            <li class="list-group-item"><strong>Posted at: </strong><?= $purchase->getpostedDate() ?></li>
                         </ul>
                     </div>
                 </div>
