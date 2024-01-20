@@ -62,49 +62,41 @@
         </div>
     </div>
 </div>
-
 <div>
     <?php if (!is_null($this->loggedUser)) { ?>
         <input type="hidden" id="hiddenLoggedUserId" value="<?= $this->loggedUser->getId() ?>">
         <input type="hidden" id="loggedUserName" value="<?= $this->loggedUser->getFirstName() ?>">
     <?php } ?>
 </div>
-<!-- The Modal -->
 <div class="modal fade" id="myModal">
-    <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-dialog modal-dialog-centered modal-lg">
         <div class="modal-content">
             <form id="postNewAddForm">
-                <!-- Modal Header -->
                 <div class="modal-header">
-                    <h4 class="modal-title">Add New Post</h4>
+                    <h3 class="modal-title">Add New Product</h3>
                     <button id="close" type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
-
-                <!-- Modal body -->
                 <div class="modal-body">
-                    <div class="form-group">
-                        <label for="productName"><strong>Product Name</strong></label>
+                    <div class="form-group mb-3">
+                        <label for="productName" class="form-label"><strong>Product Name</strong></label>
                         <input type="text" class="form-control" id="productName" placeholder="Enter product name" required>
                     </div>
-                    <div class="form-group">
-                        <label for="image"><strong>Image</strong></label><br>
-                        <input type="file" class="form-control-file" id="image" accept="image/png, image/jpeg,image/jpg" ondragover="allowDrop(event)" ondrop="dropFile(event)" required style="   .dragover {border: 2px dashed #000;}">
+                    <div class="form-group mb-3">
+                        <label for="image" class="form-label"><strong>Product Image</strong></label><br>
+                        <input type="file" class="form-control-file" id="image" accept="image/png, image/jpeg, image/jpg" ondragover="allowDrop(event)" ondrop="dropFile(event)" required>
                     </div>
-                    <div class="form-group">
-                        <label for="price"><strong>Price</strong></label>
-                        <input type="number" class="form-control" id="price" placeholder="Set Your Product Price" required>
+                    <div class="form-group mb-3">
+                        <label for="price" class="form-label"><strong>Product Price</strong></label>
+                        <input type="number" class="form-control" id="price" placeholder="Set Product Price" required>
                     </div>
-                    <div class="form-group">
-                        <label for="productDescription"><strong>Product Description</strong></label>
-                        <textarea class="form-control" id="productDescription" rows="3" placeholder="Describe about your product like how long it is used for,what's the brand of the product" required></textarea>
+                    <div class="form-group mb-3">
+                        <label for="productDescription" class="form-label"><strong>Product Description</strong></label>
+                        <textarea class="form-control" id="productDescription" rows="5" placeholder="Describe product, e.g., its condition, brand or qualities..." required></textarea>
                     </div>
                 </div>
-                <!-- Modal footer -->
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" onclick="resetPostNewAddForm()">Cancel
-                    </button>
-                    <button type="submit" class="btn btn-success" id="btnPostNewAdd" onclick="postNewAdd()">Post
-                    </button>
+                    <button type="button" class="btn btn-secondary btn-lg" data-bs-dismiss="modal" onclick="resetPostNewAddForm()">Cancel</button>
+                    <button type="submit" class="btn btn-success btn-lg" id="btnPostNewAdd" onclick="postNewAdd()">Post</button>
                 </div>
             </form>
         </div>

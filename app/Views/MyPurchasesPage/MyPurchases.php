@@ -21,7 +21,6 @@
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
-
         <div class="collapse navbar-collapse" id="navbarNavDropdown">
             <ul class="navbar-nav mx-auto">
                 <li class="nav-item">
@@ -52,7 +51,8 @@
         <h1 id="displayMessage" class="display-6 fw-semibold " style="color: white"><?= $displayMessage ?></h1>
     <?php endif; ?>
 </div>
-
 <div class="container text-center mt-3">
-    <button class="btn-purchase" onClick="window.location.href='/homepage'">Shop Now</button>
+    <button class="btn-purchase" onClick="window.location.href='/homepage'">
+        <i class="fas fa-shopping-cart"></i> Shop Now
+    </button>
 </div>

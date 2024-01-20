@@ -102,3 +102,5 @@ P
  app/Views/MyAdsPage/MyAdsDiv.php,c\f\cf91ea604351550e2b926baa8a71cb33c1b9f443
 O
 app/Public/CSS/WebsiteStyle.css,b\a\ba1057cb53f3f163d3ea56a8453deaecf75de97e
+H
+app/Public/CSS/Login.css,4\c\4cf56b193b163fe5e0fa809a1fdf132655594d23
