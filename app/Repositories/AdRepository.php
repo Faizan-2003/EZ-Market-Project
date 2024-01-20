@@ -158,6 +158,7 @@ class AdRepository extends Repository
     }
 
 
+
     private function checkAdinDB($stmt): bool
     {
         try {
@@ -173,27 +174,30 @@ class AdRepository extends Repository
             exit();
         }
     }
-    public function postNewAd(Ad $ad) :bool
+    public function postNewAd(Ad $ad): bool
     {
         try {
-            $stmt = $this->connection->prepare("INSERT INTO Ads(productName,productDescription,productPrice,productImageURI,userID) VALUES (:productName,:description,:price,:userID,:imageURI)");
+            $stmt = $this->connection->prepare("INSERT INTO Ads(productName, productDescription, productPrice, productImageURI, userID) VALUES (:productName, :productDescription, :productPrice, :productImageURI, :userID)");
             $stmt->bindValue(":productName", $ad->getProductName());
             $stmt->bindValue(":productDescription", $ad->getProductDescription());
             $stmt->bindValue(":productPrice", $ad->getProductPrice());
             $stmt->bindValue(":productImageURI", $ad->getProductImageURI());
             $stmt->bindValue(":userID", $ad->getUserID()->getId());
             $stmt->execute();
+
             if ($stmt->rowCount() == 0) {
                 return false;
             }
+
             return true;
         } catch (PDOException $e) {
             http_response_code(500);
             $message = '[' . date("F j, Y, g:i a e O") . ']' . $e->getMessage() . $e->getCode() . $e->getFile() . ' Line ' . $e->getLine() . PHP_EOL;
-            error_log("Something went wrong getting ads from database " . $message, 3, __DIR__ . "/../Errors/error.log");
+            error_log("Something went wrong getting ads from the database " . $message, 3, __DIR__ . "/../Errors/error.log");
             exit();
         }
     }
+
 
     private function getCurrentImageUriByAdId($adId)
     {

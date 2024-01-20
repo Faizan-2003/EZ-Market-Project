@@ -71,3 +71,6 @@ Database connection failed: [January 17, 2024, 12:10 am UTC +0000]SQLSTATE[HY000
 Database connection failed: [January 17, 2024, 12:11 am UTC +0000]SQLSTATE[HY000]: General error: 1364 Field 'userID' doesn't have a default valueHY000/app/repositories/UserRepository.php Line 71
 Database connection failed: [January 17, 2024, 12:11 am UTC +0000]SQLSTATE[HY000]: General error: 1364 Field 'userID' doesn't have a default valueHY000/app/repositories/UserRepository.php Line 71
 Database connection failed: [January 17, 2024, 12:25 am UTC +0000]SQLSTATE[HY000]: General error: 1364 Field 'userID' doesn't have a default valueHY000/app/repositories/UserRepository.php Line 71
+Something went wrong getting ads from database [January 20, 2024, 7:02 pm UTC +0000]SQLSTATE[HY093]: Invalid parameter number: parameter was not definedHY093/app/repositories/AdRepository.php Line 186
+Something went wrong getting ads from database [January 20, 2024, 7:04 pm UTC +0000]SQLSTATE[HY093]: Invalid parameter number: parameter was not definedHY093/app/repositories/AdRepository.php Line 186
+Something went wrong getting ads from the database [January 20, 2024, 7:06 pm UTC +0000]SQLSTATE[HY000]: General error: 1364 Field 'id' doesn't have a default valueHY000/app/repositories/AdRepository.php Line 186

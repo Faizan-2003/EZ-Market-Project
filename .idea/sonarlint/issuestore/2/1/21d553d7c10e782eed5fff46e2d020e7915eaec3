@@ -1,11 +1,12 @@
 
-kphp:S103!"KSplit this 129 characters long line (which is greater than 120 authorized).(à°İ¬ÿÿÿÿÿ8ˆÿ¨›Ò1
-]	php:S1784ª"@Explicitly mention the visibility of this method "processImage".(ñ ÚÊ8Ş¹§Ñ1
-J	php:S1144"-Remove this unused private "createad" method.(º‹ÛÓ8ˆÿ¨›Ò1
-h	php:S1192T"LDefine a constant instead of duplicating this literal "php://input" 3 times.(Öõõã8ş†Õ¦Ò1
-T	php:S1172s"3Remove the unused function parameter "$loggedUser".(§»Çöúÿÿÿÿ8¡’„§Ò1
-G	php:S2003"&Replace "require" with "require_once".(‹Ğùÿÿÿÿ8Ş¹§Ñ1
-X	php:S1793\"<Replace this "else if" keyword sequence by "elseif" keyword.(Ø‘ É8Ş¹§Ñ1
-m	php:S4833"LReplace "require" with namespace import mechanism through the "use" keyword.(‹Ğùÿÿÿÿ8Ş¹§Ñ1
-m	php:S4833"QReplace "require_once" with namespace import mechanism through the "use" keyword.(£€†‘8»–ñ¨Ñ1
-r	php:S4833"QReplace "require_once" with namespace import mechanism through the "use" keyword.(ìƒÀúÿÿÿÿ8¼–ñ¨Ñ1
+ephp:S103&"KSplit this 172 characters long line (which is greater than 120 authorized).(Î·;8Í¸ÇÁÒ1
+fphp:S1038"KSplit this 204 characters long line (which is greater than 120 authorized).(ë¾Ø¾8Î¸ÇÁÒ1
+]	php:S1784ñ"@Explicitly mention the visibility of this method "processImage".(ñ ÚÊ8›Ş¹ÁÒ1
+p	php:S3776"TRefactor this function to reduce its Cognitive Complexity from 35 to the 15 allowed.(¢ö«÷8›Ş¹ÁÒ1
+i	php:S1192¥"LDefine a constant instead of duplicating this literal "php://input" 3 times.(Öõõã8›Ş¹ÁÒ1
+U	php:S1172Ä"3Remove the unused function parameter "$loggedUser".(§»Çöúÿÿÿÿ8›Ş¹ÁÒ1
+G	php:S2003"&Replace "require" with "require_once".(‹Ğùÿÿÿÿ8›Ş¹ÁÒ1
+Y	php:S1793­"<Replace this "else if" keyword sequence by "elseif" keyword.(Ø‘ É8œŞ¹ÁÒ1
+m	php:S4833"LReplace "require" with namespace import mechanism through the "use" keyword.(‹Ğùÿÿÿÿ8œŞ¹ÁÒ1
+m	php:S4833"QReplace "require_once" with namespace import mechanism through the "use" keyword.(£€†‘8œŞ¹ÁÒ1
+r	php:S4833"QReplace "require_once" with namespace import mechanism through the "use" keyword.(ìƒÀúÿÿÿÿ8œŞ¹ÁÒ1

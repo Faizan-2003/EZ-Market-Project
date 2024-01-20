@@ -21,41 +21,36 @@ function showPostNewAd() {
 function postNewAdd() {
     console.log('postNewAdd function called');
 
-
     const inputLoggedUserId = escapeHtml(document.getElementById("hiddenLoggedUserId").value);
     const inputLoggedUserName = escapeHtml(document.getElementById("loggedUserName").value);
     const inputProductName = escapeHtml(document.getElementById("productName").value);
     const inputPrice = escapeHtml(document.getElementById("price").value);
     const inputProductDescription = escapeHtml(document.getElementById("productDescription").value);
-    const imageInput = document.getElementById("image").files[0];
+    const inputProductImage = document.getElementById("image").files[0];
 
     // Validate the form
-    if (!validateForm(inputProductName, inputPrice, inputProductDescription, imageInput)) {
+    if (!validateForm(inputProductName, inputPrice, inputProductDescription, inputProductImage)) {
         return;
     }
 
-    const data = {
-        productName: inputProductName,
-        productPrice: inputPrice,
-        productDescription: inputProductDescription,
+    const adDetails = {
         loggedUserId: inputLoggedUserId,
-        loggedUserName: inputLoggedUserName
+        loggedUserName: inputLoggedUserName,
+        productName: inputProductName,
+        price: inputPrice,
+        productDescription: inputProductDescription,
     };
 
-    let formData = new FormData();
-    formData.append("image", imageInput);
+    const formData = new FormData();
+    formData.append("image", inputProductImage);
+    formData.append("adDetails", JSON.stringify(adDetails));
 
-    // Append other form data as well
-    for (let key in data) {
-        formData.append(key, data[key]);
-    }
-
+    // Send the form data to the server
     sendRequestForInsertingAd(formData);
 }
 
 function sendRequestForInsertingAd(formData) {
-    //  e.preventDefault to see the differences
-    event.preventDefault()
+    event.preventDefault(); // Prevent the default form submission
     // Send a POST request to the server with the form data
     fetch('http://localhost/api/adsapi', {
         method: 'POST',
@@ -72,8 +67,10 @@ function sendRequestForInsertingAd(formData) {
             } else {
                 alert(responseData.message);
             }
-        }) .catch(err => console.error(err));
+        })
+        .catch(err => console.error(err));
 }
+
 function createHorizontalAdCard(ad) {
     // Create the main card element
     let card = document.createElement("div");
@@ -154,7 +151,6 @@ function loadAdsOfLoggedUser() {
     const inputLoggedUserId = escapeHtml(document.getElementById("hiddenLoggedUserId").value);
     console.log('Logged User ID:', inputLoggedUserId);
     let data = { loggedUserId: inputLoggedUserId }
-    // Send a POST request to the server with logged user and promising the ads as response of logged user
     fetch('http://localhost/api/adsbyloggeduser', {
         method: 'POST',
         body: JSON.stringify(data),

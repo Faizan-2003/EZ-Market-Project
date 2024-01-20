@@ -9,7 +9,6 @@ class UserService
     {
         $this->userRepository = $userRepository;
     }
-
     public function verifyAndGetUser($email, $password)
     {
         return $this->userRepository->verifyAndGetUser($email, $password);
@@ -32,23 +31,16 @@ class UserService
             }
             return $hashPassword;
         } catch (Exception $exception) {
-            // Handle the exception according to your application's needs.
-            // Log the error, display a user-friendly message, etc.
             error_log('Error hashing password: ' . $exception->getMessage());
-            // Re-throw the exception if you want to propagate it further.
             throw $exception;
         }
     }
-
-
     public function createNewUser($userDetails): bool
     {
         $hashedPassword = password_hash($userDetails["password"], PASSWORD_BCRYPT);
         $userDetails["hashPassword"] = $hashedPassword;
         return $this->userRepository->insertUserInDatabase($userDetails);
     }
-
-
     public function CheckUserExistenceByEmail($email): bool
     {
         return $this->userRepository->CheckUserEmailExistence($email);

@@ -1,4 +1,4 @@
 
-€php:S1004"`Rename function "CheckUserExistenceByEmail" to match the regular expression ^[a-z][a-zA-Z0-9]*$.(Ó¢‡üÿÿÿÿ8¶›ª—Ñ1
-`php:S112"FDefine and throw a dedicated exception instead of using a generic one.(µ÷·88¿’°—Ñ1
+€php:S100,"`Rename function "CheckUserExistenceByEmail" to match the regular expression ^[a-z][a-zA-Z0-9]*$.(Ó¢‡üÿÿÿÿ8ÙŒşÁÒ1
+`php:S112"FDefine and throw a dedicated exception instead of using a generic one.(µ÷·88¿’°—Ñ1
 m	php:S4833"QReplace "require_once" with namespace import mechanism through the "use" keyword.(®§İ…8—¸Ú–Ñ1

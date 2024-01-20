@@ -17,25 +17,106 @@ class AdsController
         $this->sendHeaders();
         $responseData = array();
 
+        // Respond to a POST request to /api/article
         if ($_SERVER["REQUEST_METHOD"] == "POST") {
-            $adDetails = json_decode($_POST['adDetails'], true);
+            if (!isset($_POST['adDetails'])) {
+                // Handle the case when 'adDetails' is not set
+                $responseData = array(
+                    "success" => false,
+                    "message" => "'adDetails' is not set in the POST data"
+                );
+            } else {
+                $adDetails = isset($_POST['adDetails']) ? json_decode($_POST['adDetails'], true) : array();
+                if ($adDetails === null) {
+                    // Handle the case when 'adDetails' cannot be properly decoded
+                    $responseData = array(
+                        "success" => false,
+                        "message" => "Unable to decode 'adDetails' as JSON"
+                    );
+                } else {
+                    // Now check if the required keys are present
+                    if (isset($adDetails['loggedUserName'], $adDetails['productName'], $adDetails['price'], $adDetails['productDescription'], $adDetails['loggedUserId'])) {
+                        $username = htmlspecialchars($adDetails['loggedUserName']);
+                        $productName = htmlspecialchars($adDetails['productName']);
+                        $productPrice = htmlspecialchars($adDetails['price']);
+                        $productDescription = htmlspecialchars($adDetails['productDescription']);
 
-            // Validate and sanitize inputs
-            $username = $this->sanitizeInput($adDetails['loggedUserName']);
-            $productName = $this->sanitizeInput($adDetails['productName']);
-            $productPrice = $this->sanitizeInput($adDetails['price']);
-            $productDescription = $this->sanitizeInput($adDetails['productDescription']);
+                        // Process the image file
+                        $image = $_FILES['image'];
+                        $responseData = $this->processImage($image);
 
-            $image = $_FILES['image'];
-            $responseData = $this->processImage($image);
+                        if ($responseData['success']) {
+                            $imageTempName = $image['tmp_name'];
+                            $imageName = $image['name'];
+                            $targetDirectory = "images/";
+                            $imageExtension = explode('.', $imageName);
+                            $newImageName = "EZM" . "-" . date("Y-m-d") . "-" . $username . "." . end($imageExtension);
 
-            if ($responseData['success']) {
-                $responseData = $this->adService->saveNewAd($productName, $productPrice, $productDescription, $image, $username);
+                            // when everything is correct
+                            $checkInDb = $this->adService->postNewAd($this->createAd($productName, $productPrice, $productDescription, "/" . $targetDirectory . $newImageName, $adDetails['loggedUserId']));
+
+                            if ($checkInDb) {
+                                $uploadedFile = move_uploaded_file($imageTempName, $targetDirectory . $newImageName);
+
+                                if (!$uploadedFile) {
+                                    $responseData = array(
+                                        "success" => false,
+                                        "message" => "Something went Wrong while processing your uploaded image"
+                                    );
+                                }
+                            } else {
+                                $responseData = array(
+                                    "success" => false,
+                                    "message" => "Something went Wrong while processing your Add request"
+                                );
+                            }
+                        }
+                    } else {
+                        // Handle the case when the required keys are not present
+                        $responseData = array(
+                            "success" => false,
+                            "message" => "Required keys are not present in 'adDetails'"
+                        );
+                    }
+                }
             }
 
-            echo json_encode($responseData);
+            // Convert the response message to a JSON string
+            $responseJson = json_encode($responseData);
+
+            // Send the response message as the body of the HTTP response
+            echo $responseJson;
         }
     }
+
+    public function createAd($productName, $productPrice, $productDescription, $productImageURI, $userID): Ad
+    {
+        $ad = new Ad();
+        $ad->setProductName($productName);
+
+        // Check if $productPrice is a non-empty string and convert it to float
+        if (!empty($productPrice)) {
+            $productPrice = (float)$productPrice;
+            $ad->setProductPrice($productPrice);
+        }
+
+        $ad->setProductDescription($productDescription);
+        $ad->setProductImageURI($productImageURI);
+
+        // Check if $userID is a User object
+        if ($userID instanceof User) {
+            $ad->setUserID($userID);
+        } else {
+            // Handle the case when $userID is not a User object
+            // You might need to create a User object and set its ID
+            $user = new User();
+            $user->setId($userID);
+            $ad->setUserID($user);
+        }
+
+        return $ad;
+    }
+
 
 
     public function handleSearchRequest(): void
@@ -139,16 +220,6 @@ class AdsController
     }
 
 
-    private function createAd($name, $price, $description, $imageURI, $userID): Ad
-    {
-        $ad = new Ad();
-        $ad->setProductName($name);
-        $ad->setProductPrice($price);
-        $ad->setProductDescription($description);
-        $ad->getUserID()->setId($userID);
-        $ad->setProductImageURI($imageURI);
-        return $ad;
-    }
 
     private function getResponseMessage($error): mixed
     {
@@ -202,10 +273,5 @@ class AdsController
         header("Access-Control-Allow-Methods: *");
         header("Cache-Control: no-store, no-cache, must-revalidate");
         header('Content-Type: application/json');
-    }
-
-    private function sanitizeInput($input)
-    {
-        return htmlspecialchars($input, ENT_QUOTES, 'UTF-8');
     }
 }

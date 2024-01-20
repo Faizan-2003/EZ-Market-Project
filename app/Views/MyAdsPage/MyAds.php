@@ -66,7 +66,8 @@
     <?php if (!is_null($this->loggedUser)) { ?>
         <input type="hidden" id="hiddenLoggedUserId" value="<?= $this->loggedUser->getId() ?>">
         <input type="hidden" id="loggedUserName" value="<?= $this->loggedUser->getFirstName() ?>">
-    <?php } ?>
+    <?php
+    } ?>
 </div>
 <div class="modal fade" id="myModal">
     <div class="modal-dialog modal-dialog-centered modal-lg">
