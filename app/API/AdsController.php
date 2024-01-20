@@ -28,13 +28,11 @@ class AdsController
             } else {
                 $adDetails = isset($_POST['adDetails']) ? json_decode($_POST['adDetails'], true) : array();
                 if ($adDetails === null) {
-                    // Handle the case when 'adDetails' cannot be properly decoded
                     $responseData = array(
                         "success" => false,
                         "message" => "Unable to decode 'adDetails' as JSON"
                     );
                 } else {
-                    // Now check if the required keys are present
                     if (isset($adDetails['loggedUserName'], $adDetails['productName'], $adDetails['price'], $adDetails['productDescription'], $adDetails['loggedUserId'])) {
                         $username = htmlspecialchars($adDetails['loggedUserName']);
                         $productName = htmlspecialchars($adDetails['productName']);
@@ -50,7 +48,8 @@ class AdsController
                             $imageName = $image['name'];
                             $targetDirectory = "images/";
                             $imageExtension = explode('.', $imageName);
-                            $newImageName = "EZM" . "-" . date("Y-m-d") . "-" . $username . "." . end($imageExtension);
+                            $uniqueIdentifier = $productName;
+                            $newImageName = "EZM" . "-" . date("Y-m-d") . "-" . $username . "." .$uniqueIdentifier."-" . end($imageExtension);
 
                             // when everything is correct
                             $checkInDb = $this->adService->postNewAd($this->createAd($productName, $productPrice, $productDescription, "/" . $targetDirectory . $newImageName, $adDetails['loggedUserId']));
