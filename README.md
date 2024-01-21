@@ -3,11 +3,11 @@
 
 This platform is an online advertising system that leverages the following technologies:
 - Docker
+- NGINX webserver
+- PHP 8.1
 - Javascript
 - HTML
 - CSS
-- NGINX webserver
-- PHP 8.1
 - MariaDB
 - PHPMyAdmin
 
@@ -41,6 +41,13 @@ This platform is an online advertising system that leverages the following techn
 - Register from the login screen.
 - Provide first name, last name, email address, and password.
 - After registration, login directly to start buying or selling.
+
+## Logics: 
+- The application's homepage lists available advertisements, arranged by most recent dates, for users who are logged in and those who are not.
+- The website use Bcrypt for password hashing and verifying.
+- The project contains the SQL database script to populate the database.
+- The application is designed to make it easy and user-friendly.
+- The application stores the user's ID in the database as buyerID if they are logged in while purchasing something to show it in My purchases.
 
 ## Website Bugs:
 I have 2 issues in the website:
