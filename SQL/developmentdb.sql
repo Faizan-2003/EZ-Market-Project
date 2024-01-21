@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: mysql
--- Generation Time: Jan 21, 2024 at 02:45 PM
+-- Generation Time: Jan 21, 2024 at 04:37 PM
 -- Server version: 11.1.2-MariaDB-1:11.1.2+maria~ubu2204
 -- PHP Version: 8.2.12
 
@@ -44,7 +44,7 @@ CREATE TABLE `Ads` (
 --
 
 INSERT INTO `Ads` (`id`, `productName`, `productDescription`, `productPrice`, `postedDate`, `productImageURI`, `productStatus`, `userID`, `buyerID`) VALUES
-                                                                                                                                                         (32, 'Iphone 12 pro max', 'Apple Iphone 12 pro max in White colour and new condition.', 850.00, '2024-01-13', '/images/iphone12.jpg', 'Available', 1, NULL),
+                                                                                                                                                         (32, 'Iphone 12 pro max', 'Apple Iphone 12 pro max in White colour and new condition.', 900.00, '2024-01-13', '/images/iphone12.jpg', 'Available', 1, NULL),
                                                                                                                                                          (33, 'LMAX bicycle', 'Green coloured beautiful bicycle', 450.00, '2024-01-13', '/images/bicycle.jpg', 'Available', 1, NULL),
                                                                                                                                                          (34, 'Rich Dad Poor Dad', 'Rich Dad Poor Dad is a 1997 book written by Robert T. Kiyosaki and Sharon Lechter.', 30.00, '2024-01-15', '/images/book.jpg', 'Sold', 2, 1),
                                                                                                                                                          (35, 'Nike Air Mags', 'Electroluminescent outsole, space-age materials, rechargeable internal battery for 3,000 hours and more.\n', 15000.00, '2024-01-15', '/images/nike.jpg', 'Sold', 2, 1),
@@ -54,7 +54,8 @@ INSERT INTO `Ads` (`id`, `productName`, `productDescription`, `productPrice`, `p
                                                                                                                                                          (39, 'Samsung Galaxy S23 Ultra', 'Samsung Galaxy S23 Ultra, Gold/Bronze colour phone  totally new. ', 1000.00, '2024-01-19', '/images/galaxy.jpg', 'Sold', 2, 3),
                                                                                                                                                          (40, 'Samsung Galaxy Note 20', 'Samsung Galaxy Note 20, Bronze color very good condition totally new.', 850.00, '2024-01-19', '/images/note20.jpg', 'Sold', 2, 5),
                                                                                                                                                          (48, 'Iphone 11', 'Iphone 11, Green Colour. Good condition', 650.00, '2024-01-20', '/images/EZM-2024-01-20-Muhammad.jpg', 'Sold', 1, 3),
-                                                                                                                                                         (49, 'Pathe Film Voucher', 'SpiderMan-I want to go home. Movie ticket.', 20.00, '2024-01-20', '/images/EZM-2024-01-20-Muhammad.Pathe Film Voucher-jpg', 'Sold', 1, 2);
+                                                                                                                                                         (49, 'Pathe Film Voucher', 'SpiderMan-I want to go home. Movie ticket.', 20.00, '2024-01-20', '/images/EZM-2024-01-20-Muhammad.Pathe Film Voucher-jpg', 'Sold', 1, 2),
+                                                                                                                                                         (50, 'Ipad Mini', 'Ipad Mini blue color', 600.00, '2024-01-21', '/images/EZM-2024-01-21-Dawood.Ipad Mini-jpeg', 'Sold', 3, 1);
 
 -- --------------------------------------------------------
 
@@ -106,7 +107,7 @@ ALTER TABLE `User`
 -- AUTO_INCREMENT for table `Ads`
 --
 ALTER TABLE `Ads`
-    MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=50;
+    MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=51;
 
 --
 -- AUTO_INCREMENT for table `User`
