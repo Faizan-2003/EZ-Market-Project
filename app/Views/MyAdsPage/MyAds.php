@@ -42,9 +42,6 @@
                 <li class="nav-item">
                     <a class="nav-link mx-2 login" href="/homepage/login" style="border: 1px solid #000080; padding: 10px 15px; border-radius: 5px;">Log In</a>
                 </li>
-                <li class="nav-item">
-                    <a class="nav-link mx-2 logout"  href="/homepage/login" style="border: 1px solid #000080; padding: 10px 15px; border-radius: 5px;">Log Out</a>
-                </li>
             </ul>
         </div>
     </div>

@@ -1,11 +1,13 @@
 
-fphp:S103"KSplit this 130 characters long line (which is greater than 120 authorized).(ÒšºÅ8ò•›ñĞ1
-kphp:S103"KSplit this 214 characters long line (which is greater than 120 authorized).(Î£âÿÿÿÿÿ8í—Á”Ñ1
-kphp:S103"KSplit this 132 characters long line (which is greater than 120 authorized).(··şÿüÿÿÿÿ8»Ö¿¤Ñ1
-kphp:S103("KSplit this 173 characters long line (which is greater than 120 authorized).(Êû±şÿÿÿÿ8¦€¢èÑ1
-fphp:S103,"KSplit this 153 characters long line (which is greater than 120 authorized).(¸¨·™8Œğ’ÈÒ1
-kphp:S1034"KSplit this 179 characters long line (which is greater than 120 authorized).(ÕÄ­’üÿÿÿÿ8ˆÖ…£Ò1
+fphp:S103"KSplit this 130 characters long line (which is greater than 120 authorized).(ÒšºÅ8¶—°áÒ1
+kphp:S103"KSplit this 214 characters long line (which is greater than 120 authorized).(Î£âÿÿÿÿÿ8·—°áÒ1
+fphp:S103"KSplit this 178 characters long line (which is greater than 120 authorized).(Æ×Óñ8·—°áÒ1
+fphp:S103"KSplit this 211 characters long line (which is greater than 120 authorized).(¶ÃÁ½8·—°áÒ1
+kphp:S103"KSplit this 202 characters long line (which is greater than 120 authorized).(‰Ìéüÿÿÿÿ8×®¶áÒ1
+kphp:S103)"KSplit this 173 characters long line (which is greater than 120 authorized).(Êû±şÿÿÿÿ8×®¶áÒ1
+fphp:S103,"KSplit this 159 characters long line (which is greater than 120 authorized).(Ô£á¦8×®¶áÒ1
+kphp:S1034"KSplit this 179 characters long line (which is greater than 120 authorized).(ÕÄ­’üÿÿÿÿ8¸—°áÒ1
 G	php:S2003
-"&Replace "include" with "include_once".( ØÜùÿÿÿÿ8ºæ¦ñĞ1
+"&Replace "include" with "include_once".( ØÜùÿÿÿÿ8¸—°áÒ1
 m	php:S4833
-"LReplace "include" with namespace import mechanism through the "use" keyword.( ØÜùÿÿÿÿ8ºæ¦ñĞ1
+"LReplace "include" with namespace import mechanism through the "use" keyword.( ØÜùÿÿÿÿ8¸—°áÒ1
