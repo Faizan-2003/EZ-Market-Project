@@ -30,7 +30,7 @@ function confirmRepeatedPassword(inputField){
 }
 function verifyPasswordLength(inputField){
     if(inputField.value.length<=8 && inputField.value.length>0) {
-        document.getElementById("feedback-invalid-pass").innerText = "You must enter 8 character long password";
+        document.getElementById("feedback-invalid-pass").innerText = "You must enter a 8-character length password";
         document.getElementById("feedback-invalid-pass").style.color = "red";
         inputField.classList.add("invalid");
         document.getElementById("btnRegister").disabled=true;
@@ -53,7 +53,6 @@ function displayModalForSignUp(title,message){
         buttonName ='Login';
         href="/homepage/login";
     }
-// Create the modal
     let modal = document.createElement("div");
     modal.classList.add("modal", "fade");
     modal.id = "myModal";
@@ -63,30 +62,25 @@ function displayModalForSignUp(title,message){
     modal.setAttribute("aria-hidden", "true");
     document.body.appendChild(modal);
 
-// Create the modal dialog
     let modalDialog = document.createElement("div");
     modalDialog.classList.add("modal-dialog");
     modalDialog.setAttribute("role", "document");
     modal.appendChild(modalDialog);
 
-// Create the modal content
     let modalContent = document.createElement("div");
     modalContent.classList.add("modal-content");
     modalDialog.appendChild(modalContent);
 
-// Create the modal header
     let modalHeader = document.createElement("div");
     modalHeader.classList.add("modal-header");
     modalContent.appendChild(modalHeader);
 
-// Create the modal title
     let modalTitle = document.createElement("h5");
     modalTitle.classList.add("modal-title");
     modalTitle.innerText = title;
     modalTitle.id = "myModalLabel";
     modalHeader.appendChild(modalTitle);
 
-// Create the modal close button
     let modalCloseBtn = document.createElement("button");
     modalCloseBtn.type = "button";
     modalCloseBtn.classList.add("btn-close");
@@ -97,18 +91,15 @@ function displayModalForSignUp(title,message){
     });
     modalHeader.appendChild(modalCloseBtn);
 
-// Create the modal body
     let modalBody = document.createElement("div");
     modalBody.classList.add("modal-body");
     modalBody.innerText = message;
     modalContent.appendChild(modalBody);
 
-// Create the modal footer
     let modalFooter = document.createElement("div");
     modalFooter.classList.add("modal-footer");
     modalContent.appendChild(modalFooter);
 
-// Create the modal close button
     let modalCloseBtn2 = document.createElement("button");
     modalCloseBtn2.type = "button";
     modalCloseBtn2.classList.add("btn", "btn-primary");
@@ -128,6 +119,4 @@ function displayModalForSignUp(title,message){
     modalBtn.setAttribute("data-bs-target", "#myModal");
     document.body.appendChild(modalBtn);
     modalBtn.click();
-
-
 }

@@ -67,7 +67,7 @@ class UserRepository extends Repository
             $stmt->bindValue(":firstName", $userDetails["firstName"]);
             $stmt->bindValue(":lastName", $userDetails["lastName"]);
             $stmt->bindValue(":email", $userDetails["email"]);
-            $stmt->bindValue(":password", $userDetails["hashPassword"]); // Fix here
+            $stmt->bindValue(":password", $userDetails["hashPassword"]);
             $stmt->execute();
 
             return $stmt->rowCount() > 0;

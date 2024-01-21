@@ -12,7 +12,7 @@ class Ad implements jsonSerializable
     private string $productImageURI;
     private Status $productStatus;
     private User $userID;
-    private User $BuyerID;
+    private User $buyerID;
 
     public function __construct()
     {

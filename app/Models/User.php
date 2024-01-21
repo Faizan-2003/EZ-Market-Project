@@ -5,7 +5,7 @@ class User implements jsonSerializable
     public string $firstName;
     public string $lastName;
     public string $email;
-    private $password; // Declare the property
+    private $password;
     /**
      * @return int
      */
@@ -19,7 +19,7 @@ class User implements jsonSerializable
      */
     public function setId(int $id): void
     {
-        $this->userID = $id;  // Corrected the property name to userID
+        $this->userID = $id;
     }
 
 

@@ -1,8 +1,5 @@
 <?php
 require __DIR__.'/../Services/UserService.php';
-
-
-
 Class RegisterUserController{
     private UserService $userService;
 
@@ -21,7 +18,7 @@ Class RegisterUserController{
     private function createUser() :void{
         if(isset($_POST["btnRegister"])){
             if($this->userService->CheckUserExistenceByEmail(htmlspecialchars($_POST["email"]))){
-                echo"<script>displayModalForSignUp('ooooooops!','The email address you entered is already taken, Please choose another email address')</script>";
+                echo"<script>displayModalForSignUp('Ohoooo!','The email address you entered is already taken😔, Please choose another email address!')</script>";
                 return;
             }
             $userDetails= array(

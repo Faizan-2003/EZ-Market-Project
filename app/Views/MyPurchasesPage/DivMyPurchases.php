@@ -2,7 +2,6 @@
 <?php
 $loggedInUserPurchases = $this->loggedUserPurchases;
 if (!empty($loggedInUserPurchases)) {
-   // var_dump($loggedInUserPurchases);
     foreach ($loggedInUserPurchases as $purchase) {
         ?>
         <div class="card mb-3" style="max-width: 900px;">

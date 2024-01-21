@@ -1,6 +1,6 @@
 
-fphp:S103"KSplit this 122 characters long line (which is greater than 120 authorized).(ÄÄ­á8ô ä§Ò1
-fphp:S103"KSplit this 144 characters long line (which is greater than 120 authorized).(šê¼8º©å§Ò1
-fphp:S103"KSplit this 122 characters long line (which is greater than 120 authorized).(çæä¥8áò¥Ò1
+fphp:S103
+"KSplit this 122 characters long line (which is greater than 120 authorized).(ÄÄ­á8ô ä§Ò1
+fphp:S103"KSplit this 144 characters long line (which is greater than 120 authorized).(šê¼8º©å§Ò1
+fphp:S103"KSplit this 122 characters long line (which is greater than 120 authorized).(çæä¥8áò¥Ò1
 :php:S113"'Add a new line at the end of this file.8áò¥Ò1
-9php:S125"Remove this commented out code.(ó·8ˆöè§Ò1

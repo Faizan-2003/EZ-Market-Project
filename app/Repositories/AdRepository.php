@@ -33,7 +33,6 @@ class AdRepository extends Repository
             }
             return null;
         } catch (PDOException $e) {
-            // Handle the exception
             trigger_error("An error occurred: " . $e->getMessage(), E_USER_ERROR);
         }
 
@@ -49,8 +48,6 @@ class AdRepository extends Repository
             $row = $stmt->fetch();
             return $this->makeAnAd($row);
         } catch (PDOException  $e) {
-            $message = '[' . date("F j, Y, g:i a e O") . ']' . $e->getMessage() . $e->getCode() . $e->getFile() . ' Line ' . $e->getLine() . PHP_EOL;
-            error_log("Something went wrong getting ads from database " . $message, 3, __DIR__ . "/../Errors/error.log");
             http_response_code(500);
             exit();
         }
@@ -60,7 +57,7 @@ class AdRepository extends Repository
     {
         try {
             $stmt = $this->connection->prepare("SELECT id, productName, productDescription, productPrice, postedDate, productImageURI, productStatus, userID, buyerID FROM Ads WHERE UserID = :userID ORDER BY postedDate DESC");
-            $id = $loggedUser->userID; // Update this line to reflect the actual property name
+            $id = $loggedUser->userID;
             $stmt->bindParam(":userID", $id);
 
             if ($this->checkAdinDB($stmt)) {
@@ -74,8 +71,6 @@ class AdRepository extends Repository
             }
             return null;
         } catch (PDOException $e) {
-            $message = '[' . date("F j, Y, g:i a e O") . ']' . $e->getMessage() . $e->getCode() . $e->getFile() . ' Line ' . $e->getLine() . PHP_EOL;
-            error_log("Something went wrong getting ads from database " . $message, 3, __DIR__ . "/../Errors/error.log");
             http_response_code(500);
             exit();
         }
@@ -84,7 +79,7 @@ class AdRepository extends Repository
     {
         try {
             $stmt = $this->connection->prepare("SELECT id, productName, productDescription, productPrice, postedDate, productImageURI, productStatus, userID, buyerID FROM Ads WHERE buyerID = :userID ORDER BY postedDate DESC");
-            $id = $loggedUser->userID; // Update this line to reflect the actual property name
+            $id = $loggedUser->userID;
             $stmt->bindParam(":userID", $id);
 
             if ($this->checkAdinDB($stmt)) {
@@ -98,7 +93,6 @@ class AdRepository extends Repository
             }
             return null;
         } catch (PDOException $e) {
-            // Handle the exception
             trigger_error("An error occurred: " . $e->getMessage(), E_USER_ERROR);
         }
     }
@@ -169,8 +163,6 @@ class AdRepository extends Repository
             }
             return false;
         } catch (PDOException $e) {
-            $message = '[' . date("F j, Y, g:i a e O") . ']' . $e->getMessage() . $e->getCode() . $e->getFile() . ' Line ' . $e->getLine() . PHP_EOL;
-            error_log("Something went wrong getting ads from database " . $message, 3, __DIR__ . "/../Errors/error.log");
             http_response_code(500);
             exit();
         }
@@ -193,25 +185,21 @@ class AdRepository extends Repository
             return true;
         } catch (PDOException $e) {
             http_response_code(500);
-            $message = '[' . date("F j, Y, g:i a e O") . ']' . $e->getMessage() . $e->getCode() . $e->getFile() . ' Line ' . $e->getLine() . PHP_EOL;
-            error_log("Something went wrong getting ads from the database " . $message, 3, __DIR__ . "/../Errors/error.log");
             exit();
         }
     }
 
 
-    private function getCurrentImageUriByAdId($adId)
+    private function getCurrentImageURIbyAdId($adId)
     {
         try {
             $stmt = $this->connection->prepare("SELECT productImageURI FROM Ads WHERE id= :adId");
             $stmt->bindValue(":adId", $adId);
             $stmt->execute();
             if ($stmt->rowCount() == 1) {
-                // Statement returned exactly one row
                 $result = $stmt->fetch();
                 $imageURI = $result['productImageURI'];
             } else {
-                // Statement returned no rows or more than one row
                 throw new PDOException("someTHING WENT WRONG");
             }
             return $imageURI;
@@ -219,11 +207,11 @@ class AdRepository extends Repository
             trigger_error("An error occurred: " . $e->getMessage(), E_USER_ERROR);
         }
     }
-    public function editAd($newImage, string $productName, string $productDescription, float $productPrice, int $adID)
+    public function editAd($newImage, string $productName, string $productDescription, float $productPrice, int $adID): void
     {
         try {
             if (!isset($this->dbStoredName)) {
-                $this->dbStoredName = $this->getCurrentImageUriByAdId($adID);
+                $this->dbStoredName = $this->getCurrentImageURIbyAdId($adID);
             }
 
             $storingImageUri = $this->editImageFile($this->dbStoredName, $newImage);
@@ -240,7 +228,6 @@ class AdRepository extends Repository
             $stmt->bindValue(":id", $adID);
             $stmt->execute();
         } catch (PDOException | Exception $e) {
-            // Provide a more detailed error message or log the error
             trigger_error("An error occurred: " . $e->getMessage(), E_USER_ERROR);
         }
     }
@@ -261,10 +248,8 @@ class AdRepository extends Repository
 
             echo json_encode(['ads' => $ads]);
         } catch (PDOException | Exception $e) {
-            // Log the error using your existing ErrorLog class or mechanism
             $this->errorLog->logError('An error occurred: ' . $e->getMessage());
 
-            // Return a generic error message
             echo json_encode(['error' => true, 'message' => 'An error occurred.']);
         }
     }
@@ -299,13 +284,12 @@ class AdRepository extends Repository
             $buyerID = (!is_null($loggedInUser)) ? $loggedInUser->getId() : null;
 
             $stmt = $this->connection->prepare("UPDATE Ads SET buyerID = :buyerID, productStatus = :status WHERE id = :adID");
-            $stmt->bindValue(":buyerID", $buyerID, PDO::PARAM_INT);  // Assuming buyerID is an integer
-            $stmt->bindValue(":status", Status::Sold->label());  // Assuming "Sold" is the appropriate status
-            $stmt->bindValue(":adID", $adID, PDO::PARAM_INT);  // Assuming adID is an integer
+            $stmt->bindValue(":buyerID", $buyerID, PDO::PARAM_INT);
+            $stmt->bindValue(":status", Status::Sold->label());
+            $stmt->bindValue(":adID", $adID, PDO::PARAM_INT);
 
             return $stmt->execute();
         } catch (PDOException $e) {
-            // Log or handle the exception
             trigger_error("An error occurred: " . $e->getMessage(), E_USER_ERROR);
             return false;
         }

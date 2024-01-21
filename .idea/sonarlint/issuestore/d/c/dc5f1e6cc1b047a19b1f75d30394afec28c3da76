@@ -1,9 +1,8 @@
 
-kphp:S103)"KSplit this 130 characters long line (which is greater than 120 authorized).(ŠŽªÛþÿÿÿÿ8Ã¦ÿ£Ò1
-G	php:S1481S"+Remove this unused "$adIDs" local variable.(¥’ø¸8Ã¦ÿ£Ò1
+G	php:S1481B"+Remove this unused "$adIDs" local variable.(¥’ø¸8Ã¦ÿ£Ò1
 r	php:S4833"QReplace "require_once" with namespace import mechanism through the "use" keyword.(”—Ü“ûÿÿÿÿ8Ã¦ÿ£Ò1
 r	php:S4833"QReplace "require_once" with namespace import mechanism through the "use" keyword.(âÈ ·þÿÿÿÿ8Ã¦ÿ£Ò1
 r	php:S4833"QReplace "require_once" with namespace import mechanism through the "use" keyword.(Ùç•Ðùÿÿÿÿ8Ã¦ÿ£Ò1
-r	php:S4833"QReplace "require_once" with namespace import mechanism through the "use" keyword.(É…üëùÿÿÿÿ8Ã¦ÿ£Ò1
-r	php:S4833"QReplace "require_once" with namespace import mechanism through the "use" keyword.(´Ý»«üÿÿÿÿ8Ã¦ÿ£Ò1
-r	php:S4833'"QReplace "require_once" with namespace import mechanism through the "use" keyword.(«ˆœºüÿÿÿÿ8Ã¦ÿ£Ò1
+r	php:S4833"QReplace "require_once" with namespace import mechanism through the "use" keyword.(É…üëùÿÿÿÿ8Ã¦ÿ£Ò1
+r	php:S4833"QReplace "require_once" with namespace import mechanism through the "use" keyword.(´Ý»«üÿÿÿÿ8Ã¦ÿ£Ò1
+r	php:S4833""QReplace "require_once" with namespace import mechanism through the "use" keyword.(«ˆœºüÿÿÿÿ8Ã¦ÿ£Ò1

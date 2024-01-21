@@ -13,8 +13,7 @@ class AdService
     public function getAllAdsByStatus(Status $status): array
     {
         $ads = $this->adRepository->getAllAdsByStatus($status);
-
-        return $ads ?? []; // Return an empty array if $ads is null
+        return $ads ?? [];
     }
     public function searchAdsByProductName($productName)
     {
@@ -32,7 +31,7 @@ class AdService
     public function getAdsByLoggedUser(User $loggedUser): array
     {
         $ads = $this->adRepository->getAdsByLoggedUser($loggedUser);
-        return $ads ?: []; // Return an empty array if $ads is null
+        return $ads ?: [];
     }
     public function getPurchasesByLoggedInUser(User $loggedUser): array
     {

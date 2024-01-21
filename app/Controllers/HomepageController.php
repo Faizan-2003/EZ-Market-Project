@@ -16,20 +16,7 @@ class HomepageController{
     {
         $ads = $this->adService->getAllAvailableAds();
 
-        $this->loginAndSignout();
         $this->renderHomepageView($ads);
-    }
-
-
-    private function loginAndSignout(): void
-    {
-        if (!is_null(getLoggedUser())) {
-           // echo '<script>HideLogOutButton();</script>';
-        }
-        if (isset($_POST["btnSignOut"])) {
-            logOutFromApp();
-           // echo '<script>enableLogin()</script>';
-        }
     }
 
     private function renderHomepageView($ads): void
@@ -41,7 +28,7 @@ class HomepageController{
 
     private function showAvailableAds($ads): void
     {
-        if (empty($ads)) { // Check if $ads is an empty array or null
+        if (empty($ads)) {
             require __DIR__ . '/../Views/HomePage/NoAvailableAds.html';
         } else {
             try {

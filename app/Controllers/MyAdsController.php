@@ -8,14 +8,13 @@ class MyAdsController
 
     private AdService $adService;
     private ?User $loggedUser;
-    private ?array $loggedUserAds; // Declare the property explicitly
+    private ?array $loggedUserAds;
 
     public function __construct()
     {
         $adRepository = new AdRepository();
         $this->adService = new AdService($adRepository);
 
-        // Initialize the property before using it
         $this->loggedUserAds = null;
 
         $this->loggedUser = getLoggedUser();
@@ -49,7 +48,7 @@ class MyAdsController
     private function loginAndSignout(): void
     {
         if (!is_null($this->loggedUser)) {
-            echo '<script>            
+            echo '<script>
             showPostNewAd();
             </script>';
         } else {
@@ -57,33 +56,12 @@ class MyAdsController
           hidePostNewAd();
             </script>';
         }
-
-        if (!is_null($this->loggedUser)) {
-            echo '<script>
-          //  p.innerHTML = "Log Out";           
-            </script>';
-        } else {
-            echo '<script>
-            // Code for not logged-in user (e.g., show login button)
-            </script>';
-        }
-
-        if (isset($_POST["btnLogin"])) {
-            logOutFromApp();
-            echo '<script>
-          hidePostNewAd();
-          loginMessageForSignOut();
-          clearScreen();
-            </script>';
-        }
     }
     private function showAds(): void
     {
         if (!is_null($this->loggedUser)) {
             require __DIR__ . '/../Views/MyAdsPage/EditAd.php';
-
             $loggedUserAds = $this->adService->getAdsByLoggedUser($this->loggedUser);
-
             if (!empty($loggedUserAds)) {
                 require __DIR__ . '/../Views/MyAdsPage/MyAdsDiv.php';
             } else {
@@ -91,7 +69,5 @@ class MyAdsController
             }
         }
     }
-
-
 }
 ?>

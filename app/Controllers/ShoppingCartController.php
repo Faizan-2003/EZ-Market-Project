@@ -30,15 +30,14 @@ class ShoppingCartController
         require __DIR__ . '/../Views/ShoppingCart/shoppingCartHeader.php';
         $this->checkCartItemsAndDisplayAccordingly($vatAmount, $total, $totalAmount);
         require __DIR__ . '/../Views/Footer.php';
-        $this->loginAndSignout();
     }
     public function checkCartItemsAndDisplayAccordingly($vatAmount, $total, $totalAmount): void
     {
         if (!isset($_SESSION['cartItems']) || !is_array($_SESSION['cartItems']) || empty($_SESSION['cartItems'])) {
             require __DIR__ . '/../Views/ShoppingCart/ShoppingCartEmpty.html';
         } else {
-            $this->total = $total; // Set the total property for later use
-            $this->vatAmount = $vatAmount; // Set the vatAmount property for later use
+            $this->total = $total;
+            $this->vatAmount = $vatAmount;
             require __DIR__ . '/../Views/ShoppingCart/ShoppingCartDisplayProduct.php';
         }
     }
@@ -80,16 +79,6 @@ class ShoppingCartController
                 }
             }
             updateItemCountInSession();
-        }
-    }
-    private function loginAndSignout(): void
-    {
-        if (!is_null(getLoggedUser())) {
-            echo '<script>disableLoginButton();</script>';
-        }
-        if (isset($_POST["btnSignOut"])) {
-            logOutFromApp();
-            echo '<script>enableLogin()</script>';
         }
     }
 }

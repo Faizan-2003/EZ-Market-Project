@@ -5,21 +5,17 @@ require __DIR__ . '/../Logic/LoggingInAndOut.php';
 class LoginController
 {
     private UserService $userService;
-
     public function __construct(UserService $userService)
     {
         $this->userService = $userService;
     }
-
     public function displayLoginPage(): void
     {
-       // session_start(); // Start the session
         if (is_null(getLoggedUser())) {
             require __DIR__ . "/../Views/LoginPage/Login.php";
             require __DIR__ . '/../Views/LoginPage/LoginError.php';
             $this->loginToApp();
         } else {
-            echo "<script>alert('You are already logged in. You don't have to log in again.')</script>";
             echo "<script>location.href = '/homepage/myAds'</script>";
             exit();
         }

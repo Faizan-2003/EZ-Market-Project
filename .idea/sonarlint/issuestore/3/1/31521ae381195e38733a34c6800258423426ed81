@@ -1,6 +1,6 @@
 
-fphp:S103:"KSplit this 130 characters long line (which is greater than 120 authorized).(œÑ8È½üÁÒ1
-J	php:S1172=".Remove the unused function parameter "$total".(•ñ˜—8É½üÁÒ1
+fphp:S1039"KSplit this 130 characters long line (which is greater than 120 authorized).(œÑ8È½üÁÒ1
+J	php:S1172<".Remove the unused function parameter "$total".(•ñ˜—8É½üÁÒ1
 G	php:S2003"&Replace "require" with "require_once".(Ëš¾îûÿÿÿÿ8È®Œ¤Ò1
 m	php:S4833"LReplace "require" with namespace import mechanism through the "use" keyword.(Ëš¾îûÿÿÿÿ8É®Œ¤Ò1
 r	php:S4833"QReplace "require_once" with namespace import mechanism through the "use" keyword.(ìƒÀúÿÿÿÿ8É®Œ¤Ò1

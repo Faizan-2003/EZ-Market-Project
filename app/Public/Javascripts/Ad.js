@@ -1,5 +1,4 @@
 function resetPostNewAdForm() {
-    // Assuming your form has an id "postNewAdForm"
     document.getElementById("postNewAdForm").reset();
 }
 
@@ -28,7 +27,6 @@ function postNewAdd() {
     const inputProductDescription = escapeHtml(document.getElementById("productDescription").value);
     const inputProductImage = document.getElementById("image").files[0];
 
-    // Validate the form
     if (!validateForm(inputProductName, inputPrice, inputProductDescription, inputProductImage)) {
         return;
     }
@@ -45,13 +43,11 @@ function postNewAdd() {
     formData.append("image", inputProductImage);
     formData.append("adDetails", JSON.stringify(adDetails));
 
-    // Send the form data to the server
     sendRequestForInsertingAd(formData);
 }
 
 function sendRequestForInsertingAd(formData) {
-    event.preventDefault(); // Prevent the default form submission
-    // Send a POST request to the server with the form data
+    event.preventDefault();
     fetch('http://localhost/api/adsapi', {
         method: 'POST',
         body: formData,
@@ -72,74 +68,61 @@ function sendRequestForInsertingAd(formData) {
 }
 
 function createHorizontalAdCard(ad) {
-    // Create the main card element
     let card = document.createElement("div");
     card.classList.add("card", "mb-3");
     card.style.maxWidth = "900px";
     card.style.position = "relative";
 
-    // Create the inner row element
     let row = document.createElement("div");
     row.classList.add("row", "g-0");
     card.appendChild(row);
 
-    // Create the image column element
     let imageCol = document.createElement("div");
     imageCol.classList.add("col-md-4", "col-xl-4");
     row.appendChild(imageCol);
 
-    // Create the image element
     let image = document.createElement("img");
     image.src = ad.productIamageURI;
     image.classList.add("img-fluid", "rounded-start");
     imageCol.appendChild(image);
 
-    // Create the details column element
     let detailsCol = document.createElement("div");
     detailsCol.classList.add("col-md-8", "col-xl-8", "d-flex", "flex-column", "justify-content-around", "align-items-center", "h-100");
     row.appendChild(detailsCol);
 
-    // Create the details body element
     let detailsBody = document.createElement("div");
     detailsBody.classList.add("card-body");
     detailsCol.appendChild(detailsBody);
 
-    // Create the product name element
     let productName = document.createElement("h5");
     productName.classList.add("card-title");
     productName.textContent = ad.productName;
     detailsBody.appendChild(productName);
 
-    // Create the product description element
     let productDescription = document.createElement("p");
     productDescription.classList.add("card-text");
     productDescription.textContent = ad.productDescription;
     detailsBody.appendChild(productDescription);
 
-    // Create the list group element
     let listGroup = document.createElement("ul");
     listGroup.classList.add("list-group", "list-group-flush");
     detailsBody.appendChild(listGroup);
 
-    // Create the price list item element
     let priceListItem = document.createElement("li");
     priceListItem.classList.add("list-group-item");
     priceListItem.innerHTML = '<strong>Price:</strong> €' + formatPricesInDecimal(ad.productPrice);
     listGroup.appendChild(priceListItem);
 
-    // Create the status list item element
     let statusListItem = document.createElement("li");
     statusListItem.classList.add("list-group-item");
     statusListItem.innerHTML = '<strong>Status:</strong> ' + ad.productStatus;
     listGroup.appendChild(statusListItem);
 
-    // Create the posted date list item element
     let postedDateListItem = document.createElement("li");
     postedDateListItem.classList.add("list-group-item");
     postedDateListItem.innerHTML = '<strong>Posted at: </strong>' + ad.postedDate;
     listGroup.appendChild(postedDateListItem);
 
-    // Create the button container element
     let buttonContainer = document.createElement("div");
     buttonContainer.classList.add("d-flex", "justify-content-end", "mb-2");
     detailsCol.appendChild(buttonContainer);
@@ -160,8 +143,7 @@ function loadAdsOfLoggedUser() {
     }).then(response => response.json())
         .then(ads => {
             console.log('Ads:', ads);
-            clearScreen();// clearing screen
-            // Handling the ads data here
+            clearScreen();
             ads.forEach(function (ad) {
                 if (ad.status === "Available") {
                     displayAvailableAds(ad);
@@ -178,17 +160,14 @@ function validateForm(productName, price, description, image) {
         alert('Please enter a product name');
         return false;
     }
-
     if (!price) {
         alert('Please enter a price');
         return false;
     }
-
     if (!description) {
         alert('Please enter a product description');
         return false;
     }
-
     if (!image) {
         alert('Please select an image');
         return false;
@@ -209,20 +188,17 @@ function checkUploadedFile(image) {
     return true;
 }
 function allowDrop(event) {
-    // Prevent default behavior of the event (prevent the file from being opened)
     event.preventDefault();
 }
 
 function dropFile(event) {
-    // Get the file object that was dropped
     const file = event.dataTransfer.files[0];
-    // Set the file object as the value of the file input element
     document.getElementById("image").files[0] = file;
 }
 
 function displayPurchasedAd(ad) {
-    console.log('Displaying purchased ad:', ad);
 
+    console.log('Displaying purchased ad:', ad);
     const myPurchaseContainer = document.getElementById("myPurchaseContainer");
     let requireElements = createHorizontalPurchaseCard(ad);
     let card = requireElements[0];
@@ -231,6 +207,7 @@ function displayPurchasedAd(ad) {
     myPurchaseContainer.appendChild(card);
 }
 function createHorizontalPurchaseCard(ad) {
+
     console.log('Displaying ad:', ad);
 
     let card = document.createElement("div");
@@ -238,62 +215,51 @@ function createHorizontalPurchaseCard(ad) {
     card.style.maxWidth = "900px";
     card.style.position = "relative";
 
-    // Create the inner row element
     let row = document.createElement("div");
     row.classList.add("row", "g-0");
     card.appendChild(row);
 
-    // Create the image column element
     let imageCol = document.createElement("div");
     imageCol.classList.add("col-md-4", "col-xl-4");
     row.appendChild(imageCol);
 
-    // Create the image element
     let image = document.createElement("img");
     image.src = ad.productIamageURI;
     image.classList.add("img-fluid", "rounded-start");
     imageCol.appendChild(image);
 
-    // Create the details column element
     let detailsCol = document.createElement("div");
     detailsCol.classList.add("col-md-8", "col-xl-8", "d-flex", "flex-column", "justify-content-around", "align-items-center", "h-100");
     row.appendChild(detailsCol);
 
-    // Create the details body element
     let detailsBody = document.createElement("div");
     detailsBody.classList.add("card-body");
     detailsCol.appendChild(detailsBody);
 
-    // Create the product name element
     let productName = document.createElement("h5");
     productName.classList.add("card-title");
     productName.textContent = ad.productName;
     detailsBody.appendChild(productName);
 
-    // Create the product description element
     let productDescription = document.createElement("p");
     productDescription.classList.add("card-text");
     productDescription.textContent = ad.productDescription;
     detailsBody.appendChild(productDescription);
 
-    // Create the list group element
     let listGroup = document.createElement("ul");
     listGroup.classList.add("list-group", "list-group-flush");
     detailsBody.appendChild(listGroup);
 
-    // Create the price list item element
     let priceListItem = document.createElement("li");
     priceListItem.classList.add("list-group-item");
     priceListItem.innerHTML = '<strong>Price:</strong> €' + formatPricesInDecimal(ad.productPrice);
     listGroup.appendChild(priceListItem);
 
-    // Create the status list item element
     let statusListItem = document.createElement("li");
     statusListItem.classList.add("list-group-item");
     statusListItem.innerHTML = '<strong>Status:</strong> ' + ad.productStatus;
     listGroup.appendChild(statusListItem);
 
-    // Create the posted date list item element
     let postedDateListItem = document.createElement("li");
     postedDateListItem.classList.add("list-group-item");
     postedDateListItem.innerHTML = '<strong>Posted at: </strong>' + ad.postedDate;
@@ -307,7 +273,6 @@ function displayAvailableAds(ad) {
     let card = requireElements[0];
     let buttonContainer = requireElements[1];
 
-    // button Mark as Sold
     let btnMarkAsSold = document.createElement('button');
     btnMarkAsSold.className = "btn btn-primary mx-2";
     btnMarkAsSold.innerHTML = "Mark As Sold";
@@ -316,7 +281,6 @@ function displayAvailableAds(ad) {
     });
     buttonContainer.appendChild(btnMarkAsSold);
 
-    // button Edit
     const editButton = document.createElement('button');
     editButton.classList.add('btn', 'btn-secondary', 'mx-2');
     editButton.setAttribute('data-bs-toggle', 'modal');
@@ -333,7 +297,6 @@ function displayAvailableAds(ad) {
 
     buttonContainer.appendChild(editButton);
 
-    //button Delete
     let btnDeleteAd = document.createElement('button');
     btnDeleteAd.className = "btn btn-danger mx-2";
     btnDeleteAd.innerHTML = '<i class="fa-solid fa-trash"></i> Delete';
@@ -381,7 +344,6 @@ function displayOtherStatusAds(ad) {
     overlay.style.justifyContent = "center";
     card.appendChild(overlay);
 
-
     let status = document.createElement("h2");
     status.style.color = "white";
     status.textContent = ad.status;
@@ -420,10 +382,6 @@ function sendUpdateRequestToAPi(typeOfOperation, adID, image) {
 
 function clearScreen() {
     document.getElementById("myAdsContainer").innerHTML = "";
-}
-
-function loginMessageForSignOut() {
-    document.getElementById("displayMessage").innerText = "Please,login in order to view,edit or post an Ad";
 }
 function editAdButtonClicked(adID, adImage, adProductName, adDescription, adPrice) {
     clearEveryInputInEditModel();
@@ -537,7 +495,6 @@ function onInputValueChangeForSearch(input) {
     let productName = escapeHtml(input.value);
 
     if (productName.trim() === "") {
-        // Clear the search results container if the search bar is empty
         document.getElementById("searchResultsContainer").innerHTML = "";
         return;
     }
@@ -547,14 +504,13 @@ function onInputValueChangeForSearch(input) {
             if (!response.ok) {
                 throw new Error('Network response was not ok');
             }
-            return response.text();  // Use text() instead of json() to see the raw response
+            return response.text();
         })
         .then(data => {
-            console.log('Response Data:', data);  // Log the raw response data
-            return JSON.parse(data);  // Try to parse the data as JSON
+            console.log('Response Data:', data);
+            return JSON.parse(data);
         })
         .then(ads => {
-            // Your existing code to handle successful response
             document.getElementById("searchResultsContainer").innerHTML = "";
             if (ads.length > 0) {
                 ads.forEach(function (ad) {
@@ -575,14 +531,12 @@ function onInputValueChangeForSearch(input) {
 
 function resultNotFoundForSearchMessage(inputValue) {
     let errorMessage = document.createElement("h2");
-    errorMessage.innerHTML = "🤷 Sorry, no search result found for " + '"' + inputValue + '"' + " 🙁";
+    errorMessage.innerHTML = "Sorry, no search result found for " + '"' + inputValue + '"' + " 🙁";
 
-    // Use the appropriate container ID
-    let containerId = "containerRowContainerAvailableAds"; // Change this if needed
+    let containerId = "containerRowContainerAvailableAds";
 
     let container = document.getElementById(containerId);
 
-    // Check if the container exists before appending the error message
     if (container) {
         container.innerHTML = "";
         container.appendChild(errorMessage);
@@ -633,8 +587,6 @@ function showSearchResult(ad) {
     small.textContent = ad.postedDate + " posted by";
 
     let strong = document.createElement("strong");
-
-    // Check if ad.user is defined before accessing its properties
     strong.textContent = ad.user && ad.user.firstName ? ad.user.firstName : "Unknown";
 
     pFooter.appendChild(small);
@@ -650,10 +602,8 @@ function showSearchResult(ad) {
 
     document.getElementById("containerRowContainerAvailableAds").appendChild(col);
     let containerId = "containerRowContainerAvailableAds"; // Change this if needed
-
     let container = document.getElementById("containerRowContainerAvailableAds");
 
-    // Check if the container exists before appending the search result
     if (container) {
         container.appendChild(col);
     }
@@ -676,9 +626,7 @@ function addToCartClicked(adID) {
     input.value = adID;
 
     form.appendChild(input);
-
     document.body.appendChild(form);
-
     form.submit();
 }
 

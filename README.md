@@ -52,7 +52,7 @@ This platform is an online advertising system that leverages the following techn
 ## Website Bugs:
 I have 2 issues in the website:
 
-- The logout is not working, I tried a lof different logics but could not make it work because of less time.
+- The logout is not working, I tried a lof different logics but could not make it work because of less time. To try different user we have too clode the browser and open again to login with different user or use different browser.
 - The Search feature is not working on the Homepage.
 
 ## Run the Application

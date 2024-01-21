@@ -16,13 +16,10 @@ class AdsController
     {
         $this->sendHeaders();
         $responseData = [];
-
-        // Respond to a POST request to /api/article
         if ($_SERVER["REQUEST_METHOD"] != "POST") {
             echo json_encode(["success" => false, "message" => "Invalid request method"]);
             return;
         }
-
         $this->processPostRequest();
     }
 
@@ -34,7 +31,6 @@ class AdsController
             $responseData = ["success" => false, "message" => "'adDetails' is not set in the POST data"];
         } else {
             $adDetails = isset($_POST['adDetails']) ? json_decode($_POST['adDetails'], true) : [];
-
             if ($adDetails === null) {
                 $responseData = ["success" => false, "message" => "Unable to decode 'adDetails' as JSON"];
             } else {
@@ -55,7 +51,6 @@ class AdsController
             $productPrice = htmlspecialchars($adDetails['price']);
             $productDescription = htmlspecialchars($adDetails['productDescription']);
 
-            // Process the image file
             $image = $_FILES['image'];
             $responseData = $this->processImage($image);
 
@@ -71,7 +66,7 @@ class AdsController
                 if ($checkInDb && move_uploaded_file($imageTempName, $targetDirectory . $newImageName)) {
                     return ["success" => true];
                 } else {
-                    return ["success" => false, "message" => "Something went wrong while processing your request"];
+                    return ["success" => false, "message" => "Something went wrong while"];
                 }
             }
         } else {
@@ -187,17 +182,13 @@ class AdsController
         if ($_SERVER["REQUEST_METHOD"] == "POST") {
             $body = file_get_contents('php://input');
             $data = json_decode($body);
-            $loggedUserId = (int)$data->loggedUserId; // Cast to integer
-
-            // Fetch the logged user (you might need to adapt this based on your authentication system)
+            $loggedUserId = (int)$data->loggedUserId;
             $user = new User();
             $user->setId($loggedUserId);
 
-            // Get purchased ads for the logged user
             $purchasedAds = $this->adService->getPurchasesByLoggedInUser($user);
 
             if ($purchasedAds === false) {
-                // Log an error or handle it appropriately
                 error_log('Failed to fetch purchased ads.');
                 echo json_encode(['error' => 'Failed to fetch purchased ads.']);
             } else {

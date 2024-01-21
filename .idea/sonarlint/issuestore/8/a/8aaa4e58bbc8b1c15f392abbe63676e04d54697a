@@ -1,16 +1,14 @@
 
-:php:S113"'Add a new line at the end of this file.8ğÉ¬ÆÒ1
-G	php:S2003%"&Replace "require" with "require_once".(ó½Ãáşÿÿÿÿ8ñÉ¬ÆÒ1
-B	php:S2003'"&Replace "require" with "require_once".(Şş”¾8ñÉ¬ÆÒ1
-B	php:S2003-"&Replace "require" with "require_once".(ƒŒ²®8ñÉ¬ÆÒ1
-B	php:S20030"&Replace "require" with "require_once".(•¯ö¿8ñÉ¬ÆÒ1
-:php:S125"Remove this commented out code.(ĞÈßî8´ğ’ÈÒ1
-:php:S125"Remove this commented out code.(‰‚ËØ8´ğ’ÈÒ1
-r	php:S4833"QReplace "require_once" with namespace import mechanism through the "use" keyword.(ªöíòıÿÿÿÿ8ñÉ¬ÆÒ1
-r	php:S4833"QReplace "require_once" with namespace import mechanism through the "use" keyword.(ùé‚Úÿÿÿÿÿ8ñÉ¬ÆÒ1
-m	php:S4833"QReplace "require_once" with namespace import mechanism through the "use" keyword.(Éê­™8ñÉ¬ÆÒ1
-m	php:S4833"QReplace "require_once" with namespace import mechanism through the "use" keyword.(¿ò´Ú8ñÉ¬ÆÒ1
-m	php:S4833%"LReplace "require" with namespace import mechanism through the "use" keyword.(ó½Ãáşÿÿÿÿ8ñÉ¬ÆÒ1
-h	php:S4833'"LReplace "require" with namespace import mechanism through the "use" keyword.(Şş”¾8ñÉ¬ÆÒ1
-h	php:S4833-"LReplace "require" with namespace import mechanism through the "use" keyword.(ƒŒ²®8òÉ¬ÆÒ1
-h	php:S48330"LReplace "require" with namespace import mechanism through the "use" keyword.(•¯ö¿8òÉ¬ÆÒ1
+:php:S113"'Add a new line at the end of this file.8›ĞÕâÒ1
+G	php:S2003"&Replace "require" with "require_once".(ó½Ãáşÿÿÿÿ8œĞÕâÒ1
+B	php:S2003"&Replace "require" with "require_once".(Şş”¾8œĞÕâÒ1
+B	php:S2003 "&Replace "require" with "require_once".(ƒŒ²®8œĞÕâÒ1
+B	php:S2003#"&Replace "require" with "require_once".(•¯ö¿8œĞÕâÒ1
+r	php:S4833"QReplace "require_once" with namespace import mechanism through the "use" keyword.(ªöíòıÿÿÿÿ8œĞÕâÒ1
+r	php:S4833"QReplace "require_once" with namespace import mechanism through the "use" keyword.(ùé‚Úÿÿÿÿÿ8œĞÕâÒ1
+m	php:S4833"QReplace "require_once" with namespace import mechanism through the "use" keyword.(Éê­™8œĞÕâÒ1
+m	php:S4833"QReplace "require_once" with namespace import mechanism through the "use" keyword.(¿ò´Ú8ĞÕâÒ1
+m	php:S4833"LReplace "require" with namespace import mechanism through the "use" keyword.(ó½Ãáşÿÿÿÿ8ĞÕâÒ1
+h	php:S4833"LReplace "require" with namespace import mechanism through the "use" keyword.(Şş”¾8ĞÕâÒ1
+h	php:S4833 "LReplace "require" with namespace import mechanism through the "use" keyword.(ƒŒ²®8ĞÕâÒ1
+h	php:S4833#"LReplace "require" with namespace import mechanism through the "use" keyword.(•¯ö¿8ĞÕâÒ1
